@@ -270,7 +270,7 @@ Preset blade[] = {
 
 
 
-	
+
 	{"7-KROSSGUARD;common", "tracks/track_7.wav",
 	/* copyright Fett263 KyloRen (Primary Blade) OS6 Style
 	https://fett263.com/fett263-proffieOS6-style-library.html#KyloRen
@@ -934,9 +934,9 @@ Preset blade[] = {
 	StylePtr<WHITE>(), "battle 2"},
 
 
-	};
+};
 
-	BladeConfig blades[] = {
+BladeConfig blades[] = {
 	{ 0, WS281XBladePtr<133, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
 		SimpleBladePtr<CreeXPE2WhiteTemplate<550>, NoLED, NoLED, NoLED, bladePowerPin1, -1, -1, -1>()
 	, CONFIGARRAY(blade) },
