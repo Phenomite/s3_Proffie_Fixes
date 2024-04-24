@@ -1,5 +1,5 @@
-/* Sabertrio Proffie Preconfiguration 4.0
-based on Fett263 Button (prop) file for use with ProffieOS7. 
+/* Sabertrio Proffie Preconfiguration 4.1
+based on Fett263 Button (prop) file for use with ProffieOS7.
 Includes Gesture Control, Edit Settings, Track Player
 
 ProffieOS: Control software for lightsabers and other props.
@@ -9,11 +9,11 @@ Copyright (c) 2016-2019 Fredrik Hubinette
 Fett263 Button (prop) file, "Edit Mode", "Track Player"
 Copyright (c) 2022-2023 Fernando da Rosa
 Visit https://www.fett263.com/proffieOS7-fett263-prop-file.html for required set up and additional information
- 
+
 Voice Prompts and sounds required for certain features and should be included in /common folder or /font folder on SD card.
 
 Track Player requires track files to be located in /font/tracks for font specific tracks or /common/tracks for universal (all presets) or a combination of the two.
- 
+
 ---------- 2 SWITCH CONTROLS (ACTIVATION and AUXILIARY) ----------
 
  Ignite Blade                 - Press & release ACTIVATION SWITCH while blade is OFF.
@@ -38,14 +38,14 @@ Track Player requires track files to be located in /font/tracks for font specifi
                                 NOTE: Press & release AUXILIARY SWITCH while in Settings Menu to cycle forward to next menu option.
                                 NOTE: Press & release ACTIVATION SWITCH while in Settings Menu to cycle backwards to previous menu option.
                                 NOTE: Press & hold ACTIVATION SWITCH while in Settings Menu to exit.
- Inside Menu Option           - Press & hold AUXILARY SWITCH while in Settings Menu to enter a menu option.						
+ Inside Menu Option           - Press & hold AUXILARY SWITCH while in Settings Menu to enter a menu option.
                                 NOTE: Press & release AUXILIARY SWITCH while in a menu option to increase value or enable the option.
                                 NOTE: Press & release ACTIVATION while in a menu option to decrease value or disable the option.
                                 NOTE: Press & hold AUXILIARY SWITCH while in a menu option to save setting and exit menu option.
                                 NOTE: Press & hold ACTIVATION SWITCH while in a menu option to revert setting / cancel and exit menu option.
- Battery Level Meter           - Press & release AUXILIARY SWITCH while blade is OFF.
- Quick  Gesture Toggle         - Press & hold ACTIVATION SWITCH + Twist Rotate the saber while blade is OFF.
- Track Player                  - Press & hold ACTIVATION SWITCH + press & release AUXILIARY SWITCH.
+ Battery Level Meter          - Press & release AUXILIARY SWITCH while blade is OFF.
+ Quick  Gesture Toggle        - Press & hold ACTIVATION SWITCH + Twist Rotate the saber while blade is OFF.
+ Track Player                 - Press & hold ACTIVATION SWITCH + press & release AUXILIARY SWITCH.
 */
 
 #ifndef PROPS_SABER_SABERTRIO_BUTTONS_H
@@ -241,7 +241,7 @@ EFFECT(bmbegin);      // for Begin Battle Mode
 EFFECT(bmend);        // for End Battle Mode
 EFFECT(vmbegin);      // for Begin Volume Menu
 EFFECT(vmend);        // for End Volume Menu
-EFFECT(volup);        // for increse volume
+EFFECT(volup);        // for increase volume
 EFFECT(voldown);      // for decrease volume
 EFFECT(volmin);       // for minimum volume reached
 EFFECT(volmax);       // for maximum volume reached
@@ -255,10 +255,10 @@ EFFECT(no_blade);     // for NO BLADE img
 EFFECT(kyber);        // for KyberDial img
 EFFECT(volumemenu);   // for Volume Menu img
 EFFECT(length);       // for Blade Length Menu img
-EFFECT(clearscreen);  // for clearing oled screen
+EFFECT(clearscreen);  // for clearing OLED screen
 EFFECT(fontmenu);     // for Soundbank selection prompt
-EFFECT(plus);         // for blade length increment
-EFFECT(minus);        // for blade length decrement
+EFFECT(plus);         // for Blade Length increment
+EFFECT(minus);        // for Blade Length decrement
 EFFECT(menuback);
 EFFECT(default);
 EFFECT(tr);
@@ -269,7 +269,7 @@ EFFECT(medit); // Edit Mode
 #endif
 
 #include "../sound/sound_library.h"
-// Phenom - config
+
 class GestureControlFile : public ConfigFile {
 public:
   void iterateVariables(VariableOP *op) override {
@@ -1464,7 +1464,6 @@ SaberFett263Buttons() : PropBase() {}
     wav_player.Free();
   }
 
-
   // Sabertrio - Adds a menu hum sound effect
   void StartMenuBackgrd() {
 #ifdef ENABLE_AUDIO
@@ -1626,7 +1625,7 @@ SaberFett263Buttons() : PropBase() {}
     EDIT_STYLE_SELECT = 1,
     EDIT_STYLE_SETTINGS = 2,
   };
-	
+
   enum ColorSubMenu {
     EDIT_EFFECT_COLOR = 1,
 #if NUM_BLADES == 1
@@ -1688,8 +1687,6 @@ SaberFett263Buttons() : PropBase() {}
 
   // Uses font_num_ value for starting font, not current font
   void ChangeFont(int direction) {
-    hybrid_font.PlayCommon(&SFX_fontmenu);
-    delay(2100);
     int num_fonts = RunCommandAndGetSingleLine("list_fonts", nullptr, 0, 0, 0);
     font_num_ += direction;
     if (font_num_ > num_fonts) font_num_ = 1;
@@ -1759,6 +1756,7 @@ SaberFett263Buttons() : PropBase() {}
 #else
       sound_library_.SayEditMode();
       StartMenu(MENU_TOP);
+      FastOn();
 #endif
     }
   }
@@ -1938,7 +1936,9 @@ SaberFett263Buttons() : PropBase() {}
       current_preset_.Save();
       show_length_.Stop(blade_num_);
       UpdateStyle();
+#ifndef FETT263_EDIT_MODE_MENU
       Off(OFF_FAST);
+#endif
       delay(500);
       MenuSave();
       enable_twist_ = false;
@@ -2054,7 +2054,9 @@ SaberFett263Buttons() : PropBase() {}
         menu_type_ = MENU_LENGTH;
         SaveState(current_preset_.preset_num);
         blade_num_ = 1;
+#ifndef FETT263_EDIT_MODE_MENU
         FastOn();
+#endif
         enable_twist_ = true;
         max_length_ = GetMaxBladeLength(blade_num_);
         blade_length_ = GetBladeLength(blade_num_);
@@ -2069,7 +2071,9 @@ SaberFett263Buttons() : PropBase() {}
 #endif
         break;
       case EDIT_BRIGHTNESS:
+#ifndef FETT263_EDIT_MODE_MENU
         FastOn();
+#endif
         enable_twist_ = true;
         menu_type_ = MENU_DIM_BLADE;
         dim_revert_ = dim = pow(SaberBase::GetCurrentDimming() / 16384.0, 1/2.5);
@@ -2088,7 +2092,9 @@ SaberFett263Buttons() : PropBase() {}
       menu_type_ = MENU_SETTING_SUB;
       UpdateStyle();
       delay(500);
+#ifndef FETT263_EDIT_MODE_MENU
       Off(OFF_FAST);
+#endif
       MenuSave();
       enable_twist_ = false;
       break;
@@ -2780,11 +2786,11 @@ SaberFett263Buttons() : PropBase() {}
         switch (gesture_num_) {
           default:
             break;
-        case GESTURE_TWIST_IGNITION:
+          case GESTURE_TWIST_IGNITION:
             sound_library_.SayTwistIgnition();
             SaberBase::DoTwistIgnite();
             break;
-        case GESTURE_TWIST_RETRACTION:
+          case GESTURE_TWIST_RETRACTION:
             sound_library_.SayTwistRetraction();
             SaberBase::DoTwistRetract();
             break;
@@ -3020,7 +3026,7 @@ SaberFett263Buttons() : PropBase() {}
             break;
        }
        break;
-  #if NUM_BLADES > 1
+#if NUM_BLADES > 1
       case MENU_BLADE_STYLE:
       case MENU_BLADE_COLOR:
       case MENU_BLADE_COPY:
@@ -3246,7 +3252,7 @@ SaberFett263Buttons() : PropBase() {}
             if (!SFX_preon && (int_arg_menu_[arg_dial_] == PREON_OPTION_ARG || int_arg_menu_[arg_dial_] == PREON_SIZE_ARG)) arg_dial_ = 0;
             if (arg_dial_ > (int)NELEM(int_arg_menu_) - 1) arg_dial_ = 0;
           } else {
-            // Detect preon.wav for setting preview (cannot be shown without so skip over)            
+            // Detect preon.wav for setting preview (cannot be shown without so skip over)
             if (!SFX_preon && (int_arg_menu_[arg_dial_] == PREON_OPTION_ARG || int_arg_menu_[arg_dial_] == PREON_SIZE_ARG)) arg_dial_ = NELEM(int_arg_menu_) - 3;
             if (arg_dial_ < 0) arg_dial_ = NELEM(int_arg_menu_) - 1;
           }
@@ -3430,11 +3436,11 @@ SaberFett263Buttons() : PropBase() {}
         }
         IntEdit::SetIntValue(calc_);
         break;
-  #endif
+#endif
       }
     }
 
-// Edit Mode Undo (AV Button)
+// Edit Mode Undo (ACT Button)
   void MenuUndo() {
     switch (menu_type_) {
       case MENU_TOP:
@@ -3456,8 +3462,10 @@ SaberFett263Buttons() : PropBase() {}
         SaveState(current_preset_.preset_num);
         show_length_.Stop(blade_num_);
         UpdateStyle();
-        delay(100);
+        delay(500);
+#ifndef FETT263_EDIT_MODE_MENU
         Off(OFF_FAST);
+#endif
         MenuRevert();
         enable_twist_ = false;
         break;
@@ -3483,8 +3491,10 @@ SaberFett263Buttons() : PropBase() {}
         UpdateStyle();
         menu_type_ = MENU_SETTING_SUB;
         SaveGlobalState();
-        delay(100);
+        delay(500);
+#ifndef FETT263_EDIT_MODE_MENU
         Off(OFF_FAST);
+#endif
         MenuRevert();
         enable_twist_ = false;
         break;
@@ -3717,8 +3727,10 @@ SaberFett263Buttons() : PropBase() {}
     }
     menu_type_ = MENU_TOP;
     menu_ = false;
+    in_menu_ = false;
     twist_menu_ = M_PI / 2.5;
     wav_player.Free();
+    Off(OFF_FAST);
   }
 
   void MenuSave() {
@@ -3727,10 +3739,10 @@ SaberFett263Buttons() : PropBase() {}
     } else {
       sound_library_.SaySave();
     }
-    
+
     if (menu_type_ == MENU_SETTING_SUB) {
       SaberBase::DoSettingsMenu();
-    } 
+    }
     if (in_menu_) {
       MenuPrompt();
       MenuDial(0);
@@ -3740,13 +3752,13 @@ SaberFett263Buttons() : PropBase() {}
   void MenuSelect() {
     sound_library_.SaySelect();
     if (menu_type_ == MENU_SETTING_SUB) SaberBase::DoSettingsMenu();
-      MenuPrompt();
-      MenuDial(0);
-    }
+    MenuPrompt();
+    MenuDial(0);
+  }
 
   void MenuConfirm() {
     sound_library_.SayConfirm();
-     if (menu_type_ == MENU_SETTING_SUB) SaberBase::DoSettingsMenu();
+    if (menu_type_ == MENU_SETTING_SUB) SaberBase::DoSettingsMenu();
     MenuPrompt();
     MenuDial(0);
   }
@@ -3755,16 +3767,16 @@ SaberFett263Buttons() : PropBase() {}
     sound_library_.SayCancel();
     if (menu_type_ == MENU_SETTING_SUB) {
       SaberBase::DoSettingsMenu();
-      } 
+    }
     MenuPrompt();
     MenuDial(0);
   }
 
   void MenuRevert() {
     sound_library_.SayRevert();
-      if (menu_type_ == MENU_SETTING_SUB) {
-        SaberBase::DoSettingsMenu();
-      }
+    if (menu_type_ == MENU_SETTING_SUB) {
+      SaberBase::DoSettingsMenu();
+    }
     MenuPrompt();
     MenuDial(0);
   }
@@ -4049,7 +4061,7 @@ SaberFett263Buttons() : PropBase() {}
     UpdateStyle();
   }
 
-  // Go to first Preset.
+  // Go to first Preset
   void first_preset() {
 #ifdef SAVE_PRESET
     SaveState(0);
@@ -4065,7 +4077,7 @@ SaberFett263Buttons() : PropBase() {}
     if (volume < (VOLUME * 0.1)) volume = VOLUME;
     if (volume > current_volume) {
       STDOUT.println("Volume up");
-      hybrid_font.PlayCommon(&SFX_volup);    
+      hybrid_font.PlayCommon(&SFX_volup);
     } else {
       STDOUT.println("Volume Down");
       hybrid_font.PlayCommon(&SFX_voldown);
@@ -4080,7 +4092,7 @@ SaberFett263Buttons() : PropBase() {}
     } else {
       if (v > 0) {
         STDOUT.println("Volume up");
-        hybrid_font.PlayCommon(&SFX_volup);    
+        hybrid_font.PlayCommon(&SFX_volup);
       } else {
         STDOUT.println("Volume Down");
         hybrid_font.PlayCommon(&SFX_voldown);
@@ -4139,9 +4151,6 @@ SaberFett263Buttons() : PropBase() {}
         saved_gesture_control.gestureon = false;
         FindBladeAgain();
         SaberBase::DoBladeDetect(false);
-        if(in_menu_) {
-          MenuUndo();
-        }
         return true;
 #endif
 
@@ -4201,10 +4210,10 @@ SaberFett263Buttons() : PropBase() {}
             hybrid_font.PlayCommon(&SFX_no_blade);
             SaberBase::DoNoBlade();
             return true;
-          
+
           } else {
             if (millis() - menu_time_ > 1000) {
-             DoInteractivePreon();
+              DoInteractivePreon();
             }
           }
         }
@@ -4251,7 +4260,7 @@ SaberFett263Buttons() : PropBase() {}
             On();
           }
           return true;
-        } else {
+        } else if (!preset_menu_ && !blade_detected_) {
           hybrid_font.PlayCommon(&SFX_no_blade);
           SaberBase::DoNoBlade();
           return true;
@@ -4261,7 +4270,7 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_AUX, EVENT_HELD_LONG, MODE_OFF | BUTTON_POWER):
 #ifdef FETT263_USE_SETTINGS_MENU
         // Enter Edit Mode
-        if (!menu_ && !in_menu_) {
+        if (!menu_ && !in_menu_ && !preset_menu_) {
           StartEditMode();
           in_menu_ = true;
           menu_time_ = millis();
@@ -4276,13 +4285,13 @@ SaberFett263Buttons() : PropBase() {}
         return true;
 
       case EVENTID(BUTTON_POWER, EVENT_PRESSED, MODE_ON):
-        if(menu_) return false;
-        if(CheckShowColorCC()) return true;
-        return true;
+        if (menu_) return true;
+        if (CheckShowColorCC()) return true;
+        return false;
 
       case EVENTID(BUTTON_POWER, EVENT_RELEASED, MODE_ON):
 #ifndef DISABLE_COLOR_CHANGE
-        if (SaberBase::GetColorChangeMode() != SaberBase::COLOR_CHANGE_MODE_NONE) {
+        if (CheckShowColorCC()) {
           ResetColors();
           sound_library_.SayRevert();
 
@@ -4370,7 +4379,7 @@ SaberFett263Buttons() : PropBase() {}
 
       case EVENTID(BUTTON_POWER, EVENT_HELD_MEDIUM, MODE_ON):
 #ifndef DISABLE_COLOR_CHANGE
-        if (SaberBase::GetColorChangeMode() != SaberBase::COLOR_CHANGE_MODE_NONE) {
+        if (CheckShowColorCC()) {
           ResetColors();
           sound_library_.SayRevert();
           return true;
@@ -4488,10 +4497,11 @@ SaberFett263Buttons() : PropBase() {}
 
       case EVENTID(BUTTON_POWER, EVENT_CLICK_LONG, MODE_ON):
         if (CancelShowColor()) return true;
-        if (menu_) {
+        if (in_menu_) {
           MenuDial(-1);
           return true;
         }
+        return false;
 
 #if !defined(FETT263_DISABLE_MULTI_BLAST) && !defined(FETT263_DISABLE_MULTI_BLAST_TOGGLE)
       case EVENTID(BUTTON_AUX, EVENT_CLICK_LONG, MODE_ON):
@@ -4519,7 +4529,9 @@ SaberFett263Buttons() : PropBase() {}
           }
 #endif
 #ifdef DISABLE_COLOR_CHANGE
-          SaberBase::DoEffect(EFFECT_POWERSAVE, 0);
+          /* By default, power safe is disabled in the Sabertrio Proffie Preconfiguration.
+          The commented out line below is to ensure this feature is not accidently accessed when toggling kyber dial.*/
+          //SaberBase::DoEffect(EFFECT_POWERSAVE, 0);
 #endif
         }
         return true;
@@ -4617,7 +4629,7 @@ SaberFett263Buttons() : PropBase() {}
 #endif
 
       // Off functions
-      // Handles PresetMenu Exit and another case for PowerOn
+      // Handles PresetMenu Exit and second case for PowerOn
       case EVENTID(BUTTON_POWER, EVENT_HELD_LONG, MODE_OFF):
         if (in_menu_) {
           MenuUndo();
@@ -4994,7 +5006,6 @@ SaberFett263Buttons() : PropBase() {}
 #endif
 
     // Optional Gesture Controls (defines listed at top)
-
 #ifdef FETT263_SPIN_MODE
     case EVENTID(BUTTON_NONE, EVENT_SWING, MODE_OFF | BUTTON_POWER):
       if (!menu_) {
@@ -5020,6 +5031,7 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_SWING, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.swingon) return true;
+        if (preset_menu_) return false;
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
           SelectIgnitionSound();
@@ -5028,10 +5040,22 @@ SaberFett263Buttons() : PropBase() {}
           if (SFX_preon) {
 #ifdef FETT263_DUAL_MODE_SOUND
             SelectPreonSound();
-#endif  
-            On();
+#endif
+            if (blade_detected_) {
+              On();
+            } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
           } else {
-            FastOn();
+            if (blade_detected_) {
+              FastOn();
+            } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
           }
 #ifndef FETT263_SWING_ON_NO_BM
           /* By default, swing ignition is disabled in the Sabertrio Proffie Preconfiguration.
@@ -5044,12 +5068,19 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_SWING, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.swingon) return true;
+        if (preset_menu_) return false;
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
           SelectIgnitionSound();
 #endif
           wav_player.Free();
-          FastOn();
+          if (blade_detected_) {
+            FastOn();
+          } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
 #ifndef FETT263_SWING_ON_NO_BM
           /* By default, swing ignition is disabled in the Sabertrio Proffie Preconfiguration.
           The commented out line below is to ensure battlemode does not automatically enable when swing ignition is enabled through Settings Menu.*/
@@ -5108,6 +5139,7 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_TWIST, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.twiston) return true;
+        if (preset_menu_) return false;
         // Delay twist events to prevent false trigger from over twisting
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
@@ -5121,6 +5153,10 @@ SaberFett263Buttons() : PropBase() {}
             if (millis() - last_twist_ > 1000 && millis() - saber_off_time_ > 1000) {
               if (blade_detected_) {
                 On();
+              } else {
+                Off();
+                hybrid_font.PlayCommon(&SFX_no_blade);
+                SaberBase::DoNoBlade();
               }
               last_twist_ = millis();
             }
@@ -5128,6 +5164,10 @@ SaberFett263Buttons() : PropBase() {}
             if (millis() - last_twist_ > 1000 && millis() - saber_off_time_ > 1000) {
               if (blade_detected_) {
                   On(); 
+              } else {
+                Off();
+                hybrid_font.PlayCommon(&SFX_no_blade);
+                SaberBase::DoNoBlade();
               }
               last_twist_ = millis();
             }
@@ -5142,6 +5182,7 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_TWIST, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.twiston) return true;
+        if (preset_menu_) return false;
         // Delay twist events to prevent false trigger from over twisting
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
@@ -5169,6 +5210,7 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_STAB, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.stabon) return true;
+        if (preset_menu_) return false;
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
           SelectIgnitionSound();
@@ -5178,9 +5220,21 @@ SaberFett263Buttons() : PropBase() {}
 #ifdef FETT263_DUAL_MODE_SOUND
             SelectPreonSound();
 #endif
-            On();
+           if (blade_detected_) {
+              On();
+            } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
           } else {
-            FastOn();
+            if (blade_detected_) {
+              FastOn();
+            } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
           }
 #ifndef FETT263_STAB_ON_NO_BM
           /* By default, stab ignition is disabled in the Sabertrio Proffie Preconfiguration.
@@ -5193,12 +5247,19 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_STAB, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.stabon) return true;
+        if (preset_menu_) return false;
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
           SelectIgnitionSound();
 #endif
           wav_player.Free();
-          FastOn();
+          if (blade_detected_) {
+            FastOn();
+          } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
 #ifndef FETT263_STAB_ON_NO_BM
           /* By default, stab ignition is disabled in the Sabertrio Proffie Preconfiguration.
           The commented out line below is to ensure battlemode does not automatically enable when stab ignition is enabled through Settings Menu.*/
@@ -5212,6 +5273,7 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_THRUST, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.thruston) return true;
+        if (preset_menu_) return false;
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
           SelectIgnitionSound();
@@ -5221,9 +5283,21 @@ SaberFett263Buttons() : PropBase() {}
 #ifdef FETT263_DUAL_MODE_SOUND
             SelectPreonSound();
 #endif
-            On();
+            if (blade_detected_) {
+              On();
+            } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
           } else {
-            FastOn();
+            if (blade_detected_) {
+              FastOn();
+            } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
           }
 #ifndef FETT263_THRUST_ON_NO_BM
           /* By default, thrust ignition is disabled in the Sabertrio Proffie Preconfiguration.
@@ -5236,12 +5310,19 @@ SaberFett263Buttons() : PropBase() {}
       case EVENTID(BUTTON_NONE, EVENT_THRUST, MODE_OFF):
         if (!saved_gesture_control.gestureon) return true;
         if (!saved_gesture_control.thruston) return true;
+        if (preset_menu_) return false;
         if (!menu_) {
 #ifdef FETT263_DUAL_MODE_SOUND
           SelectIgnitionSound();
 #endif
           wav_player.Free();
-          FastOn();
+          if (blade_detected_) {
+              FastOn();
+          } else {
+              Off();
+              hybrid_font.PlayCommon(&SFX_no_blade);
+              SaberBase::DoNoBlade();
+            }
 #ifndef FETT263_THRUST_ON_NO_BM
           /* By default, thrust ignition is disabled in the Sabertrio Proffie Preconfiguration.
           The commented out line below is to ensure battlemode does not automatically enable when thrust ignition is enabled through Settings Menu.*/
@@ -5352,7 +5433,7 @@ SaberFett263Buttons() : PropBase() {}
         if (SaberBase::IsOn()) {
 #ifdef FETT263_DUAL_MODE_SOUND
           SelectIgnitionSound();
-#endif 
+#endif
           hybrid_font.PlayCommon(&SFX_out);
         }
         return;
@@ -5399,7 +5480,7 @@ private:
   bool spin_mode_ = false;
 #endif
   bool preon_effect_ = false; // used for interactive preon, must be reset with EFFECT_FAST_ON
-#ifdef FETT263_QUICK_SELECT_ON_BOOT  
+#ifdef FETT263_QUICK_SELECT_ON_BOOT
   bool menu_ = true; // enable MENU_PRESET on boot
 #else
   bool menu_ = false; // Edit Mode / Menu System active
@@ -5419,7 +5500,7 @@ private:
   uint32_t last_push_millis_; // Last Push (to prevent gesture spamming)
   uint32_t last_blast_millis_; // Last Blast (for Battle Mode Multi-Blast detection)
   uint32_t saber_off_time_millis_; // Off timer
-  uint32_t restart_millis_; // Used to time restarts to show preon timing.
+  uint32_t restart_millis_; // Used to time restarts to show preon timing
   ClashType clash_type_ = CLASH_NONE;
 #ifdef FETT263_QUICK_SELECT_ON_BOOT  
   MenuType menu_type_ = MENU_PRESET;
@@ -5471,5 +5552,5 @@ private:
   int clash_count_ = -1; // Choreography Mode Clash counter
 #endif
 };
-//end of button map
+// end of button map
 #endif
