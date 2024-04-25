@@ -26,8 +26,8 @@
 \*-----------------------------------------------------------------*/
 
 // Current S3s
-//#define CONFIG_FILE "config/s3config.h"
-#define CONFIG_FILE "config/s3config_PowerCore.h"
+#define CONFIG_FILE "config/s3config.h"
+//#define CONFIG_FILE "config/s3config_PowerCore.h"
 
 //#define CONFIG_FILE "config/s3config_OLED.h" 
 //#define CONFIG_FILE "config/s3config_Kros.h" 
