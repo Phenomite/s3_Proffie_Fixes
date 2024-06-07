@@ -767,7 +767,7 @@ Preset blade[] = {
   // { "SWJSCalBlue;common", "tracks/hallway.wav",
   // StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<WHITE>(), "swjs calblue"},
 
-  // Jedi Survivor - Cal Kestis Magenta
+  // // Jedi Survivor - Cal Kestis Magenta
   // { "SWJSCalMagenta;common", "tracks/hallway.wav",
   // StylePtr<StandardPurpleSparkHumpFlicker>(), StylePtr<WHITE>(), "swjs calmag"},
 
@@ -824,30 +824,6 @@ Preset blade[] = {
   // ################################################
   // ################################################
 
-  // TFA Graflex v2
-  { "KPTFATakodana;common", "tracks/tfa.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa takodana"},
-
-  // TFA Graflex v2
-  { "KPTFAStarkiller;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa starkill"},
-
-  // TLJ Praetorian Guards
-  { "KPBilariWhip;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "tfa bilari"},
-
-  // TLJ Praetorian Guards
-  { "KPVibroArbir;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "tfa arbir"},
-
-  // Free (using mando music meh)
-  { "KPBattle1;common", "tracks/mando.wav",
-  StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_White>(), "kpbatl1"},
-
-  // Free (using mando music meh)
-  // { "KPBattle3;common", "tracks/mando.wav",
-  // StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<WHITE>(), "kpbatl3"},
-
   // Ahsoka Season 1 ( Baylan Skoll )
   { "KPSunSkoll;common", "tracks/ahsokatheme.wav",
   StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "kpsunskoll"},
@@ -860,17 +836,45 @@ Preset blade[] = {
   { "KPDarkV3;common", "tracks/mandotheme.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "dark saber"},
 
-  // Asohka white (mando)
-  { "KPTheSorcererBeskar;common", "tracks/thesorcerer.wav",
-  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "kp sorcerer"},
+  // // Asohka white (mando)
+  // { "KPTheSorcererBeskar;common", "tracks/thesorcerer.wav",
+  // StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "kp sorcerer"},
 
-  // Asohka blue (clone wars)
-  { "KPCommanderTano;common", "tracks/swclonewars.wav",
-  StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<Switch_Blue>(), "cmdr tano"},
+  // Son of Corellia
+  { "KPSonOfCorellia;common", "tracks/tfa.wav",
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "sonofcorellia"},
+
+  // TFA Graflex v2
+  { "KPTFATakodana;common", "tracks/tfa.wav",
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa takodana"},
+
+  // TFA Graflex v2
+  { "KPTFAStarkiller;common", "tracks/reyvkylo.wav",
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa starkill"},
 
   // Kylo - The Force Awakens (Kyberphonic Unstable v2)
   { "KPUnstableV2;common", "tracks/track1.wav",
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo v2"},
+
+  // TLJ Praetorian Guards
+  { "KPBilariWhip;common", "tracks/reyvkylo.wav",
+  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "tfa bilari"},
+
+  // TLJ Praetorian Guards
+  { "KPVibroArbir;common", "tracks/reyvkylo.wav",
+  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "tfa arbir"},
+
+  // // Free (using mando music meh)
+  // { "KPBattle1;common", "tracks/mando.wav",
+  // StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_White>(), "kpbatl1"},
+
+  // Free (using mando music meh)
+  // { "KPBattle3;common", "tracks/mando.wav",
+  // StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<WHITE>(), "kpbatl3"},
+
+  // Asohka blue (clone wars)
+  { "KPCommanderTano;common", "tracks/swclonewars.wav",
+  StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<Switch_Blue>(), "cmdr tano"},
 
   // Adam Project
   { "KPAdamProjectMagCyl;common", "tracks/track_16.wav",
@@ -945,8 +949,8 @@ Preset blade[] = {
   StylePtr<Style_PhenomStarTrek>(), StylePtr<Switch_Blue>(), "meaty trek"},
 
   // Christmas V2 10/16/22
-  { "MeatyChristmas;common", "tracks/christmas_sesame1.wav",
-  StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "meaty christ"},
+  // { "MeatyChristmas;common", "tracks/christmas_sesame1.wav",
+  // StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "meaty christ"},
 
 
   // ###########################################
@@ -954,12 +958,12 @@ Preset blade[] = {
   // ###########################################
 
   // Jaydalorian Christmas (free)
-  { "JDChristmas;common", "tracks/christmas.wav",
-  StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
+  // { "JDChristmas;common", "tracks/christmas.wav",
+  // StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
 
   // Jaydalorian New years (free)
-  { "JDNewyears;common", "tracks/newyearcantina.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "jd newyear"},
+  // { "JDNewyears;common", "tracks/newyearcantina.wav",
+  // StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "jd newyear"},
 
   // Jaydalorian Banished (paid)
   { "JDBanished;common", "tracks/track1.wav",
@@ -975,8 +979,8 @@ Preset blade[] = {
   // ###########################################
 
   // Ball Drop - New Years (paid)
-  { "MSBallDrop;common", "tracks/newyearcantina.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
+  // { "MSBallDrop;common", "tracks/newyearcantina.wav",
+  // StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
 
   // The Beginner (free)
   { "MSTheBeginner;common", "tracks/sw.wav",
