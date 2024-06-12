@@ -7,7 +7,7 @@ const unsigned int maxLedsPerStrip = 144;
 const unsigned int currentLedsInStrip = 114;
 #define VOLUME 2550
 #define BOOT_VOLUME 200
-#define CLASH_THRESHOLD_G 1.0
+#define CLASH_THRESHOLD_G 1.25
 #define FETT263_SWING_ON_SPEED 320
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
 #define ENABLE_AUDIO
