@@ -128,6 +128,7 @@ using Emitter_Green_Flicker = AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Gree
 using Emitter_BloodOrange_Normal = AlphaL<Rgb<255,28,0>,SmoothStep<Scale<SlowNoise<Int<2000>>,Int<1000>,Int<5500>>,Int<-5500>>>;
 using Emitter_Black_Wick = AlphaL<Black,SmoothStep<Scale<SlowNoise<Int<2000>>,Int<1750>,Int<2250>>,Int<-2500>>>;
 using Emitter_White_Wick = AlphaL<Rgb<85,85,200>,SmoothStep<Scale<SlowNoise<Int<2000>>,Int<1750>,Int<2250>>,Int<-2500>>>;
+using Emitter_White_Unstable = AlphaL<RandomPerLEDFlickerL<RgbArg<EMITTER_COLOR_ARG,Rgb<255,187,108>>>,SmoothStep<Scale<NoisySoundLevel,IntArg<EMITTER_SIZE_ARG,2000>,Sum<IntArg<EMITTER_SIZE_ARG,2000>,Int<6000>>>,Int<-6000>>>;
 
 // Ignitions
 using Ignition_WhiteBlue_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<DeepSkyBlue>,TrFade<1200>>,EFFECT_IGNITION>;
@@ -378,6 +379,7 @@ OS6.7 v4.020
 using Style_UnstableRage = Layers<
   Stripes<3000,-3500,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,Black>,BrownNoiseFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>,Mix<Int<3855>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,200>,RandomPerLEDFlicker<Mix<Int<10280>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,Mix<Int<3855>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>>>,
   Ignition_Red_Unstable,
+  Emitter_BloodOrange_Normal,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -509,7 +511,7 @@ using Style_GreenBlueAudioFlicker = Layers<
 /*--------------------------------- Style_TripleLightsideFlicker-------------------------
 Blue/Aquamarine/Purple AudioFlicker
 */
-using Style_TripleLightsideFlicker = Style_GreenBlueAudioFlicker;
+// using Style_TripleLightsideFlicker = 
 // Layers<
 //   AudioFlicker<RotateColorsX<Variation,Rgb<0,0,255>>,AudioFlicker<RotateColorsX<Variation,Rgb<0,255,0>>,Rgb<189,8,255>>>,
 //   //AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,White>>,SwingSpeed<600>>, 
@@ -548,9 +550,9 @@ Rgb<10,95,255> Custom DodgerBlue
 b0111 28672 and b0110 24576 for the stripe audioflicker since i like subtle
 */
 using Style_Original_BlueRotoscope = Layers<
-  AudioFlicker<Stripes<14000,-4000,RgbArg<BASE_COLOR_ARG,Rgb<10,42,255>>,RgbArg<BASE_COLOR_ARG,Rgb<10,42,255>>,Mix<Int<24576>,Black,RgbArg<BASE_COLOR_ARG,Rgb<10,42,255>>>,RgbArg<BASE_COLOR_ARG,Rgb<10,42,255>>,Mix<Int<28672>,Black,RgbArg<BASE_COLOR_ARG,Rgb<10,42,255>>>>,RgbArg<BASE_COLOR_ARG,Rgb<10,42,255>>>,
+  AudioFlicker<Stripes<14000,-4000,RgbArg<BASE_COLOR_ARG,Rgb<5,39,255>>,RgbArg<BASE_COLOR_ARG,Rgb<5,39,255>>,Mix<Int<24576>,Black,RgbArg<BASE_COLOR_ARG,Rgb<5,39,255>>>,RgbArg<BASE_COLOR_ARG,Rgb<5,39,255>>,Mix<Int<28672>,Black,RgbArg<BASE_COLOR_ARG,Rgb<5,39,255>>>>,RgbArg<BASE_COLOR_ARG,Rgb<5,39,255>>>,
   AlphaL<RgbArg<SWING_COLOR_ARG,Rgb<125,125,255>>,SwingSpeed<1000>>,
-  Emitter_Black_Wick,
+  Emitter_White_Wick,
   Ignition_Blue_Stripe,
   Blast_Flash_White,
   Clash_Responsive_Nate,
@@ -560,6 +562,7 @@ using Style_Original_BlueRotoscope = Layers<
   Melt_Intense,
   Stab_White,
   InOutTrL<TrWipeX<IgnitionTime<250>>,TrWipeInX<RetractionTime<0>>,Black>,
+  Preon_Sparking_Cyan,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*--------------------------------------------------------------------------------*/
 
@@ -732,8 +735,8 @@ Preset blade[] = {
   { "8-SNIPPETS;common", "tracks/track_8.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "snippets"},
 
-  { "9-MENACE;common", "tracks/track_9.wav",
-  StylePtr<StandardRedSparkHumpFlicker>(), StylePtr<Switch_Red>(), "menace"},
+  // { "9-MENACE;common", "tracks/track_9.wav",
+  // StylePtr<StandardRedSparkHumpFlicker>(), StylePtr<Switch_Red>(), "menace"},
 
   // { "10-TEMPLE_GUARDIAN;common", "tracks/track_10.wav",
   // StylePtr<StandardYellowSparkHumpFlicker>(), StylePtr<WHITE>(), "templ guard"},
@@ -824,6 +827,10 @@ Preset blade[] = {
   // ################################################
   // ################################################
 
+  // Son of Corellia
+  { "KPSonOfCorellia;common", "tracks/tfa.wav",
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "sonofcorellia"},
+
   // Ahsoka Season 1 ( Baylan Skoll )
   { "KPSunSkoll;common", "tracks/ahsokatheme.wav",
   StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "kpsunskoll"},
@@ -840,13 +847,9 @@ Preset blade[] = {
   // { "KPTheSorcererBeskar;common", "tracks/thesorcerer.wav",
   // StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "kp sorcerer"},
 
-  // Son of Corellia
-  { "KPSonOfCorellia;common", "tracks/tfa.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "sonofcorellia"},
-
   // TFA Graflex v2
-  { "KPTFATakodana;common", "tracks/tfa.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa takodana"},
+  // { "KPTFATakodana;common", "tracks/tfa.wav",
+  // StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa takodana"},
 
   // TFA Graflex v2
   { "KPTFAStarkiller;common", "tracks/reyvkylo.wav",
@@ -873,12 +876,12 @@ Preset blade[] = {
   // StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<WHITE>(), "kpbatl3"},
 
   // Asohka blue (clone wars)
-  { "KPCommanderTano;common", "tracks/swclonewars.wav",
-  StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<Switch_Blue>(), "cmdr tano"},
+  // { "KPCommanderTano;common", "tracks/swclonewars.wav",
+  // StylePtr<StandardBlueSparkHumpFlicker>(), StylePtr<Switch_Blue>(), "cmdr tano"},
 
   // Adam Project
-  { "KPAdamProjectMagCyl;common", "tracks/track_16.wav",
-  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "magcyl"},
+  // { "KPAdamProjectMagCyl;common", "tracks/track_16.wav",
+  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "magcyl"},
 
   // Metamorphose (Transformers)
   // { "KPMetamorphose;common", "tracks/track1.wav",
@@ -904,8 +907,8 @@ Preset blade[] = {
   StylePtr<GreyscaleEndureRageCustom>(), StylePtr<Switch_Red>(), "gs endure"},
 
   // Greyscale - Paradise V2 (paid)
-  { "GSParadise;common", "tracks/track1.wav",
-  StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Yellow>(), "gs paradise"},
+  // { "GSParadise;common", "tracks/track1.wav",
+  // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Yellow>(), "gs paradise"},
 
   // // Greyscale - Decay V2 (free)
   // { "GSDecay;common", "tracks/track1.wav",
