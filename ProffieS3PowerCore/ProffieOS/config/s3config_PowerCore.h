@@ -781,8 +781,8 @@ Preset blade[] = {
   // ################################################
 
   // Jedi Survivor - Bode
-  { "SWJSBodeAkuna;common", "tracks/hallway.wav",
-  StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "swjs bodeakuna"},
+  // { "SWJSBodeAkuna;common", "tracks/hallway.wav",
+  // StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "swjs bodeakuna"},
 
   // Jedi Survivor - Cal Kestis Green
   { "SWJSCalGreen;common", "tracks/hallway.wav",
@@ -839,8 +839,8 @@ Preset blade[] = {
   { "KSithGhost;common", "tracks/combat1.wav",
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "ks ghost"},
 
-  { "KSithProto;common", "tracks/combat1.wav",
-  StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "ks proto"},
+  // { "KSithProto;common", "tracks/combat1.wav",
+  // StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "ks proto"},
 
   // Ahsoka S1 Shin Hati
   { "KSithHati;common", "tracks/woodsfight.wav",
@@ -890,8 +890,8 @@ Preset blade[] = {
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo v3"},
 
   // TLJ Praetorian Guards
-  { "KPBilariWhip;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "tfa bilari"},
+  // { "KPBilariWhip;common", "tracks/reyvkylo.wav",
+  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "tfa bilari"},
 
   // TLJ Praetorian Guards
   // { "KPVibroArbir;common", "tracks/reyvkylo.wav",
@@ -945,8 +945,8 @@ Preset blade[] = {
   // StylePtr<Style_PurpleHumpFlicker>(), StylePtr<WHITE>(), "gs decay"},
 
   // Greyscale - Crispy (free)
-  { "GSCrispity;common", "tracks/track1.wav",
-  StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "gs crispy"},
+  // { "GSCrispity;common", "tracks/track1.wav",
+  // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "gs crispy"},
 
   // Greyscale - Coda (free)
   // { "GSCoda;common", "tracks/track1.wav",
@@ -974,8 +974,8 @@ Preset blade[] = {
   // StylePtr<Style_OrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "meaty c110p"},
 
   // https://www.youtube.com/shorts/YZBsMuEkjx4
-  { "MeatyDomo;common", "tracks/MrRoboto.wav", //Killroy
-  StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Blue>(), "meaty domo"},
+  // { "MeatyDomo;common", "tracks/MrRoboto.wav", //Killroy
+  // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Blue>(), "meaty domo"},
 
   // https://www.youtube.com/watch?v=c3NMZTPvBTE
   { "MeatyStarTrek;common", "tracks/sttngtheme.wav",
@@ -1035,7 +1035,7 @@ Preset blade[] = {
 
 
   // ################################################
-  // ## CFX ##
+  // ## CFX Ripped Fonts ##
   // ################################################
 
   // // CFX Default - Shatterpoint (converted)
@@ -1065,7 +1065,7 @@ Preset blade[] = {
 
 
   // ################################################
-  // ## Reddit ##
+  // ## From Reddit ##
   // ################################################
 
   { "Reddit-ARCANE;common", "tracks/track1.wav",
@@ -1097,7 +1097,8 @@ Preset blade[] = {
   // ##  Misc  ##
   // ################################################
 
-  // Slave 1 with seismic charge preon - NoSloppy w/ low memory edit
+  // Slave 1 with seismic charge preon - author NoSloppy https://pastebin.com/u/NoSloppy
+  // Heavy on memory, ive removed things that cause it to bloat (but does reduce quality)
   { "SlaveOneTwoPointOne;common", "tracks/track1.wav",
   StylePtr<
     Layers<
@@ -1138,7 +1139,7 @@ Preset blade[] = {
       >,EFFECT_PREON>,
       TransitionEffectL<TrConcat<TrDelay<2125>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<100>, Black,TrDelay<10>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<150>
       >,EFFECT_PREON>,
-      TransitionEffectL<TrConcat<TrDelay<2100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,TrDelay<100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<4000>>>,
+      //TransitionEffectL<TrConcat<TrDelay<2100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,TrDelay<100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<4000>>>,
       //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<5000>>>,
       //TrSmoothFade<150>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<10000>>>,
       //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,
@@ -1148,8 +1149,8 @@ Preset blade[] = {
       //TrSmoothFade<75>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,
       //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<8000>>>,
       //TrSmoothFade<25>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,
-      TrFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,TrDelay<25>>,EFFECT_PREON>,
-      TransitionEffectL<TrConcat<TrInstant,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Scale<Trigger<EFFECT_PREON,Int<2000>,Int<1000>,Int<500>>,Int<-1000>,Int<16500>>,Int<1500>>>,TrDelay<2000>>,EFFECT_PREON>,
+      //TrFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,TrDelay<25>>,EFFECT_PREON>,
+      // TransitionEffectL<TrConcat<TrInstant,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Scale<Trigger<EFFECT_PREON,Int<2000>,Int<1000>,Int<500>>,Int<-1000>,Int<16500>>,Int<1500>>>,TrDelay<2000>>,EFFECT_PREON>,
       TransitionEffectL<TrConcat<TrDelay<1100>,AlphaL<Red,Int<0>>,TrSmoothFade<700>,Black,TrDelay<100>,AlphaL<White,Bump<Int<16384>,Int<3000>>>,TrDelay<100>>,EFFECT_PREON>,
       //Battery & Sabertrio
       AllStyles_BatteryLevel,
