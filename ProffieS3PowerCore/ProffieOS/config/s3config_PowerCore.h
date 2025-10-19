@@ -14,7 +14,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #define ENABLE_MOTION
 #define ENABLE_WS2811
 #define ENABLE_SD
-#define ENABLE_SSD1306
+// #define ENABLE_SSD1306
 #define OLED_FLIP_180
 #define NO_REPEAT_RANDOM
 #define FILTER_CUTOFF_FREQUENCY 100
@@ -758,8 +758,8 @@ Preset blade[] = {
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "bm merc"},
 
   // Syndicate Custom Relics - Retribution (electroblade)
-  { "SCRRetribution;common", "tracks/combat1.wav",
-  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_White>(), "scr retrib"},
+  // { "SCRRetribution;common", "tracks/combat1.wav",
+  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_White>(), "scr retrib"},
 
   // Mongo https://www.youtube.com/watch?v=TieX5N51b5I
   { "MongoDuneV2;common", "tracks/dune.wav",
@@ -781,8 +781,8 @@ Preset blade[] = {
   // ################################################
 
   // Jedi Survivor - Bode
-  // { "SWJSBodeAkuna;common", "tracks/hallway.wav",
-  // StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "swjs bodeakuna"},
+  { "SWJSBodeAkuna;common", "tracks/hallway.wav",
+  StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "swjs bodeakuna"},
 
   // Jedi Survivor - Cal Kestis Green
   { "SWJSCalGreen;common", "tracks/hallway.wav",
@@ -883,11 +883,11 @@ Preset blade[] = {
 
   // Kylo - The Force Awakens (Kyberphonic Unstable v3)
   { "TROS;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo v3"},
+  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TROS"},
   { "TLJ;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo v3"},
+  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TLJ"},
   { "TFA;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo v3"},
+  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TFA"},
 
   // TLJ Praetorian Guards
   // { "KPBilariWhip;common", "tracks/reyvkylo.wav",
@@ -897,14 +897,6 @@ Preset blade[] = {
   // { "KPVibroArbir;common", "tracks/reyvkylo.wav",
   // StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "tfa arbir"},
 
-  // // Free (using mando music meh)
-  // { "KPBattle1;common", "tracks/mando.wav",
-  // StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_White>(), "kpbatl1"},
-
-  // Free (using mando music meh)
-  // { "KPBattle3;common", "tracks/mando.wav",
-  // StylePtr<Style_BlueHumpFlicker>(), StylePtr<WHITE>(), "kpbatl3"},
-
   // Asohka blue (clone wars)
   // { "KPCommanderTano;common", "tracks/swclonewars.wav",
   // StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "cmdr tano"},
@@ -913,11 +905,7 @@ Preset blade[] = {
   // { "KPAdamProjectMagCyl;common", "tracks/track_16.wav",
   // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "magcyl"},
 
-  // Metamorphose (Transformers)
-  // { "KPMetamorphose;common", "tracks/track1.wav",
-  // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<WHITE>(), "metamorphose"},
-
-  // TFM - F1 Racer
+  // TFM - F1 Racer (paid)
   { "KPFOneRacer;common", "tracks/track_13.wav",
   StylePtr<Style_EnginesBurn>(), StylePtr<Switch_Yellow>(), "podracer"},
 
@@ -945,8 +933,8 @@ Preset blade[] = {
   // StylePtr<Style_PurpleHumpFlicker>(), StylePtr<WHITE>(), "gs decay"},
 
   // Greyscale - Crispy (free)
-  // { "GSCrispity;common", "tracks/track1.wav",
-  // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "gs crispy"},
+  { "GSCrispity;common", "tracks/track1.wav",
+  StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "gs crispy"},
 
   // Greyscale - Coda (free)
   // { "GSCoda;common", "tracks/track1.wav",
@@ -1068,8 +1056,8 @@ Preset blade[] = {
   // ## From Reddit ##
   // ################################################
 
-  { "Reddit-ARCANE;common", "tracks/track1.wav",
-  StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Red>(), "reddit arcane"},
+  // { "Reddit-ARCANE;common", "tracks/track1.wav",
+  // StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Red>(), "reddit arcane"},
 
   // Palpatine
   { "Reddit-Senate-Majority;common", "tracks/palpatheme.wav",
@@ -1130,7 +1118,7 @@ Preset blade[] = {
       TrDelay<1500>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Red,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<3000>,Int<6000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
       //TrDelay<400>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Orange,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<6000>,Int<10000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
       TrDelay<400>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Black,White,100>,Bump<ChangeSlowly<SlowNoise<Int<30000>>,Int<60000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<300>,AlphaL<Red,Int<0>>,
-      TrDelay<300>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Yellow,Red,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<10000>,Int<28000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<200>,AlphaL<Red,Int<0>>,
+      //TrDelay<300>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Yellow,Red,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<10000>,Int<28000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<200>,AlphaL<Red,Int<0>>,
       TrDelay<500>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Orange,White,100>,Bump<ChangeSlowly<SlowNoise<Int<30000>>,Int<60000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<200>,AlphaL<Red,Int<0>>,
       //TrDelay<100>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Red,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<5000>,Int<13000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
       TrDelay<500>,GreenYellow,TrDelay<25>>,EFFECT_IGNITION>,
