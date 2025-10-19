@@ -1150,17 +1150,14 @@ Preset blade[] = {
 
 BladeConfig blades[] = {
   { 0,
-    SubBlade(1, currentLedsInStrip-1, WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >()),
-    //WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
-    //SubBlade(0,0, NULL),
-    SubBlade(0, 0, WS281XBladePtr<20, blade4Pin, Color8::GRB, PowerPINS<bladePowerPin4, bladePowerPin5, bladePowerPin1> >()),
-    //SubBlade(1,19, NULL),
+    WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
+    WS281XBladePtr<1, blade4Pin, Color8::GRB, PowerPINS<bladePowerPin1> >(),
     CONFIGARRAY(blade)
   },
 };
 #endif
 
 #ifdef CONFIG_BUTTONS
-  Button PowerButton(BUTTON_POWER, powerButtonPin, "pow");
-  Button AuxButton(BUTTON_AUX, auxPin, "aux");
+Button PowerButton(BUTTON_POWER, powerButtonPin, "pow");
+Button AuxButton(BUTTON_AUX, auxPin, "aux");
 #endif

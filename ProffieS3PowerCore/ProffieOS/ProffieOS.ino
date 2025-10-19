@@ -26,9 +26,9 @@
 \*-----------------------------------------------------------------*/
 
 // Current SABERTRIOS
-//#define CONFIG_FILE "config/s3config_legacy.h" //Legacy no power core (the hardwired ones)
-//#define CONFIG_FILE "config/s3config_v2.h" // Crystal I guess
-#define CONFIG_FILE "config/s3config_PowerCore.h" // I've patched over what i need from preconfig 5
+//#define CONFIG_FILE "config/s3config.h" //Legacy no power core (the hardwired ones)
+#define CONFIG_FILE "config/s3config_PowerCore.h" // Powercore
+//#define CONFIG_FILE "config/s3config_v2.h" // Powercore with BLE & Kybercrystal
 
 
 
