@@ -70,7 +70,7 @@ public:
 #endif  // ESP32
 
   static void LockSD(bool locked) {
-//    scheduleFillBuffer();
+    // scheduleFillBuffer();
     sd_locked.set(locked);
     if (locked) MountSDCard();
   }

@@ -3,10 +3,10 @@
 #include "proffieboard_v2_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
-const unsigned int maxLedsPerStrip = 144;
-const unsigned int currentLedsInStrip = 114;
+const unsigned int maxLedsPerStrip = 144; //36 inch blade
+const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch time
 #define VOLUME 2550
-#define BOOT_VOLUME 200
+#define BOOT_VOLUME 200 //Low volume at arduino patch time
 #define CLASH_THRESHOLD_G 1.25
 #define FETT263_SWING_ON_SPEED 340
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
@@ -14,11 +14,13 @@ const unsigned int currentLedsInStrip = 114;
 #define ENABLE_MOTION
 #define ENABLE_WS2811
 #define ENABLE_SD
+#define ENABLE_SSD1306
+#define OLED_FLIP_180
 #define NO_REPEAT_RANDOM
 #define FILTER_CUTOFF_FREQUENCY 100
 #define FILTER_ORDER 8
-#define MOTION_TIMEOUT 60 * 1 * 1000
-#define IDLE_OFF_TIME 60 * 1 * 1000
+#define MOTION_TIMEOUT 60 * 1 * 1000 // 1 min
+#define IDLE_OFF_TIME 60 * 1 * 1000 // 1 min
 #define BLADE_DETECT_PIN 17
 #define SAVE_PRESET
 #define COLOR_CHANGE_DIRECT
@@ -58,11 +60,10 @@ const unsigned int currentLedsInStrip = 114;
 /*--------------------------------- Helpers -------------------------
 */
 
-// Custom sabertrio soundlevel add to all styles
-using AllStyles_SaberTrioSoundLevel = TransitionEffectL<TrConcat<TrExtend<2000,TrWipe<0>>,AlphaL<Mix<VolumeLevel,Red,Green>,SmoothStep<VolumeLevel,Int<-10>>>,TrSmoothFade<300>>,EFFECT_VOLUME_LEVEL>;
-
 // On-Demand Battery Level for all styles
 using AllStyles_BatteryLevel = TransitionEffectL<TrConcat<TrInstant,AlphaL<Mix<BatteryLevel,Red,Green>,Bump<BatteryLevel,Int<10000>>>,TrDelay<2000>,AlphaL<Mix<BatteryLevel,Red,Green>,Bump<BatteryLevel,Int<10000>>>,TrFade<1000>>,EFFECT_BATTERY_LEVEL>;
+// Custom sabertrio soundlevel add to all styles
+using AllStyles_SaberTrioSoundLevel = TransitionEffectL<TrConcat<TrExtend<2000,TrWipe<0>>,AlphaL<Mix<VolumeLevel,Red,Green>,SmoothStep<VolumeLevel,Int<-10>>>,TrSmoothFade<300>>,EFFECT_VOLUME_LEVEL>;
 
 // Lightnings
 using Lightning_BrightBlue = ResponsiveLightningBlockL<Strobe<RgbArg<LB_COLOR_ARG,LightCyan>,AudioFlicker<RgbArg<LB_COLOR_ARG,LightCyan>,Blue>,50,1>,TrConcat<TrInstant,GreenYellow,TrDelay<30>,BrownNoiseFlicker<Rgb<12,52,255>,Black,500>,TrFade<100>>,TrConcat<TrInstant,HumpFlickerL<AlphaL<RgbArg<LB_COLOR_ARG,LightCyan>,Int<16000>>,30>,TrSmoothFade<600>>>;
@@ -1159,9 +1160,13 @@ Preset blade[] = {
 };
 
 BladeConfig blades[] = {
-  { 0, WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
-       WS281XBladePtr<1, blade4Pin, Color8::GRB, PowerPINS<bladePowerPin1> >(),
-      CONFIGARRAY(blade)
+  { 0,
+    SubBlade(1, currentLedsInStrip-1, WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >()),
+    //WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
+    //SubBlade(0,0, NULL),
+    SubBlade(0, 0, WS281XBladePtr<20, blade4Pin, Color8::GRB, PowerPINS<bladePowerPin4, bladePowerPin5, bladePowerPin1> >()),
+    //SubBlade(1,19, NULL),
+    CONFIGARRAY(blade)
   },
 };
 #endif

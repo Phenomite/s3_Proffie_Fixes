@@ -124,6 +124,7 @@ extern SaberBase* saberbases;
     DEFINE_EFFECT(THRUSTIGNITE)                 \
     DEFINE_EFFECT(TWISTIGNITE)                  \
     DEFINE_EFFECT(TWISTRETRACT)                 \
+    DEFINE_EFFECT(PULSINGCRYSTAL)               \
     DEFINE_EFFECT(CLEARSCREEN)                  \
 	/* END of MODIFICATION by Sabertrio for OLED Functionalities. [1/2] */			\
 
@@ -316,6 +317,7 @@ public:                                                         \
   static void DoThrustIgnite() { DoEffect(EFFECT_THRUSTIGNITE, 0); }
   static void DoTwistIgnite() { DoEffect(EFFECT_TWISTIGNITE, 0); }
   static void DoTwistRetract() { DoEffect(EFFECT_TWISTRETRACT, 0); }
+  static void DoPulsingCrystal() { DoEffect(EFFECT_PULSINGCRYSTAL, 0); }
   /* END of MODIFICATION by Sabertrio for OLED Functionalities. [2/2] */
 
   static float clash_strength_;

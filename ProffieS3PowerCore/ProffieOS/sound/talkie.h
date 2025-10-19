@@ -698,6 +698,8 @@ public:
     interrupts();
   }
 
+  void Stop() { ptrAddr = nullptr; num_words = 0; }
+
   void SayDigit(int digit) {
     switch (digit) {
       case 0: Say(spZERO); break;

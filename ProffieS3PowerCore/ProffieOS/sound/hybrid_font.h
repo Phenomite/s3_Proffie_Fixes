@@ -847,7 +847,8 @@ public:
   }
 
   void SB_LowBatt() {
-    ProffieOSErrors::low_battery();
+    /* Sabertrio Modification - Turn off all low battery alerts */
+    // ProffieOSErrors::low_battery();
   }
 
  private:

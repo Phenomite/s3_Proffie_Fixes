@@ -50,6 +50,9 @@ public:
   void Poll(RefPtr<BufferedWavPlayer>& wav_player) {
     sound_queue_.PollSoundQueue(wav_player);
   }
+  void ClearSoundQueue() {
+    sound_queue_.Clear();
+  }
 
   void TensValue(int number) {
     if (number <= 20) {
@@ -231,11 +234,13 @@ public:
   void SayRehearseBegin() { Play("rehrsbgn.wav"); }
   void SayRehearseEnd() { Play("rehrsend.wav"); }
   void SayRehearseNew() { Play("rehrsnew.wav"); } // rename?
+  void SayResetBeep() { Play("resetbeep.wav"); }
   void SayResetColors() { Play("mresetc.wav"); }
   void SayRetractionColor() { Play("mretract.wav"); }
   void SayRetractionDelay() { Play("mrtdelay.wav"); }
   void SayRetractionOptions() { Play("mrtopt.wav"); }
   void SayRetractionTime() { Play("mintime.wav"); }
+  void SayReturn() {Play("mreturn.wav"); } // Sound for control settings "return"
   void SayRevert() { Play("mrevert.wav"); }
   void SayRotate() { Play("mrotate.wav"); }
   void SaySave() { Play("msave.wav"); }
@@ -266,6 +271,7 @@ public:
   void SayGestureMenu() { Play("mgestsub.wav"); }
   void SaySettingsMenu() { Play("msetsub.wav"); }
   void SayStyleSettings() { Play("stylstm.wav"); }
+  void SayCrystalPulse() {Play("mpulsingcrystal.wav"); } // Crystal Pulsing Menu
 
 #ifdef SAY_COLOR_LIST
   void SayColor(ColorNumber n) {

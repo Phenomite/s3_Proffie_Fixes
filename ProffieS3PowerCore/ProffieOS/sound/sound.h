@@ -27,6 +27,7 @@ size_t WhatUnit(class BufferedWavPlayer* player);
 
 BufferedWavPlayer wav_players[NUM_WAV_PLAYERS];
 RefPtr<BufferedWavPlayer> track_player_;
+RefPtr<BufferedWavPlayer> bgm_player_;
 
 RefPtr<BufferedWavPlayer> GetFreeWavPlayer()  {
   // Find a free wave playback unit.

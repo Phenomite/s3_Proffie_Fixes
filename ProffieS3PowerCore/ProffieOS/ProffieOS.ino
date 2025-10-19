@@ -25,32 +25,12 @@
 |  Add the slashes to any that you are not using.                   |
 \*-----------------------------------------------------------------*/
 
-// Current S3s
-//#define CONFIG_FILE "config/s3config.h" //Legacy
-#define CONFIG_FILE "config/s3config_PowerCore.h"
-
-//#define CONFIG_FILE "config/s3config_OLED.h" 
-//#define CONFIG_FILE "config/s3config_Kros.h" 
-//#define CONFIG_FILE "config/s3config_PowerCore_Kros.h"
-//#define CONFIG_FILE "config/s3config_PowerCore_Kros_OLED.h"
+// Current SABERTRIOS
+//#define CONFIG_FILE "config/s3config_legacy.h" //Legacy no power core (the hardwired ones)
+//#define CONFIG_FILE "config/s3config_v2.h" // Crystal I guess
+#define CONFIG_FILE "config/s3config_PowerCore.h" // I've patched over what i need from preconfig 5
 
 
-// #define CONFIG_FILE "config/default_proffieboard_config.h"
-// #define CONFIG_FILE "config/default_v3_config.h"
-// #define CONFIG_FILE "config/crossguard_config.h"
-// #define CONFIG_FILE "config/graflex_v1_config.h"
-// #define CONFIG_FILE "config/prop_shield_fastled_v1_config.h"
-// #define CONFIG_FILE "config/owk_v2_config.h"
-// #define CONFIG_FILE "config/test_bench_config.h"
-// #define CONFIG_FILE "config/toy_saber_config.h"
-// #define CONFIG_FILE "config/proffieboard_v1_test_bench_config.h"
-// #define CONFIG_FILE "config/proffieboard_v2_testing_config.h"
-// #define CONFIG_FILE "config/td_proffieboard_config.h"
-// #define CONFIG_FILE "config/proffieboard_v1_graflex.h"
-// #define CONFIG_FILE "config/teensy_audio_shield_micom.h"
-// #define CONFIG_FILE "config/proffieboard_v2_ob4.h"
-// #define CONFIG_FILE "config/testconfig.h"
-// #define CONFIG_FILE "config/test_bench_config.h"
 
 #ifdef CONFIG_FILE_TEST
 #undef CONFIG_FILE

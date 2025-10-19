@@ -8,7 +8,7 @@ class BufferedWavPlayer;
 size_t WhatUnit(class BufferedWavPlayer* player);
 
 #ifndef AUDIO_BUFFER_SIZE_BYTES
-#define AUDIO_BUFFER_SIZE_BYTES 512
+#define AUDIO_BUFFER_SIZE_BYTES 1024
 #endif
 
 // Combines a WavPlayer and a BufferedAudioStream into a

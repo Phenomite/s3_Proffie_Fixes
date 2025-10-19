@@ -35,8 +35,11 @@ void ProffieOSErrors::font_directory_not_found() {
   SaberBase::DoEffect(EFFECT_FONT_DIRECTORY_NOT_FOUND, 0);
 #ifdef ENABLE_AUDIO
 #ifndef DISABLE_TALKIE
-  talkie.Say(talkie_font_directory_15, 15);
-  talkie.Say(talkie_not_found_15, 15);
+  // Turns off "Font Directory Not Found" alerts below 2.9V
+  if(battery_monitor.battery() > 2.9){
+    talkie.Say(talkie_font_directory_15, 15);
+    talkie.Say(talkie_not_found_15, 15);
+  }
 #else
   beeper.Beep(0.5, 261.63 * 2); // C4
   beeper.Beep(0.5/3, 246.94 * 2); // B3
@@ -54,8 +57,11 @@ void ProffieOSErrors::error_in_blade_array() {
   STDOUT.println("BAD BLADE");
 #ifdef ENABLE_AUDIO
 #ifndef DISABLE_TALKIE
-  talkie.Say(talkie_error_in_15, 15);
-  talkie.Say(talkie_blade_array_15, 15);
+  // Turns off "Error in Blade Array" below 2.9V
+  if(battery_monitor.battery() > 2.9){
+    talkie.Say(talkie_error_in_15, 15);
+    talkie.Say(talkie_blade_array_15, 15);
+  }
 #else
   beeper.Beep(0.25, 174.61 * 2); // F3 - Er
   beeper.Beep(0.25, 196.00 * 2); // G3 - ror
@@ -73,8 +79,11 @@ void ProffieOSErrors::error_in_font_directory() {
   SaberBase::DoEffect(EFFECT_ERROR_IN_FONT_DIRECTORY, 0);
 #ifdef ENABLE_AUDIO
 #ifndef DISABLE_TALKIE
-  talkie.Say(talkie_error_in_15, 15);
-  talkie.Say(talkie_font_directory_15, 15);
+  // Turns off "Error in Font Directory" alerts below 2.9V
+  if(battery_monitor.battery() > 2.9){
+    talkie.Say(talkie_error_in_15, 15);
+    talkie.Say(talkie_font_directory_15, 15);
+  }
 #else
   beeper.Beep(0.25, 174.61 * 2); // F3
   beeper.Beep(0.25, 196.0 * 2); // G3
@@ -91,18 +100,12 @@ void ProffieOSErrors::error_in_font_directory() {
 
 void ProffieOSErrors::low_battery() {
 #ifdef ENABLE_AUDIO
-  // play the fonts low battery sound if it exists
-  if (SFX_lowbatt) {
-    hybrid_font.PlayCommon(&SFX_lowbatt);
-    return;
-  }
-
-#ifndef DISABLE_TALKIE
-  talkie.Say(talkie_low_battery_15, 15);
-#else
-  beeper.Beep(1.0, 261.63 * 2); // C4
-  beeper.Beep(1.0, 130.81 * 2); // C3
-#endif
+  // Turns off "Low Battery" alerts below 2.5V
+  if(battery_monitor.battery() > 2.5) {
+    if (SFX_lowbatt) {
+      hybrid_font.PlayCommon(&SFX_lowbatt);
+    }
+	}
 #endif
 }
 

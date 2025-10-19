@@ -108,6 +108,9 @@ public:
       for (int i = 0; i < sounds_; i++) queue_[i] = queue_[i+1];
     }
   }
+  void Clear() {
+    sounds_ = 0;
+  }
 private:
   int sounds_;
   SoundToPlay queue_[QueueLength];
@@ -302,7 +305,9 @@ public:
     // TODO: Move scanning to wav-playing interrupt level so we can
     // interleave things without worry about memory corruption.
     for (size_t i = 0; i < NELEM(wav_players); i++) {
-      wav_players[i].Stop();
+      if (&wav_players[i] != bgm_player_.get()) {
+        wav_players[i].Stop();
+      }
     }
 #endif
 
@@ -1092,7 +1097,8 @@ public:
       Clash2(pending_clash_is_stab_, pending_clash_strength_);
     }
     PollScanId();
-    CheckLowBattery();
+    /* Sabertrio Modification - Turn off low battery effect (Saber won't ignite if low battery) */
+    // CheckLowBattery();
 #ifdef ENABLE_AUDIO
     if (track_player_ && !track_player_->isPlaying()) {
       track_player_.Free();
