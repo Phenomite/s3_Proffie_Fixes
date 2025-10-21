@@ -3,44 +3,51 @@
 #include "proffieboard_v3_config.h"
 #define NUM_BLADES 4
 #define NUM_BUTTONS 2
-const unsigned int maxLedsPerStrip = 150;
+const unsigned int maxLedsPerStrip = 150; //36 inch blade + crystal
+const unsigned int currentLedsInStrip = 115; //32 inch blade at arduino patch time
 #define VOLUME 2550
-#define CLASH_THRESHOLD_G 4.5
+#define BOOT_VOLUME 200 //Low volume at arduino patch time
+#define CLASH_THRESHOLD_G 1.25
+#define FETT263_SWING_ON_SPEED 340
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
 #define ENABLE_AUDIO
 #define ENABLE_MOTION
 #define ENABLE_WS2811
 #define ENABLE_SD
-#define ENABLE_SSD1306
-#define OLED_FLIP_180
+// #define ENABLE_SSD1306
+// #define OLED_FLIP_180
 #define NO_REPEAT_RANDOM
-#define KILL_OLD_PLAYERS
 #define FILTER_CUTOFF_FREQUENCY 100
 #define FILTER_ORDER 8
-#define MOTION_TIMEOUT 60 * 15 * 1000
-#define IDLE_OFF_TIME 60 * 15 * 1000
-#define DISABLE_BASIC_PARSER_STYLES
-#define DISABLE_DIAGNOSTIC_COMMANDS
+#define MOTION_TIMEOUT 60 * 1 * 1000
+#define IDLE_OFF_TIME 60 * 1 * 1000
 #define BLADE_DETECT_PIN 6
 #define SAVE_PRESET
 #define COLOR_CHANGE_DIRECT
 #define ENABLE_ALL_EDIT_OPTIONS
-#define ENABLE_SERIAL
+#define ENABLE_SERIAL //BLE
 #define FETT263_EDIT_SETTINGS_MENU
 #define FETT263_ENABLE_SPIN_MODE
 #define FETT263_DISABLE_CHANGE_STYLE
 #define FETT263_DISABLE_COPY_PRESET
 #define FETT263_DISABLE_CHANGE_FONT
 #define FETT263_LOCKUP_DELAY 200
-#define FETT263_BM_CLASH_DETECT 8 
+#define FETT263_BM_CLASH_DETECT 8
 #define FETT263_FORCE_PUSH
-#define FETT263_TWIST_ON
-#define FETT263_TWIST_ON_NO_BM
+// #define FETT263_TWIST_ON
+// #define FETT263_TWIST_ON_NO_BM
 #define FETT263_TWIST_OFF
+#define FETT263_SWING_ON
+#define FETT263_SWING_ON_NO_BM
 //#define KEEP_SAVEFILES_WHEN_PROGRAMMING
 #define FETT263_HOLD_BUTTON_OFF
 #define FETT263_DISABLE_MULTI_BLAST
 #define FETT263_DISABLE_MULTI_BLAST_TOGGLE
+//Save space
+//#define DISABLE_DIAGNOSTIC_COMMANDS
+#define DISABLE_BASIC_PARSER_STYLES
+#define DISABLE_TALKIE
+#define KILL_OLD_PLAYERS
 #endif
 
 #ifdef CONFIG_PROP

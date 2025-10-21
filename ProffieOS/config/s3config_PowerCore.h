@@ -1,6 +1,6 @@
 // ProffieOS7 Config File
 #ifdef CONFIG_TOP
-#include "proffieboard_v2_config.h"
+#include "proffieboard_v3_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
 const unsigned int maxLedsPerStrip = 144; //36 inch blade
@@ -15,7 +15,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #define ENABLE_WS2811
 #define ENABLE_SD
 // #define ENABLE_SSD1306
-#define OLED_FLIP_180
+// #define OLED_FLIP_180
 #define NO_REPEAT_RANDOM
 #define FILTER_CUTOFF_FREQUENCY 100
 #define FILTER_ORDER 8
