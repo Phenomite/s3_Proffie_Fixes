@@ -1,9 +1,9 @@
 // ProffieOS7 Config File
 #ifdef CONFIG_TOP
-#include "proffieboard_v3_config.h"
+#include "proffieboard_v2_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
-const unsigned int maxLedsPerStrip = 144; //36 inch blade
+const unsigned int maxLedsPerStrip = 150;
 const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch time
 #define VOLUME 2550
 #define BOOT_VOLUME 200 //Low volume at arduino patch time

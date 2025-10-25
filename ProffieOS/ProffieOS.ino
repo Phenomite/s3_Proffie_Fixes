@@ -26,9 +26,13 @@
 \*-----------------------------------------------------------------*/
 
 // Current SABERTRIOS
-//#define CONFIG_FILE "config/s3config.h" //Legacy no power core (the hardwired ones)
-//#define CONFIG_FILE "config/s3config_PowerCore.h" // Powercore
-#define CONFIG_FILE "config/s3config_v3.h" // Powercore with BLE & Kybercrystal
+
+//#define CONFIG_FILE "config/s3config.h" // Legacy (the hardwired ones)
+
+#define CONFIG_FILE "config/s3config_v2_PowerCore.h" // StdPowercore for Solarian
+//#define CONFIG_FILE "config/s3config_PowerCore.h" // StdPowercore RGBSwitch only
+
+//#define CONFIG_FILE "config/s3config_v3.h" // BLEPowercore & Kybercrystal in led index 1,2
 
 
 
