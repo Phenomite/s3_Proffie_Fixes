@@ -1,5 +1,5 @@
-Folder contains folders:
+Folder contains the following folders to be cloned to SD card:
 
-1) Fonts folders + [config/smoothsw].ini
+1) <font-name> / <config.ini> & <smoothsw.ini>
 2) common
 3) tracks

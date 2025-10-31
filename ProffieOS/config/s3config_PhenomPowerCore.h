@@ -112,6 +112,7 @@ using Preon_Emitter_Heat = TransitionEffectL<TrConcat<TrFadeX<Mult<WavLen<EFFECT
 using Preon_AbsorbIn_Blue = TransitionEffectL<TrConcat<TrInstant,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,Int<200>,Int<500>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<6144>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,Int<300>,Int<300>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,Int<400>,Int<100>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<12288>>>,AlphaL<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,SmoothStep<IntArg<PREON_SIZE_ARG,2000>,Int<-4000>>>,TrBoingX<Mult<WavLen<EFFECT_PREON>,Int<6144>>,5>>,EFFECT_PREON>;
 using Preon_AbsorbIn_Orange = TransitionEffectL<TrConcat<TrInstant,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,Int<200>,Int<500>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<6144>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,Int<300>,Int<300>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,Int<400>,Int<100>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<12288>>>,AlphaL<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,SmoothStep<IntArg<PREON_SIZE_ARG,2000>,Int<-4000>>>,TrBoingX<Mult<WavLen<EFFECT_PREON>,Int<6144>>,5>>,EFFECT_PREON>;
 using Preon_Glitch_Sound_Red = TransitionEffectL<TrConcat<TrInstant,AlphaL<Mix<Trigger<EFFECT_PREON,Mult<Int<16384>,WavLen<EFFECT_PREON>>,Mult<Int<10922>,WavLen<EFFECT_PREON>>,Mult<Int<5462>,WavLen<EFFECT_PREON>>>,BrownNoiseFlicker<Black,RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>,100>,RandomPerLEDFlicker<RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>,Rgb<50,50,50>>,BrownNoiseFlicker<Mix<NoisySoundLevel,RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>,RotateColorsX<Int<4000>,RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>>>,White,50>>,SmoothStep<Scale<NoisySoundLevel,Int<-450>,Int<20000>>,Int<-4000>>>,TrDelayX<WavLen<EFFECT_PREON>>>,EFFECT_PREON>;
+using Preon_Centre_AbsorbIn_Cyan = TransitionEffectL<TrConcat<TrExtendX<WavLen<EFFECT_PREON>, TrInstant>, Remap<CenterDistF<>, Layers<TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG, Rgb<150, 255, 255>>, Int<200>, Int<100>, Int<32768>>>, AlphaL<RgbArg<PREON_COLOR_ARG, Rgb<150, 255, 255>>, SmoothStep<Int<0>, Scale<Trigger<EFFECT_PREON, WavLen<EFFECT_PREON>, Int<500>, Int<200>, Int<100>>, Int<-1>, Int<-20000>>>>>>, TrInstant>, EFFECT_PREON>;
 
 // Postoffs
 using Postoff_Eye_White = TransitionEffectL<TrConcat<TrCenterWipeX<Int<200>>,AlphaL<AudioFlicker<RotateColorsX<Int<200>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>,RotateColorsX<Int<600>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>>,Bump<Int<16384>,Scale<NoisySoundLevel,Int<14000>,Int<20000>>>>,TrJoin<TrDelayX<Mult<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>,Int<16384>>>,TrCenterWipeX<Mult<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>,Int<8000>>>>,Layers<AlphaL<AudioFlicker<RotateColorsX<Int<200>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>,RotateColorsX<Int<600>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>>,Bump<Int<16384>,Scale<NoisySoundLevel,Int<14000>,Int<20000>>>>,AlphaL<Black,LinearSectionF<Int<16384>,Scale<NoisySoundLevel,Int<4000>,Int<8000>>>>>,TrFadeX<Mult<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>,Int<10000>>>>,EFFECT_POSTOFF>;
@@ -132,11 +133,12 @@ using Emitter_White_Unstable = AlphaL<RandomPerLEDFlickerL<RgbArg<EMITTER_COLOR_
 // Ignitions
 using Ignition_WhiteBlue_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<DeepSkyBlue>,TrFade<1200>>,EFFECT_IGNITION>;
 using Ignition_WhiteBlue_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlicker<White,DodgerBlue>,SmoothStep<Int<12000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_Orange_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_Green_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Green>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_White_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<White>,TrFade<1200>>,EFFECT_IGNITION>;
+using Ignition_Orange_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,TrFade<1200>>,EFFECT_IGNITION>;
+using Ignition_Green_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Green>>,TrFade<1200>>,EFFECT_IGNITION>;
+using Ignition_White_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,TrFade<1200>>,EFFECT_IGNITION>;
 using Ignition_Red_Unstable = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<3000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Black>,BrownNoiseFlicker<RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,200>,RandomPerLEDFlicker<Mix<Int<3137>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>>>,TrFade<600>>,EFFECT_IGNITION>;
 using Ignition_Blue_Stripe = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<7000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>,Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>>,TrFade<470>>,EFFECT_IGNITION>;
+using Ignition_Rey_TROS = TransitionEffectL<TrConcat<TrJoin<TrDelay<200>,TrInstant>,AlphaL<Green,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<300>,AlphaL<Blue,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<500>>,EFFECT_IGNITION>;
 
 // Stabs
 using Stab_White = TransitionEffectL<TrConcat<TrJoin<TrDelayX<Percentage<WavLen<EFFECT_STAB>,90>>,TrWipeIn<200>>,AlphaL<AudioFlickerL<LemonChiffon>,SmoothStep<IntArg<MELT_SIZE_ARG,27000>,Int<9000>>>,TrWipe<200>>,EFFECT_STAB>;
@@ -166,7 +168,7 @@ using Switch_Orange = DarkOrange;
 using Switch_RGB_Swing = Layers<RotateColorsX<IncrementF<SwingSpeed<100>,Int<16384>,Int<32768>,Scale<SwingSpeed<100>,Int<0>,Int<8000>>>,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>>;
 using Switch_Yellow = Yellow;
 using Switch_Magenta = Magenta;
-using Switch_Rainbow = RotateColorsX<Saw<Int<7>>,RgbArg<BASE_COLOR_ARG,Red>>;
+using Switch_Rainbow = Stripes<5000,50,Red,Yellow,Green,Blue,Magenta>;
 
 /*--------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------*/
@@ -192,7 +194,7 @@ using Style_Bilari_ElectroChain = Layers<
     Lightning_BrightBlue,
     Melt_Intense,
     Stab_Fire,
-    Ignition_White_Flicker,
+    Ignition_White_FullFlicker,
     InOutTrL<TrInstant,TrConcat<TrFadeX<RetractionTime<0>>,HumpFlickerL<White,50>,TrInstant>>>>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
@@ -244,20 +246,18 @@ using Style_Rainbow_Fire = Layers<
 /*==== Style_PhenomElectroStaff ====*/
 /*==================================*/
 using Style_PhenomElectroStaff = Layers<
-  RotateColorsX<Variation,BrownNoiseFlicker<BrownNoiseFlicker<RgbArg<BASE_COLOR_ARG,Rgb<2,72,255>>,Black,300>,Stripes<3000,-4000,Rgb<50,50,75>,Rgb<100,100,150>,Rgb<10,10,15>,Rgb<150,150,225>>,200>>,
-  TransitionEffectL<TrConcat<TrInstant,HumpFlickerL<RgbArg<IGNITION_COLOR_ARG,Rgb<2,72,255>>,40>,TrFade<1200>>,EFFECT_IGNITION>,
+  RotateColorsX<Variation,BrownNoiseFlicker<BrownNoiseFlicker<RgbArg<BASE_COLOR_ARG,Rgb<150,255,255>>,Black,300>,Stripes<3000,-4000,Rgb<50,50,75>,Rgb<100,100,150>,Rgb<10,10,15>,Rgb<150,150,225>>,200>>,
+  TransitionEffectL<TrConcat<TrInstant,HumpFlickerL<RgbArg<IGNITION_COLOR_ARG,Rgb<100,100,255>>,40>,TrFade<1200>>,EFFECT_IGNITION>,
   Swing_Stripes_WhiteBlue,
   Blast_Mix_Orange,
-  Clash_Responsive_Nate,
-  Lockup_Intense_OrangeRed,
-  Lightning_White,
-  Drag_White_Long,
-  Force_Flicker,
+  Clash_Flash_White,
+  Lockup_Intense_Yellow,
+  Lightning_BrightBlue,
+  Drag_Orange_Fire,
   Stab_Fire,
   Melt_Intense,
-  InOutTrL<TrColorCycleX<Percentage<IgnitionTime<0>,90>,10000,10000>,TrColorCycleX<RetractionTime<>,6000,5000>>,
-  Preon_Sparking_Cyan,
-  Postoff_Emitter_Glow_Cyan,
+  InOutTrL<TrCenterWipeInX<BendTimePowInvX<IgnitionTime<100>, Mult<IntArg<IGNITION_OPTION2_ARG, 10992>, Int<98304>>>, Int<16384>>, TrCenterWipeX<BendTimePowX<RetractionTime<0>, Mult<IntArg<RETRACTION_OPTION2_ARG, 10992>, Int<98304>>>, Int<16384>>, Black>,
+  Preon_Centre_AbsorbIn_Cyan,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*==================================*/
 
@@ -474,7 +474,7 @@ Custom with base of Path Engine by meatynubs
 using Style_GreenSwingOrange = Layers<
   Mix<Int<16237>,StaticFire<RgbArg<BASE_COLOR_ARG,Orange>,Mix<Int<10280>,Black,RgbArg<BASE_COLOR_ARG,Orange>>,0,3,0,2000,4>,StripesX<Int<6000>,Scale<SlowNoise<Int<2000>>,Int<-1600>,Int<-3200>>,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>,RandomPerLEDFlicker<Mix<Int<10280>,Black,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>>,Mix<Int<1285>,Black,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>>>,BrownNoiseFlicker<Mix<Int<1285>,Black,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>>,Mix<Int<16384>,Black,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>>,300>,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>,RandomPerLEDFlicker<Black,Mix<Int<16384>,Black,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>>>,RgbArg<ALT_COLOR_ARG,Rgb<80,50,210>>>>,
   Swing_Audio_Green,
-  Ignition_Green_Flicker,
+  Ignition_Green_FullFlicker,
   Blast_Flash_Cyan,
   Clash_Real_GreenYellow,
   Misc_WipeRandom_Blue,
@@ -530,7 +530,9 @@ Blue/Aquamarine/Purple AudioFlicker
 
 /*--------------------------------- Style_DarksaberLive-------------------------
 */
-using Style_DarksaberLive = Layers<AudioFlicker<RgbArg<BASE_COLOR_ARG,Rgb<250,248,255>>,Mix<Int<21610>,Black,RgbArg<BASE_COLOR_ARG,Rgb<250,248,255>>>>,
+using Style_DarksaberLive = Layers<
+  AudioFlicker<BrownNoiseFlicker<Mix<SwingSpeed<400>,Rgb<210,210,250>,Rgb<190,190,255>>,Rgb<150,150,200>,300>,Rgb<190,190,255>>,
+  //AudioFlicker<RgbArg<BASE_COLOR_ARG,Rgb<250,248,255>>,Mix<Int<21610>,Black,RgbArg<BASE_COLOR_ARG,Rgb<250,248,255>>>>,
   Blast_Wave_Yellow,
   Clash_Responsive_Nate,
   Lockup_Intense_Yellow,
@@ -570,11 +572,13 @@ using Style_Original_BlueRotoscope = Layers<
 OS6.7 v4.019
 */
 
+//template <typename ColourArg>
+
 /*
-Luke/Ani/Ahsoka
+Luke/Ani/Ahsoka Rgb<2,72,255>
 */
 using Style_BlueHumpFlicker = Layers<
-  HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<0,0,255>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<0,0,255>>>,120>,
+  HumpFlicker<RgbArg<BASE_COLOR_ARG,Blue>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Blue>>,120>,
   Ignition_WhiteBlue_Flicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
@@ -583,15 +587,16 @@ using Style_BlueHumpFlicker = Layers<
   Drag_White_Fire,
   Melt_Intense,
   Stab_White,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<195,195,255>>,IgnitionTime<300>,Int<300>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<64,64,255>>,RetractionTime<0>,Int<1000>>,Black>,
+  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<2,72,255>>,IgnitionTime<300>,Int<1000>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<2,72,255>>,RetractionTime<0>,Int<1000>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 /*
-Temple Guardian
+Temple Guardian Rgb<200,180,0>
 */
 using Style_YellowHumpFlicker = Layers<
-  HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<200,180,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<200,180,0>>>,120>,
-  Ignition_White_Flicker,
+  HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,239,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,239,0>>>,120>,
+  Ignition_Rey_TROS
+  Ignition_White_FullFlicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -599,7 +604,7 @@ using Style_YellowHumpFlicker = Layers<
   Drag_White_Fire,
   Melt_Intense,
   Stab_White,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,195>>,IgnitionTime<300>,Int<300>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,64>>,RetractionTime<0>,Int<1000>>,Black>,
+  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,64>>,IgnitionTime<300>,Int<1000>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,64>>,RetractionTime<0>,Int<1000>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 /*
@@ -607,7 +612,7 @@ C1-10P
 */
 using Style_OrangeHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,97,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,97,0>>>,120>,
-  Ignition_White_Flicker,
+  Ignition_White_FullFlicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -615,15 +620,15 @@ using Style_OrangeHumpFlicker = Layers<
   Drag_White_Fire,
   Melt_Intense,
   Stab_White,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,195>>,IgnitionTime<300>,Int<300>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,64>>,RetractionTime<0>,Int<1000>>,Black>,
+  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,170,12>>,IgnitionTime<300>,Int<1000>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,170,12>>,RetractionTime<0>,Int<1000>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 /*
-Mace Rgb<198,49,255> (AOTC) - Rgb<173,13,255> (ROTS)
+Mace Rgb<198,49,255> (AOTC) - Rgb<173,13,255> (ROTS) - Rgb<153, 0, 255> (s3 version)
 */
 using Style_PurpleHumpFlicker = Layers<
-  HumpFlicker<RgbArg<BASE_COLOR_ARG,Magenta>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Magenta>>,120>,
-  Ignition_White_Flicker,
+  HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<198,29,255>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<198,29,255>>>,120>,
+  Ignition_White_FullFlicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -631,7 +636,7 @@ using Style_PurpleHumpFlicker = Layers<
   Drag_White_Fire,
   Melt_Intense,
   Stab_White,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,195,255>>,IgnitionTime<300>,Int<300>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,64,255>>,RetractionTime<0>,Int<1000>>,Black>,
+  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,49,255>>,IgnitionTime<300>,Int<1000>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,49,255>>,RetractionTime<0>,Int<1000>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 /*
@@ -639,7 +644,7 @@ Quigon
 */
 using Style_GreenHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<0,255,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<0,255,0>>>,120>,
-  Ignition_White_Flicker,
+  Ignition_White_FullFlicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -647,7 +652,7 @@ using Style_GreenHumpFlicker = Layers<
   Drag_White_Fire,
   Melt_Intense,
   Stab_White,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<195,255,195>>,IgnitionTime<300>,Int<300>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<64,255,64>>,RetractionTime<0>,Int<1000>>,Black>,
+  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<79,255,79>>,IgnitionTime<300>,Int<1000>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<79,255,79>>,RetractionTime<0>,Int<1000>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 /*
@@ -655,7 +660,7 @@ Slightly different to other standards, white tip on, audioflicker orange ignitio
 */
 using Style_RedHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,120>,
-  Ignition_Orange_Flicker,
+  Ignition_Orange_FullFlicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -663,12 +668,12 @@ using Style_RedHumpFlicker = Layers<
   Drag_White_Fire,
   Melt_Intense,
   Stab_White,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,195,195>>,IgnitionTime<300>,Int<300>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,64,64>>,RetractionTime<0>,Int<1000>>,Black>,
+  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,64,64>>,IgnitionTime<300>,Int<1000>>,TrWipeInSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,64,64>>,RetractionTime<0>,Int<1000>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 using Style_RedAngryAudio = Layers<
   AudioFlicker<Stripes<10000,-4000,Red,Red,BrownNoiseFlicker<Red,Mix<Int<16448>,Black,Red>,200>,Red,BrownNoiseFlicker<Red,Mix<Int<7710>,Black,Red>,200>>,Red>,
-  Ignition_Orange_Flicker,
+  Ignition_Orange_FullFlicker,
   //Swing_Red,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
@@ -684,7 +689,7 @@ using Style_RedAngryAudio = Layers<
 //Nates DarkBloodOrangeCustomHumpFlickerBladestyle https://pastebin.com/XTPLnpy3
 */
 using Style_DarkBloodOrangeHumpFlicker = Layers<
-  HumpFlicker<Rgb<191,21,0>,AudioFlicker<Mix<Int<8192>,Black,RgbArg<BASE_COLOR_ARG,Rgb<191,21,0>>>,Rgb<191,21,0>>,90>,
+  HumpFlicker<Rgb<190,20,0>,AudioFlicker<Mix<Int<8192>,Black,RgbArg<BASE_COLOR_ARG,Rgb<190,20,0>>>,Rgb<191,21,0>>,90>,
   AlphaL<RotateColorsX<Variation,Rgb<255,28,0>>,SwingSpeed<200>>,
   Emitter_BloodOrange_Normal,
   Blast_Mix_Orange,
@@ -708,180 +713,116 @@ using Style_DarkBloodOrangeHumpFlicker = Layers<
 // S3 PowerCore blade array
 Preset blade[] = {
 
-  // ################################################
-  // ################################################
-  // ##             SABERTRIO STOCK                ##
-  // ################################################
-  // ################################################
+  // #######################################
+  // ##     SABERTRIO STOCK (i like)      ##
+  // #######################################
 
-  { "1-SABERTRIO;common", "tracks/track1.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "sabertrio"},
+  { "Ksith-GRANDMASTER;common", "tracks/track1.wav",
+  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "yoda bootup"},
 
-  // { "2-DARK_EDITION;common", "tracks/track1.wav",
-  // StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "dark ed"},
+  { "Ksith-DESTINY;common","tracks/track1.wav",
+  StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "rey tros"},
 
-  { "3-THE_LIGHT;common","tracks/track_3.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "the light"},
+  { "Ksith-ECHOES;common","tracks/track1.wav",
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},
 
-  { "4-THE_BALANCE;common","tracks/track_4.wav",
-  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "the bal"},
+  { "Ksith-THEBALANCE;common","tracks/track1.wav",
+  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "the balance"},
 
-  { "5-THE_DARK;common","tracks/track_5.wav",
-  StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "the dark"},
+  { "Ksith-COUNT;common","tracks/track1.wav",
+  StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "count dooku"},
 
-  // { "6-VENGEANCE;common", "tracks/track1.wav",
-  // StylePtr<Style_DarkBloodOrangeHumpFlicker>(),StylePtr<WHITE>(), "vengeance"},
+  { "Ksith-MACE;common","tracks/track1.wav",
+  StylePtr<Style_PurpleHumpFlicker>(), StylePtr<Switch_Magenta>(), "mace windu"},
 
-  // { "8-SNIPPETS;common", "tracks/track_8.wav",
-  // StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "snippets"},
+  { "Ksith-ROGUE;common","tracks/track1.wav",
+  StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Orange>(), "killer of stars"},
 
-  // { "9-MENACE;common", "tracks/track_9.wav",
-  // StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "menace"},
+  { "Ksith-DARKSABERMANDO;common","tracks/track1.wav",
+  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "mando darksaber"},
 
-  // { "10-TEMPLE_GUARDIAN;common", "tracks/track_10.wav",
-  // StylePtr<Style_YellowHumpFlicker>(), StylePtr<WHITE>(), "templ guard"},
+  { "KP-SHOCKBATON;common", "tracks/track1.wav",
+  StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "shockbaton"},
 
-  { "11-SHOCK_BATON;common", "tracks/track_11.wav",
-  StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_Blue>(), "shockbaton"},
-
-  // { "12-THE_TRAGEDY;common", "tracks/track_12.wav",
-  // StylePtr<Style_PhenomTragedySenate>(), StylePtr<WHITE>(), "The Tragedy"},
-
-  // ####################################
-  // ####################################
-  // ##             OTHERS             ##
-  // ####################################
-  // ####################################
-
-  // BlueMamba (Etsy) - DC Deathstroke (authored with Semz Nerd)
-  { "BMMercenary;common", "tracks/hallway.wav",
-  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "bm merc"},
-
-  // Syndicate Custom Relics - Retribution (electroblade)
-  // { "SCRRetribution;common", "tracks/combat1.wav",
-  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_White>(), "scr retrib"},
-
-  // Mongo https://www.youtube.com/watch?v=TieX5N51b5I
-  { "MongoDuneV2;common", "tracks/dune.wav",
-  StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "mongo dune"},
-
-  // Cosmic Ape - Dreamhunter (paid)
-  // { "CADreamhunter;common", "tracks/track1.wav",
-  // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Green>(), "ca dh"},
-
-  // Epiphany - Epic (MUSIC BASED)
-  { "MusicEpic;common", "tracks/track1.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "music epic"},
+  { "Starfall-HIGHREPUBLIC;common", "tracks/track1.wav",
+  StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "high republic"},
 
 
-  // ################################################
   // ################################################
   // ##   github Ferase JediSurvivor-Soundfonts    ##
   // ################################################
-  // ################################################
 
   // Jedi Survivor - Bode
-  { "SWJSBodeAkuna;common", "tracks/hallway.wav",
+  { "SWJS-BodeAkuna;common", "tracks/hallway.wav",
   StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "swjs bodeakuna"},
 
   // Jedi Survivor - Cal Kestis Green
-  { "SWJSCalGreen;common", "tracks/hallway.wav",
+  { "SWJS-CalGreen;common", "tracks/hallway.wav",
   StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "swjs calgreen"},
 
   // Jedi Survivor - Cal Kestis Yellow
-  { "SWJSCalYellow;common", "tracks/hallway.wav",
+  { "SWJS-CalYellow;common", "tracks/hallway.wav",
   StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "swjs calyellow"},
 
-  // Jedi Survivor - Cal Kestis Blue
-  // { "SWJSCalBlue;common", "tracks/hallway.wav",
-  // StylePtr<Style_BlueHumpFlicker>(), StylePtr<WHITE>(), "swjs calblue"},
-
-  // // Jedi Survivor - Cal Kestis Magenta
-  // { "SWJSCalMagenta;common", "tracks/hallway.wav",
-  // StylePtr<Style_PurpleHumpFlicker>(), StylePtr<WHITE>(), "swjs calmag"},
-
   // Jedi Survivor - Dagan Gera Light
-  { "SWJSDaganLight;common", "tracks/hallway.wav",
+  { "SWJS-DaganLight;common", "tracks/hallway.wav",
   StylePtr<Style_OrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "swjs dagan lite"},
 
-  // Jedi Survivor - Dagan Gera Dark
-  // { "SWJSDaganDark;common", "tracks/hallway.wav",
-  // StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "swjs dagan dark"},
-
   // Jedi Survivor - Rick the Door Technician
-  { "SWJSRick;common", "tracks/hallway.wav",
-  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Blue>(), "swjs rick"},
+  { "SWJS-Rick;common", "tracks/hallway.wav",
+  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "swjs rick"},
 
   // Jedi Survivor - Ninth Sister
-  { "SWJSNinthSister;common", "tracks/hallway.wav",
+  { "SWJS-NinthSister;common", "tracks/hallway.wav",
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "swjs ninth"},
 
-  // Jedi Survivor - Darth Vader
-  // { "SWJSDarthVader;common", "tracks/hallway.wav",
-  // StylePtr<Style_RedAngryAudio>(), StylePtr<WHITE>(), "swjs darth"},
 
-
-  // ################################################
-  // ################################################
-  // ##                   KSith                    ##
-  // ################################################
-  // ################################################
+  // #######################################
+  // ##              KSITH                ##
+  // #######################################
 
   // Rogue One Vader Ending
-  { "KSithRogue;common", "tracks/hallway.wav",
+  { "KSith-ROGUEVADER;common", "tracks/hallway.wav",
   StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "ks roguevader"},
 
   // Obi-Wan S1 Vader Finale
-  { "KSithWhatRemains;common", "tracks/vaderobi_dialogue.wav",
+  { "KSith-WHATREMAINS;common", "tracks/vaderobi_dialogue.wav",
   StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "ks obivader"},
 
   // The Tales S1 - Ahsoka vs Inquisitor
-  { "KSithGhost;common", "tracks/combat1.wav",
+  { "KSith-GHOST;common", "tracks/combat1.wav",
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "ks ghost"},
 
-  // { "KSithProto;common", "tracks/combat1.wav",
-  // StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "ks proto"},
-
   // Ahsoka S1 Shin Hati
-  { "KSithHati;common", "tracks/woodsfight.wav",
+  { "KSith-HATI;common", "tracks/woodsfight.wav",
   StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "ks hati"},
 
 
-  // ################################################
-  // ################################################
-  // ##                KYBERPHONIC                 ##
-  // ################################################
-  // ################################################
+  // #######################################
+  // ##           KYBERPHONIC             ##
+  // #######################################
 
-  // Ahsoka Season 1 ( Baylan Skoll )
-  { "KPSunSkoll;common", "tracks/ahsokatheme.wav",
-  StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "kpsunskoll"},
+  // Ahsoka Season 1 (Baylan Skoll) (paid)
+  // { "KP-SunSkoll;common", "tracks/ahsokatheme.wav",
+  // StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "kpsunskoll"},
 
-  // Son of Corellia
-  { "KPSonOfCorellia;common", "tracks/tfa.wav",
+  // Son of Corellia (paid)
+  { "KP-SonOfCorellia;common", "tracks/tfa.wav",
   StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "sonofcorellia"},
 
-  // Ahsoka Season 1 - Ahsoka white
-  { "KPTheSorcererV2;common", "tracks/ahsokatheme.wav",
+  // Ahsoka Season 1 - Ahsoka white (paid)
+  { "KP-TheSorcererV2;common", "tracks/ahsokatheme.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "kp sorcerer v2"},
 
   // Dark saber (live action)
-  { "KPDarkV3;common", "tracks/mandotheme.wav",
-  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "dark saber"},
+  // { "KP-DarkV3;common", "tracks/mandotheme.wav",
+  // StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "dark saber"},
 
-  // // Asohka white (mandalorian)
-  // { "KPTheSorcererBeskar;common", "tracks/thesorcerer.wav",
-  // StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "kp sorcerer"},
-
-  // TFA Graflex v2
-  // { "KPTFATakodana;common", "tracks/tfa.wav",
-  // StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa takodana"},
-
-  // TFA Graflex v2
-  { "KPTFAStarkiller;common", "tracks/reyvkylo.wav",
+  // TFA Graflex v2 (paid)
+  { "KP-TFAStarkiller;common", "tracks/reyvkylo.wav",
   StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa starkill"},
 
-  // Kylo - The Force Awakens (Kyberphonic Unstable v3)
+  // Kylo - The Force Awakens (Kyberphonic Unstable v3 - paid)
   { "TROS;common", "tracks/reyvkylo.wav",
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TROS"},
   { "TLJ;common", "tracks/reyvkylo.wav",
@@ -897,65 +838,68 @@ Preset blade[] = {
   // { "KPVibroArbir;common", "tracks/reyvkylo.wav",
   // StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "tfa arbir"},
 
-  // Asohka blue (clone wars)
-  // { "KPCommanderTano;common", "tracks/swclonewars.wav",
-  // StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "cmdr tano"},
-
-  // Adam Project
+  // Adam Project movie MagCyl
   // { "KPAdamProjectMagCyl;common", "tracks/track_16.wav",
   // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "magcyl"},
 
   // TFM - F1 Racer (paid)
-  { "KPFOneRacer;common", "tracks/track_13.wav",
-  StylePtr<Style_EnginesBurn>(), StylePtr<Switch_Yellow>(), "podracer"},
+  // { "KP-PodRacer;common", "tracks/track_13.wav",
+  // StylePtr<Style_EnginesBurn>(), StylePtr<Switch_Yellow>(), "podracer"},
 
 
-  // ################################################
-  // ################################################
-  // ##                 GREYSCALE                  ##
-  // ################################################
-  // ################################################
+  // #######################################
+  // ##            GREYSCALE              ##
+  // #######################################
 
   // Greyscale - Binary Dark (paid)
-  { "GSBinaryDark;common", "tracks/track1.wav",
+  { "GS-BinaryDark;common", "tracks/track1.wav",
   StylePtr<GreyscaleBinaryDark>(), StylePtr<Switch_Red>(), "gs bd"},
 
   // Greyscale - Endure (paid)
-  { "GSEndure;common", "tracks/track1.wav",
+  { "GS-Endure;common", "tracks/track1.wav",
   StylePtr<GreyscaleEndureRageCustom>(), StylePtr<Switch_Red>(), "gs endure"},
 
-  // Greyscale - Paradise V2 (paid)
-  // { "GSParadise;common", "tracks/track1.wav",
-  // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Yellow>(), "gs paradise"},
+  // Greyscale - Stitched (free)
+  { "GS-Stitched;common", "tracks/track1.wav",
+  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "gs stitched"},
 
-  // // Greyscale - Decay V2 (free)
-  // { "GSDecay;common", "tracks/track1.wav",
-  // StylePtr<Style_PurpleHumpFlicker>(), StylePtr<WHITE>(), "gs decay"},
-
-  // Greyscale - Crispy (free)
-  { "GSCrispity;common", "tracks/track1.wav",
-  StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "gs crispy"},
-
-  // Greyscale - Coda (free)
-  // { "GSCoda;common", "tracks/track1.wav",
-  // StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Green>(), "gs coda"},
-
-  // Greyscale - Deadlink (free)
-  // { "GSDeadlink;common", "tracks/track1.wav",
-  // StylePtr<Style_PhenomSparkleOff>(), StylePtr<WHITE>(), "gs deadlink"},
-
-  // Greyscale - Apocalypse (free)
-  // { "GSApocalypse;common", "tracks/track1.wav",
-  // StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_Yellow>(), "gs apocalypse"},
+  // Greyscale - Crispity (free)
+  { "GS-Crispity;common", "tracks/track1.wav",
+  StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_Green>(), "gs crispy"},
 
   // Greyscale - Mercenary (free)
-  { "GSMercenary;common", "tracks/track1.wav",
+  { "GS-Mercenary;common", "tracks/track1.wav",
   StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Orange>(), "gs mercenary"},
 
 
-  // ###########################################
-  // ##  Meaty  ##
-  // ###########################################
+  // ####################################
+  // ##             OTHERS             ##
+  // ####################################
+
+  // BlueMamba (Etsy) - DC Deathstroke (authored with Semz Nerd)
+  { "BM-Mercenary;common", "tracks/hallway.wav",
+  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "bm merc"},
+
+  // Syndicate Custom Relics - Retribution (electroblade)
+  // { "SCRRetribution;common", "tracks/combat1.wav",
+  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_White>(), "scr retrib"},
+
+  // Mongo https://www.youtube.com/watch?v=TieX5N51b5I
+  { "Mongo-DuneV2;common", "tracks/dune.wav",
+  StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "mongo dune"},
+
+  // Cosmic Ape - Dreamhunter (paid)
+  // { "CADreamhunter;common", "tracks/track1.wav",
+  // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Green>(), "ca dh"},
+
+  // Epiphany - Epic (MUSIC BASED)
+  { "Epiphany-EpicMusic;common", "tracks/track1.wav",
+  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "music epic"},
+
+
+  // #######################################
+  // ##            MEATY NUBS             ##
+  // #######################################
 
   // https://www.youtube.com/shorts/YZBsMuEkjx4
   // { "MeatyC110P;common", "tracks/swrebelstheme.wav",
@@ -966,28 +910,16 @@ Preset blade[] = {
   // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Blue>(), "meaty domo"},
 
   // https://www.youtube.com/watch?v=c3NMZTPvBTE
-  { "MeatyStarTrek;common", "tracks/sttngtheme.wav",
+  { "Meaty-StarTrek;common", "tracks/sttngtheme.wav",
   StylePtr<Style_PhenomStarTrek>(), StylePtr<Switch_Blue>(), "meaty trek"},
 
-  // Christmas V2 10/16/22
-  // { "MeatyChristmas;common", "tracks/christmas_sesame1.wav",
-  // StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "meaty christ"},
 
-
-  // ###########################################
-  // ## Jaydalorian ##
-  // ###########################################
-
-  // Jaydalorian Christmas (free)
-  // { "JDChristmas;common", "tracks/christmas.wav",
-  // StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
-
-  // Jaydalorian New years (free)
-  // { "JDNewyears;common", "tracks/newyearcantina.wav",
-  // StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "jd newyear"},
+  // #######################################
+  // ##           JAYDALORIAN             ##
+  // #######################################
 
   // Jaydalorian Banished (paid)
-  { "JDBanished;common", "tracks/track1.wav",
+  { "JD-Banished;common", "tracks/track1.wav",
   StylePtr<Style_BanishedPurpleOverload>(), StylePtr<Switch_Magenta>(), "jd banish"},
 
   // Jaydalorian Decimate (free)
@@ -995,36 +927,29 @@ Preset blade[] = {
   // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<WHITE>(), "jd decimate"},
 
 
-  // ###########################################
-  // ## Mountain Sabers ##
-  // ###########################################
-
-  // Ball Drop - New Years (paid)
-  // { "MSBallDrop;common", "tracks/newyearcantina.wav",
-  // StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
+  // #######################################
+  // ##          MOUNTAIN SABERS          ##
+  // #######################################
 
   // The Beginner (free)
   // { "MSTheBeginner;common", "tracks/sw.wav",
   // StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "ms thebeginner"},
 
   // Double Agent Pong Krell (paid)
-  { "MSPongKrell;common", "tracks/swrebelstheme.wav",
+  { "MS-PongKrell;common", "tracks/swrebelstheme.wav",
   StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_Green>(), "ms doubleagent"},
 
   // Star Trek Whale probe ep 4 (paid)
-  { "MSStarTrekWhaleProbe;common", "tracks/STT.wav",
+  { "MS-StarTrekWhaleProbe;common", "tracks/STT.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "ms st whale"},
 
   // Daft Punk Tribute
   // { "MSDaftPunk;common", "tracks/daftpunkaround.wav",
   // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "ms daftpunk"},
 
-
-
-
-  // ################################################
-  // ## CFX Ripped Fonts ##
-  // ################################################
+  // #######################################
+  // ##               CFX                 ##
+  // #######################################
 
   // // CFX Default - Shatterpoint (converted)
   // { "GCSShatterpoint;common", "tracks/track1.wav",
@@ -1052,15 +977,15 @@ Preset blade[] = {
   // >(), StylePtr<Switch_Blue>(), "cfx kamino"},
 
 
-  // ################################################
-  // ## From Reddit ##
-  // ################################################
+  // #######################################
+  // ##              REDDIT               ##
+  // #######################################
 
   // { "Reddit-ARCANE;common", "tracks/track1.wav",
   // StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Red>(), "reddit arcane"},
 
   // Palpatine
-  { "Reddit-Senate-Majority;common", "tracks/palpatheme.wav",
+  { "Reddit-SenateMajority;common", "tracks/palpatheme.wav",
   StylePtr<Style_PhenomTragedySenate>(), StylePtr<Switch_Red>(), "reddit senatemajority"},
 
   // { "Reddit-Ronin;common", "tracks/track1.wav", //Not a jedi
@@ -1081,9 +1006,9 @@ Preset blade[] = {
   >(), StylePtr<Switch_Blue>(), "geekbot9999 portal"},
 
 
-  // ################################################
-  // ##  Misc  ##
-  // ################################################
+  // #######################################
+  // ##              MISC                 ##
+  // #######################################
 
   // Slave 1 with seismic charge preon - author NoSloppy https://pastebin.com/u/NoSloppy
   // Heavy on memory, ive removed things that cause it to bloat (but does reduce quality)
@@ -1123,10 +1048,8 @@ Preset blade[] = {
       //TrDelay<100>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Red,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<5000>,Int<13000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
       TrDelay<500>,GreenYellow,TrDelay<25>>,EFFECT_IGNITION>,
       // Seismic Charge preon effect. use with linked preon sound
-      TransitionEffectL<TrConcat<TrDelay<2125>,Cyan,TrFade<100>,Black,TrDelay<10>,Cyan,TrFade<150>
-      >,EFFECT_PREON>,
-      TransitionEffectL<TrConcat<TrDelay<2125>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<100>, Black,TrDelay<10>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<150>
-      >,EFFECT_PREON>,
+      TransitionEffectL<TrConcat<TrDelay<2125>,Cyan,TrFade<100>,Black,TrDelay<10>,Cyan,TrFade<150>>,EFFECT_PREON>,
+      //TransitionEffectL<TrConcat<TrDelay<2125>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<100>, Black,TrDelay<10>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<150>>,EFFECT_PREON>,
       //TransitionEffectL<TrConcat<TrDelay<2100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,TrDelay<100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<4000>>>,
       //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<5000>>>,
       //TrSmoothFade<150>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<10000>>>,
@@ -1145,6 +1068,28 @@ Preset blade[] = {
       AllStyles_SaberTrioSoundLevel
     >
   >(), StylePtr<Switch_Blue>(), "slave1"},
+
+
+  // #######################################
+  // ##             CHRISTMAS             ##
+  // #######################################
+
+  // Meatynubs Christmas V2 10/16/22
+  { "Meaty-Christmas;common", "tracks/christmas_sesame1.wav",
+  StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "meaty christ"},
+
+  // MOUNTAIN SABERS Ball Drop - New Years (paid)
+  { "MS-BallDrop;common", "tracks/newyearcantina.wav",
+  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
+
+  // Jaydalorian Christmas (free)
+  { "JD-Christmas;common", "tracks/christmas.wav",
+  StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
+
+  // Jaydalorian New years (free)
+  { "JD-Newyears;common", "tracks/newyearcantina.wav",
+  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "jd newyear"},
+
 
 };
 

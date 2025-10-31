@@ -25,14 +25,13 @@
 |  Add the slashes to any that you are not using.                   |
 \*-----------------------------------------------------------------*/
 
-// Current SABERTRIOS
+// SABERTRIOS
 
-//#define CONFIG_FILE "config/s3config.h" // Legacy (the hardwired ones)
+//#define CONFIG_FILE "config/s3config.h" // phenom Legacy (the hardwired ones)
+#define CONFIG_FILE "config/s3config_PhenomPowerCore.h" // phenom P2Powercore
 
-#define CONFIG_FILE "config/s3config_v2_PowerCore.h" // StdPowercore for Solarian
-//#define CONFIG_FILE "config/s3config_PowerCore.h" // StdPowercore RGBSwitch only
-
-//#define CONFIG_FILE "config/s3config_v3.h" // BLEPowercore & Kybercrystal in led index 1,2
+//#define CONFIG_FILE "config/s3config_Default_Solarian_Proffie2.h" // P2Powercore default Solarian config
+//#define CONFIG_FILE "config/s3config_Default_Solarian_Proffie3.h" // P3Powercore default Solarian config
 
 
 
@@ -50,7 +49,7 @@
 #undef CONFIG_TOP
 
 #ifndef BOOT_VOLUME
-#define BOOT_VOLUME VOLUME
+#define BOOT_VOLUME 200
 #endif
 
 #ifdef SAVE_STATE

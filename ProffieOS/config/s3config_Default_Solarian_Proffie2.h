@@ -58,6 +58,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 
 Preset blade[] = {
 
+//shite
   { "1-SOLARIEN;common", "tracks/track_1.wav",
  
 /* copyright Fett263 Rotoscope (Primary Blade) OS7 Style
@@ -141,7 +142,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<250>,Mult<IntArg<IGNITION_OPTION2_
 
   "solarien"
   },
-
+//keep
   { "2-DESTINY;common", "tracks/track_2.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -236,7 +237,7 @@ TransitionEffectL<TrConcat<TrJoin<TrDelayX<Int<50>>,TrInstant>,AlphaL<Green,Smoo
 
   "destiny"
   },
-
+//shite
   { "3-RUIN;common","tracks/track_3.wav",
 
 /* copyright Fett263 KyloRen (Primary Blade) OS7 Style
@@ -322,7 +323,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "ruin"
   },
-
+//shite
   { "4-DAEMOS;common","tracks/track_4.wav",
 
 /* copyright Fett263 Ahsoka (Primary Blade) OS7 Style
@@ -406,7 +407,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "daemos"
   },
-
+//shite
   { "5-STARFALL;common","tracks/track_5.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -498,7 +499,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "starfall"
   },
-
+//shite
   { "6-ASCENSION;common", "tracks/track_6.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -590,7 +591,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "ascension"
   },
-
+//shite
   { "7-DARK_EDITION;common", "tracks/track_7.wav",
 
 /* copyright Fett263 Rotoscope (Primary Blade) OS7 Style
@@ -685,7 +686,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<80>,Mult<IntArg<IGNITION_OPTION2_A
 
   "dark edition"
   },
-
+//shite
   { "8-PICO_DARK;common", "tracks/track_8.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -772,7 +773,7 @@ InOutTrL<TrJoinR<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_
 
   "pico dark"
   },
-
+//get rid of
   { "9-DARKNESS;common", "tracks/track_9.wav",
 
 /* copyright Fett263 Acolyte (Primary Blade) OS7 Style
@@ -859,7 +860,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,BendTimePow
 
   "darkness"
   },
-
+//keep
   { "10-VENGEANCE;common", "tracks/track_10.wav",
 
 /* copyright Fett263 Visions (Primary Blade) OS7 Style
@@ -946,7 +947,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "vengeance"
   },
-
+//shite
   { "11-KROSGAARD;common", "tracks/track_11.wav",
 
 /* copyright Fett263 KyloRen (Primary Blade) OS7 Style
@@ -1034,7 +1035,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<100>,Mult<IntArg<IGNITION_OPTION2_
 
   "krosgaard"
   },
-
+//ehh
   { "12-MENACE;common", "tracks/track_12.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -1121,7 +1122,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_OPTION2_
 
   "menace"
   },
-
+//shite
   { "13-SECOND;common", "tracks/track_13.wav",
 
 /* copyright Fett263 JediSurvivor (Primary Blade) OS7 Style
@@ -1205,7 +1206,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "second"
   },
-
+//keep
   { "14-COUNT;common", "tracks/track_14.wav",
 
 /* copyright Fett263 Rotoscope (Primary Blade) OS7 Style
@@ -1289,7 +1290,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_OPTION2_
 
   "count"
   },
-
+//shite
   { "15-TRAGEDY;common", "tracks/track_15.wav",
 
 /* copyright Fett263 Acolyte (Primary Blade) OS7 Style
@@ -1393,7 +1394,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<250>,Mult<IntArg<IGNITION_OPTION2_
 
   "tragedy"
   },
-
+//shite
   { "16-INFINIUM;common", "tracks/track_16.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -1480,7 +1481,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "infinium"
   },
-
+//keep
   { "17-MACE;common", "tracks/track_17.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -1564,7 +1565,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,BendTimePow
 
   "mace"
   },
-
+//shite
   { "18-LEGACY;common", "tracks/track_18.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -1651,7 +1652,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "legacy"
   },
-
+//get rid of
   { "19-SABERTRIO;common", "tracks/track_19.wav",
 
 /* copyright Fett263 Rotoscope (Primary Blade) OS7 Style
@@ -1738,7 +1739,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,BendTimePow
 
   "sabertrio"
   },
-
+//keeeep
   { "20-ECHOES;common", "tracks/track_20.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -1822,7 +1823,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<180,180,255>>,BendTimePow
 
   "echoes"
   },
-
+//keep
   { "21-HIGH_REPUBLIC;common", "tracks/track_21.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -1909,7 +1910,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "high republic"
   },
-
+//delete
   { "22-LIGHT;common", "tracks/track_22.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -1996,7 +1997,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<180,180,255>>,BendTimePow
 
   "light"
   },
-
+//shite
   { "23-SENZA;common", "tracks/track_23.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -2083,7 +2084,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<180,180,255>>,BendTimePow
 
   "senza"
   },
-
+//shite
   { "24-HIGH_GROUND;common", "tracks/track_24.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -2169,7 +2170,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<180,180,255>>,BendTimePow
 
   "high ground"
   },
-
+//shite
   { "25-PICO_LIGHT;common", "tracks/track_25.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -2256,7 +2257,7 @@ InOutTrL<TrJoinR<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_
 
   "pico light"
   },
-
+//keep
   { "26-ROGUE;common", "tracks/track_26.wav",
 
 /* copyright Fett263 JediSurvivor (Primary Blade) OS7 Style
@@ -2348,7 +2349,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,BendTimePow
 
   "rogue"
   },
-
+//keep
   { "27-SHOCK_BATON;common", "tracks/track_27.wav",
 
 /* copyright Fett263 EnergyWeapon (Primary Blade) OS7 Style
@@ -2439,7 +2440,7 @@ TransitionEffectL<TrConcat<TrInstant,AlphaL<BrownNoiseFlickerL<RgbArg<PREON_COLO
 
   "shock baton"
   },
-
+//shite
   { "28-SNIPPETS;common", "tracks/track_28.wav",
 
 /* copyright Fett263 Ahsoka (Primary Blade) OS7 Style
@@ -2524,7 +2525,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_OPTION2_
 
   "snippets"
   },
-
+//keeeeep
   { "29-DARK_SABER;common", "tracks/track_29.wav",
 
 /* copyright Fett263 DarkSaber (Primary Blade) OS7 Style
@@ -2610,7 +2611,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_OPTION2_
 
   "dark saber"
   },
-
+//shite
   { "30-CELESTIAL;common", "tracks/track_30.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -2697,7 +2698,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "celestial"
   },
-
+//ehhhhh
   { "31-ALLIANCE;common", "tracks/track_31.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -2784,7 +2785,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_OPTION2_
 
   "alliance"
   },
-
+//shite
   { "32-HERO'S_JOURNEY;common", "tracks/track_32.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -2871,7 +2872,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "hero's journey"
   },
-
+//already got
   { "33-BALANCE;common", "tracks/track_33.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -2958,7 +2959,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<250>,Mult<IntArg<IGNITION_OPTION2_
 
   "balance"
   },
-
+//keeeep
   { "34-GRAND_MASTER;common", "tracks/track_34.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -3044,7 +3045,7 @@ InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,BendTimePow
 
   "grand master"
   },
-
+//ehhh
   { "35-SPECTRE;common", "tracks/track_35.wav",
 
 /* copyright Fett263 Ahsoka (Primary Blade) OS7 Style
@@ -3130,7 +3131,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<200>,Mult<IntArg<IGNITION_OPTION2_
 
   "spectre"
   },
-
+//ehhh
   { "36-RECONCILE;common", "tracks/track_36.wav",
 
 /* copyright Fett263 Simple (Primary Blade) OS7 Style
@@ -3217,7 +3218,7 @@ InOutTrL<TrWipeX<BendTimePowInvX<IgnitionTime<150>,Mult<IntArg<IGNITION_OPTION2_
 
   "reconcile"
   },
-
+//shite
   { "37-GUARDIAN;common", "tracks/track_37.wav",
 
 /* copyright Fett263 JediSurvivor (Primary Blade) OS7 Style
