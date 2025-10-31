@@ -595,7 +595,7 @@ Temple Guardian Rgb<200,180,0>
 */
 using Style_YellowHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,239,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,239,0>>>,120>,
-  Ignition_Rey_TROS
+  Ignition_Rey_TROS,
   Ignition_White_FullFlicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
