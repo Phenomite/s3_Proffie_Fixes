@@ -6,7 +6,7 @@
 const unsigned int maxLedsPerStrip = 150;
 const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch time
 #define VOLUME 2550
-#define BOOT_VOLUME 200 //Low volume at arduino patch time
+#define BOOT_VOLUME 250 //Low volume after upload
 #define CLASH_THRESHOLD_G 1.25
 #define FETT263_SWING_ON_SPEED 340
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
@@ -132,10 +132,12 @@ using Emitter_White_Unstable = AlphaL<RandomPerLEDFlickerL<RgbArg<EMITTER_COLOR_
 
 // Ignitions
 using Ignition_WhiteBlue_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<DeepSkyBlue>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_WhiteBlue_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlicker<White,DodgerBlue>,SmoothStep<Int<12000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
+using Ignition_WhiteBlue_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlicker<White,DeepSkyBlue>,SmoothStep<Int<12000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
 using Ignition_Orange_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,TrFade<1200>>,EFFECT_IGNITION>;
+using Ignition_Orange_FullFlicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,SmoothStep<Int<12000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
 using Ignition_Green_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Green>>,TrFade<1200>>,EFFECT_IGNITION>;
 using Ignition_White_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,TrFade<1200>>,EFFECT_IGNITION>;
+using Ignition_White_FullFlicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,SmoothStep<Int<12000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
 using Ignition_Red_Unstable = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<3000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Black>,BrownNoiseFlicker<RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,200>,RandomPerLEDFlicker<Mix<Int<3137>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>>>,TrFade<600>>,EFFECT_IGNITION>;
 using Ignition_Blue_Stripe = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<7000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>,Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>>,TrFade<470>>,EFFECT_IGNITION>;
 using Ignition_Rey_TROS = TransitionEffectL<TrConcat<TrJoin<TrDelay<200>,TrInstant>,AlphaL<Green,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<300>,AlphaL<Blue,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<500>>,EFFECT_IGNITION>;
@@ -248,7 +250,6 @@ using Style_Rainbow_Fire = Layers<
 using Style_PhenomElectroStaff = Layers<
   RotateColorsX<Variation,BrownNoiseFlicker<BrownNoiseFlicker<RgbArg<BASE_COLOR_ARG,Rgb<150,255,255>>,Black,300>,Stripes<3000,-4000,Rgb<50,50,75>,Rgb<100,100,150>,Rgb<10,10,15>,Rgb<150,150,225>>,200>>,
   TransitionEffectL<TrConcat<TrInstant,HumpFlickerL<RgbArg<IGNITION_COLOR_ARG,Rgb<100,100,255>>,40>,TrFade<1200>>,EFFECT_IGNITION>,
-  Swing_Stripes_WhiteBlue,
   Blast_Mix_Orange,
   Clash_Flash_White,
   Lockup_Intense_Yellow,
@@ -531,7 +532,7 @@ Blue/Aquamarine/Purple AudioFlicker
 /*--------------------------------- Style_DarksaberLive-------------------------
 */
 using Style_DarksaberLive = Layers<
-  AudioFlicker<BrownNoiseFlicker<Mix<SwingSpeed<400>,Rgb<210,210,250>,Rgb<190,190,255>>,Rgb<150,150,200>,300>,Rgb<190,190,255>>,
+  HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<150,150,200>>,Stripes<15000,-200,Rgb<50,50,90>,AudioFlicker<Rgb<215,215,255>,Rgb<150,150,200>>>,150>,
   //AudioFlicker<RgbArg<BASE_COLOR_ARG,Rgb<250,248,255>>,Mix<Int<21610>,Black,RgbArg<BASE_COLOR_ARG,Rgb<250,248,255>>>>,
   Blast_Wave_Yellow,
   Clash_Responsive_Nate,
@@ -579,7 +580,7 @@ Luke/Ani/Ahsoka Rgb<2,72,255>
 */
 using Style_BlueHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Blue>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Blue>>,120>,
-  Ignition_WhiteBlue_Flicker,
+  Ignition_WhiteBlue_Flicker_Half,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -596,7 +597,7 @@ Temple Guardian Rgb<200,180,0>
 using Style_YellowHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,239,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,239,0>>>,120>,
   Ignition_Rey_TROS,
-  Ignition_White_FullFlicker,
+  Ignition_White_FullFlicker_Half,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -612,7 +613,7 @@ C1-10P
 */
 using Style_OrangeHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,97,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,97,0>>>,120>,
-  Ignition_White_FullFlicker,
+  Ignition_White_FullFlicker_Half,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -628,7 +629,7 @@ Mace Rgb<198,49,255> (AOTC) - Rgb<173,13,255> (ROTS) - Rgb<153, 0, 255> (s3 vers
 */
 using Style_PurpleHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<198,29,255>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<198,29,255>>>,120>,
-  Ignition_White_FullFlicker,
+  Ignition_White_FullFlicker_Half,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -644,7 +645,7 @@ Quigon
 */
 using Style_GreenHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<0,255,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<0,255,0>>>,120>,
-  Ignition_White_FullFlicker,
+  Ignition_White_FullFlicker_Half,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -660,7 +661,7 @@ Slightly different to other standards, white tip on, audioflicker orange ignitio
 */
 using Style_RedHumpFlicker = Layers<
   HumpFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>,Mix<Int<16448>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,120>,
-  Ignition_Orange_FullFlicker,
+  Ignition_Orange_FullFlicker_Half,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -673,7 +674,7 @@ using Style_RedHumpFlicker = Layers<
 
 using Style_RedAngryAudio = Layers<
   AudioFlicker<Stripes<10000,-4000,Red,Red,BrownNoiseFlicker<Red,Mix<Int<16448>,Black,Red>,200>,Red,BrownNoiseFlicker<Red,Mix<Int<7710>,Black,Red>,200>>,Red>,
-  Ignition_Orange_FullFlicker,
+  Ignition_Orange_FullFlicker_Half,
   //Swing_Red,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,

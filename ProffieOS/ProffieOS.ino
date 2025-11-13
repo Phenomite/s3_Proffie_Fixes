@@ -25,7 +25,7 @@
 |  Add the slashes to any that you are not using.                   |
 \*-----------------------------------------------------------------*/
 
-// SABERTRIOS
+// SABERTRIOS - uncomment which board u want for upload
 
 //#define CONFIG_FILE "config/s3config.h" // phenom Legacy (the hardwired ones)
 #define CONFIG_FILE "config/s3config_PhenomPowerCore.h" // phenom P2Powercore
