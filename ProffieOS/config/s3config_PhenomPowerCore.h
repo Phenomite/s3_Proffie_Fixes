@@ -715,7 +715,7 @@ using Style_DarkBloodOrangeHumpFlicker = Layers<
 Preset blade[] = {
 
   // #######################################
-  // ##     SABERTRIO STOCK (i like)      ##
+  // ##           CANON DEFAULT           ##
   // #######################################
 
   { "Ksith-GRANDMASTER;common", "tracks/track1.wav",
@@ -736,14 +736,24 @@ Preset blade[] = {
   { "Ksith-MACE;common","tracks/track1.wav",
   StylePtr<Style_PurpleHumpFlicker>(), StylePtr<Switch_Magenta>(), "mace windu"},
 
-  { "Ksith-ROGUE;common","tracks/track1.wav",
-  StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Orange>(), "killer of stars"},
+  { "KP-Ezra-Stdv2;common", "tracks/swrebelstheme.wav",
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "staple sword std"},
+
+  { "KP-Ezra-Trainingv2;common", "tracks/swrebelstheme.wav",
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "staple sword training"},
+
+  // Second Sister (SWJS game)
+  { "KSith-SECOND;common", "tracks/combat1.wav",
+  StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "ks second"},
 
   { "Ksith-DARKSABERMANDO;common","tracks/track1.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "mando darksaber"},
 
   { "KP-SHOCKBATON;common", "tracks/track1.wav",
   StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "shockbaton"},
+
+  { "Ksith-ROGUE;common","tracks/track1.wav",
+  StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Orange>(), "killer of stars"},
 
   { "Starfall-HIGHREPUBLIC;common", "tracks/track1.wav",
   StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "high republic"},
