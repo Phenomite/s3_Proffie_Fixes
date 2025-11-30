@@ -742,9 +742,8 @@ Preset blade[] = {
   { "KP-Ezra-Trainingv2;common", "tracks/swrebelstheme.wav",
   StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "staple sword training"},
 
-  // Second Sister (SWJS game)
-  { "KSith-SECOND;common", "tracks/combat1.wav",
-  StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "ks second"},
+  { "KSith-GRANDHUNTER;common", "tracks/combat1.wav",
+  StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "ks grandhunter"},
 
   { "Ksith-DARKSABERMANDO;common","tracks/track1.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "mando darksaber"},
