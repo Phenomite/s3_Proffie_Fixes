@@ -1,21 +1,13 @@
 /*
  ProffieOS: Control software for lightsabers and other props.
  http://fredrik.hubbe.net/lightsaber/teensy_saber.html
- Copyright (c) 2016-2019 Fredrik Hubinette
+ Copyright (c) 2016-2025 Fredrik Hubinette
  Additional copyright holders listed inline below.
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ (at your option) any later version. See <http://www.gnu.org/licenses/>.
 */
 
 /*-----------------------------------------------------------------*\
@@ -25,7 +17,9 @@
 |  Add the slashes to any that you are not using.                   |
 \*-----------------------------------------------------------------*/
 
-// SABERTRIOS - uncomment which board u want for upload
+////////////////////////////////////////////////////
+// SABERTRIOS - uncomment which board for upload! //
+////////////////////////////////////////////////////
 
 //#define CONFIG_FILE "config/s3config.h" // phenom Legacy (the hardwired ones)
 #define CONFIG_FILE "config/s3config_PhenomPowerCore.h" // phenom P2Powercore
@@ -33,7 +27,7 @@
 //#define CONFIG_FILE "config/s3config_Default_Solarian_Proffie2.h" // P2Powercore default Solarian config
 //#define CONFIG_FILE "config/s3config_Default_Solarian_Proffie3.h" // P3Powercore default Solarian config
 
-
+////////////////////////////////////////////////////
 
 #ifdef CONFIG_FILE_TEST
 #undef CONFIG_FILE

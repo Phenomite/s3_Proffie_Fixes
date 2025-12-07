@@ -61,7 +61,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 */
 
 // On-Demand Battery Level for all styles
-using AllStyles_BatteryLevel = TransitionEffectL<TrConcat<TrInstant,AlphaL<Mix<BatteryLevel,Red,Green>,Bump<BatteryLevel,Int<10000>>>,TrDelay<2000>,AlphaL<Mix<BatteryLevel,Red,Green>,Bump<BatteryLevel,Int<10000>>>,TrFade<1000>>,EFFECT_BATTERY_LEVEL>;
+using AllStyles_BatteryLevel = TransitionEffectL<TrConcat<TrInstant,AlphaL<Mix<BatteryLevel,Red,Green>,Bump<BatteryLevel,Int<10000>>>,TrDelay<2000>,AlphaL<Mix<BatteryLevel,Red,Green>,Bump<BatteryLevel,Int<10000>>>,TrFade<800>>,EFFECT_BATTERY_LEVEL>;
 // Custom sabertrio soundlevel add to all styles
 using AllStyles_SaberTrioSoundLevel = TransitionEffectL<TrConcat<TrExtend<2000,TrWipe<0>>,AlphaL<Mix<VolumeLevel,Red,Green>,SmoothStep<VolumeLevel,Int<-10>>>,TrSmoothFade<300>>,EFFECT_VOLUME_LEVEL>;
 
@@ -111,8 +111,9 @@ using Preon_Overload_Blue = TransitionEffectL<TrConcat<TrFadeX<Mult<Int<8192>,Wa
 using Preon_Emitter_Heat = TransitionEffectL<TrConcat<TrFadeX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,AlphaL<HumpFlickerL<Red,10>,SmoothStep<IntArg<PREON_SIZE_ARG,2800>,Int<-2000>>>,TrFadeX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,AlphaL<HumpFlickerL<Orange,15>,SmoothStep<IntArg<PREON_SIZE_ARG,2800>,Int<-3000>>>,TrFadeX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,AlphaL<HumpFlickerL<White,20>,SmoothStep<IntArg<PREON_SIZE_ARG,2800>,Int<-4000>>>,TrFadeX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>>,EFFECT_PREON>;
 using Preon_AbsorbIn_Blue = TransitionEffectL<TrConcat<TrInstant,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,Int<200>,Int<500>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<6144>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,Int<300>,Int<300>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,Int<400>,Int<100>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<12288>>>,AlphaL<RgbArg<PREON_COLOR_ARG,Rgb<0,135,255>>,SmoothStep<IntArg<PREON_SIZE_ARG,2000>,Int<-4000>>>,TrBoingX<Mult<WavLen<EFFECT_PREON>,Int<6144>>,5>>,EFFECT_PREON>;
 using Preon_AbsorbIn_Orange = TransitionEffectL<TrConcat<TrInstant,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,Int<200>,Int<500>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<6144>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,Int<300>,Int<300>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,Int<400>,Int<100>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<12288>>>,AlphaL<RgbArg<PREON_COLOR_ARG,Rgb<255,140,0>>,SmoothStep<IntArg<PREON_SIZE_ARG,2000>,Int<-4000>>>,TrBoingX<Mult<WavLen<EFFECT_PREON>,Int<6144>>,5>>,EFFECT_PREON>;
+using Preon_AbsorbIn_Green = TransitionEffectL<TrConcat<TrInstant,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Green>,Int<200>,Int<500>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<6144>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Green>,Int<300>,Int<300>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<8192>>>,TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Green>,Int<400>,Int<100>,Int<32768>>>,TrDelayX<Mult<WavLen<EFFECT_PREON>,Int<12288>>>,AlphaL<RgbArg<PREON_COLOR_ARG,Green>,SmoothStep<IntArg<PREON_SIZE_ARG,2000>,Int<-4000>>>,TrBoingX<Mult<WavLen<EFFECT_PREON>,Int<6144>>,5>>,EFFECT_PREON>;
 using Preon_Glitch_Sound_Red = TransitionEffectL<TrConcat<TrInstant,AlphaL<Mix<Trigger<EFFECT_PREON,Mult<Int<16384>,WavLen<EFFECT_PREON>>,Mult<Int<10922>,WavLen<EFFECT_PREON>>,Mult<Int<5462>,WavLen<EFFECT_PREON>>>,BrownNoiseFlicker<Black,RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>,100>,RandomPerLEDFlicker<RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>,Rgb<50,50,50>>,BrownNoiseFlicker<Mix<NoisySoundLevel,RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>,RotateColorsX<Int<4000>,RgbArg<PREON_COLOR_ARG,Rgb<255,14,0>>>>,White,50>>,SmoothStep<Scale<NoisySoundLevel,Int<-450>,Int<20000>>,Int<-4000>>>,TrDelayX<WavLen<EFFECT_PREON>>>,EFFECT_PREON>;
-using Preon_Centre_AbsorbIn_Cyan = TransitionEffectL<TrConcat<TrExtendX<WavLen<EFFECT_PREON>, TrInstant>, Remap<CenterDistF<>, Layers<TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG, Rgb<150, 255, 255>>, Int<200>, Int<100>, Int<32768>>>, AlphaL<RgbArg<PREON_COLOR_ARG, Rgb<150, 255, 255>>, SmoothStep<Int<0>, Scale<Trigger<EFFECT_PREON, WavLen<EFFECT_PREON>, Int<500>, Int<200>, Int<100>>, Int<-1>, Int<-20000>>>>>>, TrInstant>, EFFECT_PREON>;
+using Preon_Centre_AbsorbIn_Cyan = TransitionEffectL<TrConcat<TrExtendX<WavLen<EFFECT_PREON>,TrInstant>,Remap<CenterDistF<>,Layers<TransitionLoopL<TrSparkX<RgbArg<PREON_COLOR_ARG,Rgb<150,255,255>>,Int<200>,Int<100>,Int<32768>>>,AlphaL<RgbArg<PREON_COLOR_ARG,Rgb<150,255,255>>,SmoothStep<Int<0>,Scale<Trigger<EFFECT_PREON,WavLen<EFFECT_PREON>,Int<500>,Int<200>,Int<100>>,Int<-1>,Int<-20000>>>>>>,TrInstant>,EFFECT_PREON>;
 
 // Postoffs
 using Postoff_Eye_White = TransitionEffectL<TrConcat<TrCenterWipeX<Int<200>>,AlphaL<AudioFlicker<RotateColorsX<Int<200>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>,RotateColorsX<Int<600>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>>,Bump<Int<16384>,Scale<NoisySoundLevel,Int<14000>,Int<20000>>>>,TrJoin<TrDelayX<Mult<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>,Int<16384>>>,TrCenterWipeX<Mult<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>,Int<8000>>>>,Layers<AlphaL<AudioFlicker<RotateColorsX<Int<200>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>,RotateColorsX<Int<600>,RgbArg<BASE_COLOR_ARG,Rgb<255,255,255>>>>,Bump<Int<16384>,Scale<NoisySoundLevel,Int<14000>,Int<20000>>>>,AlphaL<Black,LinearSectionF<Int<16384>,Scale<NoisySoundLevel,Int<4000>,Int<8000>>>>>,TrFadeX<Mult<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>,Int<10000>>>>,EFFECT_POSTOFF>;
@@ -121,8 +122,9 @@ using Postoff_Emitter_HeatFade = TransitionEffectL<TrConcat<TrInstant,AlphaL<Whi
 using Postoff_Emitter_Glow_Cyan = TransitionEffectL<TrConcat<TrInstant,AlphaL<White,Int<0>>,TrJoin<TrDelay<1000>,TrInstant>,AlphaL<RgbArg<POSTOFF_COLOR_ARG,Rgb<0,255,255>>,SmoothStep<IntArg<PREON_SIZE_ARG,700>,Int<-2000>>>,TrSmoothFadeX<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>>>,EFFECT_POSTOFF>;
 
 // Emitters
-//noise uses more mem. fett: AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Rgb<255,255,255>>>,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-6000>>>,
-using Emitter_Orange_AudioFlicker = AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Orange>>,SmoothStep<Scale<NoisySoundLevel,IntArg<EMITTER_SIZE_ARG,2500>,Sum<IntArg<EMITTER_SIZE_ARG,2500>,Int<5500>>>,Int<-5500>>>;
+// cheaper mem non-noise-size-scaling fett version: AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Rgb<255,255,255>>>,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-6000>>>,
+using Emitter_Orange_Flicker = AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Orange>>,SmoothStep<Scale<NoisySoundLevel,IntArg<EMITTER_SIZE_ARG,2500>,Sum<IntArg<EMITTER_SIZE_ARG,2500>,Int<5500>>>,Int<-5500>>>;
+using Emitter_Red_Flicker = AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Red>>,SmoothStep<Scale<NoisySoundLevel,IntArg<EMITTER_SIZE_ARG,2500>,Sum<IntArg<EMITTER_SIZE_ARG,2500>,Int<5500>>>,Int<-5500>>>;
 using Emitter_Cyan_Flicker = AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Cyan>>,SmoothStep<Scale<NoisySoundLevel,IntArg<EMITTER_SIZE_ARG,2500>,Sum<IntArg<EMITTER_SIZE_ARG,2500>,Int<5500>>>,Int<-5500>>>;
 using Emitter_Green_Flicker = AlphaL<AudioFlickerL<RgbArg<EMITTER_COLOR_ARG,Green>>,SmoothStep<Scale<NoisySoundLevel,IntArg<EMITTER_SIZE_ARG,2500>,Sum<IntArg<EMITTER_SIZE_ARG,2500>,Int<5500>>>,Int<-5500>>>;
 using Emitter_BloodOrange_Normal = AlphaL<Rgb<255,28,0>,SmoothStep<Scale<SlowNoise<Int<2000>>,Int<1000>,Int<5500>>,Int<-5500>>>;
@@ -131,16 +133,16 @@ using Emitter_White_Wick = AlphaL<Rgb<85,85,200>,SmoothStep<Scale<SlowNoise<Int<
 using Emitter_White_Unstable = AlphaL<RandomPerLEDFlickerL<RgbArg<EMITTER_COLOR_ARG,Rgb<255,187,108>>>,SmoothStep<Scale<NoisySoundLevel,IntArg<EMITTER_SIZE_ARG,2000>,Sum<IntArg<EMITTER_SIZE_ARG,2000>,Int<6000>>>,Int<-6000>>>;
 
 // Ignitions
-using Ignition_WhiteBlue_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<Rgb<0,72,255>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_WhiteBlue_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlicker<White,Rgb<0,72,255>>,SmoothStep<Int<8000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_Orange_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_Orange_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,SmoothStep<Int<8000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_Green_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Green>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_White_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_White_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,SmoothStep<Int<8000>,Int<-32768>>>,TrFade<1200>>,EFFECT_IGNITION>;
-using Ignition_Red_Unstable = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<3000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Black>,BrownNoiseFlicker<RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,200>,RandomPerLEDFlicker<Mix<Int<3137>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>>>,TrFade<600>>,EFFECT_IGNITION>;
-using Ignition_Blue_Stripe = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<7000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>,Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>>,TrFade<470>>,EFFECT_IGNITION>;
-using Ignition_Rey_TROS = TransitionEffectL<TrConcat<TrJoin<TrDelay<200>,TrInstant>,AlphaL<Green,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<300>,AlphaL<Blue,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<500>>,EFFECT_IGNITION>;
+using Ignition_WhiteBlue_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<Rgb<72,72,155>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_WhiteBlue_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlicker<White,Rgb<72,72,155>>,SmoothStep<Int<10000>,Int<-32768>>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_Orange_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_Orange_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,SmoothStep<Int<10000>,Int<-32768>>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_Green_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Green>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_White_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_White_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,SmoothStep<Int<10000>,Int<-32768>>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_Red_Unstable = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<3000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Black>,BrownNoiseFlicker<RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,200>,RandomPerLEDFlicker<Mix<Int<3137>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>>>,TrFade<400>>,EFFECT_IGNITION>;
+using Ignition_Blue_Stripe = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<7000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>,Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>>,TrFade<400>>,EFFECT_IGNITION>;
+using Ignition_Rey_TROS = TransitionEffectL<TrConcat<TrJoin<TrDelay<200>,TrInstant>,AlphaL<Green,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<300>,AlphaL<Blue,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<400>>,EFFECT_IGNITION>;
 
 // Stabs
 using Stab_White = TransitionEffectL<TrConcat<TrJoin<TrDelayX<Percentage<WavLen<EFFECT_STAB>,90>>,TrWipeIn<200>>,AlphaL<AudioFlickerL<LemonChiffon>,SmoothStep<IntArg<MELT_SIZE_ARG,27000>,Int<9000>>>,TrWipe<200>>,EFFECT_STAB>;
@@ -151,9 +153,9 @@ using Stab_Fire = TransitionEffectL<TrConcat<TrJoin<TrDelayX<Percentage<WavLen<E
 //Swing brights
 using Swing_Heat = AlphaL<Mix<SwingSpeed<800>,Red,Orange,White>,Scale<SwingSpeed<700>,Int<0>,Int<32768>>>;
 using Swing_Red = AlphaL<Red,Scale<IsLessThan<SwingSpeed<600>,Int<13600>>,Scale<SwingSpeed<600>,Int<-19300>,Int<32768>>,Int<0>>>;
-using Swing_Audio_Red = AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,Rgb<255,65,65>>>,Scale<IsLessThan<SwingSpeed<600>,Int<13600>>,Scale<SwingSpeed<600>,Int<-19300>,Int<32768>>,Int<0>>>;
-using Swing_Audio_White = AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,Rgb<255,255,255>>>,Scale<IsLessThan<SwingSpeed<700>,Int<13600>>,Scale<SwingSpeed<700>,Int<-19300>,Int<32768>>,Int<0>>>;
-using Swing_Audio_Green = AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,Green>>,Scale<IsLessThan<SwingSpeed<600>,Int<13600>>,Scale<SwingSpeed<600>,Int<-19300>,Int<32768>>,Int<0>>>;
+using Swing_Audio_Red = AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,Rgb<255,65,65>>>,Scale<IsLessThan<SwingSpeed<400>,Int<13600>>,Scale<SwingSpeed<400>,Int<-19300>,Int<32768>>,Int<0>>>;
+using Swing_Audio_White = AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,Rgb<255,255,255>>>,Scale<IsLessThan<SwingSpeed<400>,Int<13600>>,Scale<SwingSpeed<400>,Int<-19300>,Int<32768>>,Int<0>>>;
+using Swing_Audio_Green = AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,Green>>,Scale<IsLessThan<SwingSpeed<400>,Int<13600>>,Scale<SwingSpeed<400>,Int<-19300>,Int<32768>>,Int<0>>>;
 using Swing_Audio_Blue = AlphaL<AudioFlickerL<RgbArg<SWING_COLOR_ARG,DeepSkyBlue>>,Scale<IsLessThan<SwingSpeed<250>,Int<13600>>,Scale<SwingSpeed<250>,Int<-19300>,Int<32768>>,Int<0>>>;
 using Swing_Stripes_WhiteBlue = AlphaL<Stripes<5000,-5000,HumpFlicker<Rgb<0,0,100>,White,120>,Black>,SwingSpeed<500>>;
 
@@ -179,7 +181,7 @@ using Switch_Rainbow = Stripes<5000,50,Red,Yellow,Green,Blue,Magenta>;
 /*--------------------------------------------------------------------------------*/
 
 
-// Nosloppy style: https://pastebin.com/Dn9VQkSp
+// Nosloppy style edited from https://pastebin.com/Dn9VQkSp
 // Visual: https://www.youtube.com/watch?v=1M6fM5XNVCw
 using Style_Bilari_ElectroChain = Layers<
   RotateColorsX<Variation,AudioFlicker<BrownNoiseFlicker<Red,Black,1000>,Red>>,
@@ -198,6 +200,7 @@ using Style_Bilari_ElectroChain = Layers<
     Stab_Fire,
     Ignition_White_Flicker,
     InOutTrL<TrInstant,TrConcat<TrFadeX<RetractionTime<0>>,HumpFlickerL<White,50>,TrInstant>>>>,
+  Preon_Emitter_Heat,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 
@@ -215,7 +218,7 @@ using Style_PhenomChristmas = Layers<
   Drag_White_Fire,
   Stab_DarkOrange,
   Melt_Intense,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,IgnitionTime<300>>,TrWipeX<RetractionTime<2850>>,Black>,
+  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,IgnitionTime<300>>,TrWipeX<RetractionTime<2750>>,Black>,
   TransitionEffectL<TrConcat<TrWaveX<RotateColorsX<Variation,Blue>,Int<200>,Int<300>,Int<200>,Int<0>>,Mix<SmoothStep<Int<27500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,DodgerBlue,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<175>,Int<300>,Int<175>,Int<0>>,Mix<SmoothStep<Int<22000>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,DodgerBlue,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<150>,Int<300>,Int<150>,Int<0>>,Mix<SmoothStep<Int<16500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,Red,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<150>,Int<300>,Int<150>,Int<0>>,Mix<SmoothStep<Int<11000>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<DeepSkyBlue,Blue,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<100>,Int<300>,Int<100>,Int<0>>,Mix<SmoothStep<Int<5500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,DodgerBlue,200>>>,TrDelay<100>,Mix<SmoothStep<Int<5500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,Red,200>>>,TrWipe<100>,Mix<SmoothStep<Int<0>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,Rgb<60,15,0>,200>>>,TrFade<100>,White,TrInstant>,EFFECT_PREON>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*===============================*/
@@ -257,7 +260,7 @@ using Style_PhenomElectroStaff = Layers<
   Drag_Orange_Fire,
   Stab_Fire,
   Melt_Intense,
-  InOutTrL<TrCenterWipeInX<BendTimePowInvX<IgnitionTime<100>, Mult<IntArg<IGNITION_OPTION2_ARG, 10992>, Int<98304>>>, Int<16384>>, TrCenterWipeX<BendTimePowX<RetractionTime<0>, Mult<IntArg<RETRACTION_OPTION2_ARG, 10992>, Int<98304>>>, Int<16384>>, Black>,
+  InOutTrL<TrCenterWipeInX<BendTimePowInvX<IgnitionTime<100>,Mult<IntArg<IGNITION_OPTION2_ARG,10992>,Int<98304>>>,Int<16384>>,TrCenterWipeX<BendTimePowX<RetractionTime<0>,Mult<IntArg<RETRACTION_OPTION2_ARG,10992>,Int<98304>>>,Int<16384>>,Black>,
   Preon_Centre_AbsorbIn_Cyan,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*==================================*/
@@ -308,21 +311,21 @@ using Style_PhenomTragedySenate = Layers<
 
 /*--------------------------------- Style_PhenomCrispyPinkFlicker-------------------------
 */
-using Style_PhenomCrispyPinkFlicker = Layers<AudioFlicker<RgbArg<BASE_COLOR_ARG,Rgb<220,0,200>>,Mix<Int<16384>,Black,RgbArg<BASE_COLOR_ARG,Rgb<220,0,200>>>>,
-  Emitter_Cyan_Flicker,
-  Swing_Audio_Blue,
-  Ignition_WhiteBlue_Flicker,
-  Blast_Mix_Orange,
-  Clash_Responsive_Nate,
-  Lockup_Intense_White,
-  Lightning_BrightBlue,
-  Drag_White_Fire,
-  Melt_Intense,
-  Stab_White,
-  InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<191,255,255>>,IgnitionTime<150>>,TrColorCycleX<RetractionTime<0>,1500,7500>,Black>,
-  Preon_AbsorbIn_Blue,
-  TransitionEffectL<TrConcat<TrInstant,AlphaL<White,Int<0>>,TrJoin<TrDelay<1000>,TrInstant>,AlphaL<RgbArg<POSTOFF_COLOR_ARG,Rgb<118,0,194>>,SmoothStep<IntArg<PREON_SIZE_ARG,2800>,Int<-2000>>>,TrSmoothFadeX<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>>>,EFFECT_POSTOFF>,
-  AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
+// using Style_PhenomCrispyPinkFlicker = Layers<AudioFlicker<RgbArg<BASE_COLOR_ARG,Rgb<220,0,200>>,Mix<Int<16384>,Black,RgbArg<BASE_COLOR_ARG,Rgb<220,0,200>>>>,
+//   Emitter_Cyan_Flicker,
+//   Swing_Audio_Blue,
+//   Ignition_WhiteBlue_Flicker,
+//   Blast_Mix_Orange,
+//   Clash_Responsive_Nate,
+//   Lockup_Intense_White,
+//   Lightning_BrightBlue,
+//   Drag_White_Fire,
+//   Melt_Intense,
+//   Stab_White,
+//   InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<191,255,255>>,IgnitionTime<150>>,TrColorCycleX<RetractionTime<0>,1500,7500>,Black>,
+//   Preon_AbsorbIn_Blue,
+//   TransitionEffectL<TrConcat<TrInstant,AlphaL<White,Int<0>>,TrJoin<TrDelay<1000>,TrInstant>,AlphaL<RgbArg<POSTOFF_COLOR_ARG,Rgb<118,0,194>>,SmoothStep<IntArg<PREON_SIZE_ARG,2800>,Int<-2000>>>,TrSmoothFadeX<Scale<IsLessThan<WavLen<EFFECT_POSTOFF>,Int<200>>,WavLen<EFFECT_POSTOFF>,Int<4000>>>>,EFFECT_POSTOFF>,
+//   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------- Style_PhenomSparkleOff-------------------------
@@ -373,13 +376,32 @@ using Style_BanishedPurpleOverload = Layers<
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------- Style_UnstableRage -------------------------
-Kylo
-OS6.7 v4.020
+Kylo (unstable rage)
+OS7.15 v3.212p
 */
 using Style_UnstableRage = Layers<
   Stripes<3000,-3500,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,Black>,BrownNoiseFlicker<RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>,Mix<Int<3855>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,200>,RandomPerLEDFlicker<Mix<Int<10280>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>,Mix<Int<3855>,Black,RgbArg<BASE_COLOR_ARG,Rgb<255,0,0>>>>>,
   Ignition_Red_Unstable,
-  Emitter_BloodOrange_Normal,
+  Emitter_Red_Flicker,
+  Blast_Mix_Orange,
+  Clash_Responsive_Nate,
+  Lockup_Intense_White,
+  Lightning_BrightBlue,
+  Drag_White_Fire,
+  Melt_Intense,
+  Stab_White,
+  InOutTrL<TrWipeX<IgnitionTime<250>>,TrWipeInX<RetractionTime<500>>,Black>,
+  AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------- Style_UnstableUnleashed -------------------------
+Kylo (unstable unleashed)
+OS7.15 v3.212p
+*/
+using Style_UnstableUnleashed = Layers<
+  StaticFire<Stripes<3000,-3500,RgbArg<BASE_COLOR_ARG,Red>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<BASE_COLOR_ARG,Red>>,Black>,BrownNoiseFlicker<RgbArg<BASE_COLOR_ARG,Red>,Mix<Int<3855>,Black,RgbArg<BASE_COLOR_ARG,Red>>,200>,RandomPerLEDFlicker<Mix<Int<10280>,Black,RgbArg<BASE_COLOR_ARG,Red>>,Mix<Int<3855>,Black,RgbArg<BASE_COLOR_ARG,Red>>>>,Rgb<155,0,0>,0,5,2,3000,0>,
+  Ignition_Red_Unstable,
+  Emitter_Red_Flicker,
   Blast_Mix_Orange,
   Clash_Responsive_Nate,
   Lockup_Intense_White,
@@ -415,7 +437,7 @@ OS6.7 v4.019
 */
 using GreyscaleEndureRageCustom = Layers<
   StaticFire<RgbArg<BASE_COLOR_ARG,Red>,Mix<Int<10280>,Black,RgbArg<BASE_COLOR_ARG,Red>>,0,5,0,1500,5>,
-  Emitter_Orange_AudioFlicker,
+  Emitter_Orange_Flicker,
   TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<300>>,TrInstant>,Stripes<3000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<255,97,0>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,97,0>>>,Black>,BrownNoiseFlicker<RgbArg<IGNITION_COLOR_ARG,Rgb<255,97,0>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,97,0>>>,200>,RandomPerLEDFlicker<Mix<Int<3137>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,97,0>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,97,0>>>>>,TrFade<800>>,EFFECT_IGNITION>,
   Swing_Heat,
   Clash_Responsive_Nate,
@@ -489,7 +511,7 @@ using Style_GreenSwingOrange = Layers<
   Stab_DarkOrange,
   Melt_Intense,
   InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Green>,IgnitionTime<300>>,TrColorCycleX<RetractionTime<0>,950,7500>,Black>,
-  Preon_AbsorbIn_Orange,
+  Preon_AbsorbIn_Green,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*--------------------------------------------------------------------------------*/
 
@@ -569,6 +591,84 @@ using Style_Original_BlueRotoscope = Layers<
   Stab_White,
   InOutTrL<TrWipeX<IgnitionTime<250>>,TrWipeInX<RetractionTime<0>>,Black>,
   Preon_Sparking_Cyan,
+  AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------- Style_SlaveOne-------------------------
+Slave 1 with seismic charge preon - author NoSloppy https://pastebin.com/u/NoSloppy
+Note:
+  - Heavy on memory, proffie3 boards can run the full thing
+  - Ive removed things that cause it to bloat but does reduce quality for proffie2
+*/
+using Style_SlaveOne = Layers<
+  Mix<SmoothStep<Int<16384>,Int<4000>>,Stripes<10000,500,Rgb<0,30,80>,Rgb<0,60,180>>,Stripes<10000,-500,Rgb<0,30,80>,Rgb<0,60,180>>>,
+  // Clash - 3 stage fading impact spot
+  Clash_Responsive_Nate,
+  // Blast
+  LocalizedClashL<Blinking<White,Black,130,800>,1560,50,EFFECT_BLAST>,
+  LocalizedClashL<Blinking<Red,Black,130,500>,1560,15,EFFECT_BLAST>,
+  // Lockup
+  Lockup_Intense_Yellow,
+  // Non-Responsive Drag
+  Drag_White_Fire,
+  Lightning_White,
+  Stab_Fire,
+  Melt_Intense,
+  // Ignition Powerup
+  TransitionEffectL<TrConcat<TrInstant,BrownNoiseFlicker<DeepSkyBlue,White,100>,TrFade<800>>,EFFECT_IGNITION>,
+  // In/out using Trigger for instantaneous Center-out wipes
+  InOutTrL<TrConcat<TrInstant,Layers<
+  AlphaL<Black,SmoothStep<Scale<Trigger<EFFECT_IGNITION,Int<300>,Int<1000>,Int<500>>,Int<16385>,Int<0>>,Int<-1>>>,
+  AlphaL<Black,SmoothStep<Scale<Trigger<EFFECT_IGNITION,Int<300>,Int<1000>,Int<500>>,Int<16384>,Int<32768>>,Int<0>>>>,TrDelay<1000>>,
+    //TrJoin<TrWipe<700>,TrWipeIn<700>>
+    TrCenterWipeInX<RetractionTime<700>,Int<16384>>
+  >,
+  TransitionEffectL<TrConcat<TrInstant,Cyan,TrDelay<50>>,EFFECT_IGNITION>,
+  // Asteroid impacts after detonation - timed sequence
+  TransitionEffectL<TrConcat<
+  TrDelay<1500>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Red,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<3000>,Int<6000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
+  //TrDelay<400>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Orange,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<6000>,Int<10000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
+  TrDelay<400>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Black,White,100>,Bump<ChangeSlowly<SlowNoise<Int<30000>>,Int<60000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<300>,AlphaL<Red,Int<0>>,
+  //TrDelay<300>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Yellow,Red,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<10000>,Int<28000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<200>,AlphaL<Red,Int<0>>,
+  TrDelay<500>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Orange,White,100>,Bump<ChangeSlowly<SlowNoise<Int<30000>>,Int<60000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<200>,AlphaL<Red,Int<0>>,
+  //TrDelay<100>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Red,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<5000>,Int<13000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
+  TrDelay<500>,GreenYellow,TrDelay<25>>,EFFECT_IGNITION>,
+  // Seismic Charge preon effect. use with linked preon sound
+  TransitionEffectL<TrConcat<TrDelay<2125>,Cyan,TrFade<100>,Black,TrDelay<10>,Cyan,TrFade<150>>,EFFECT_PREON>,
+  //TransitionEffectL<TrConcat<TrDelay<2125>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<100>, Black,TrDelay<10>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<150>>,EFFECT_PREON>,
+  //TransitionEffectL<TrConcat<TrDelay<2100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,TrDelay<100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<4000>>>,
+  //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<5000>>>,
+  //TrSmoothFade<150>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<10000>>>,
+  //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,
+  //TrSmoothFade<175>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<30000>>>,
+  //TrSmoothFade<125>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<35000>>>,
+  //TrSmoothFade<250>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<30000>>>,
+  //TrSmoothFade<75>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,
+  //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<8000>>>,
+  //TrSmoothFade<25>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,
+  //TrFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,TrDelay<25>>,EFFECT_PREON>,
+  TransitionEffectL<TrConcat<TrInstant,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Scale<Trigger<EFFECT_PREON,Int<2000>,Int<1000>,Int<500>>,Int<-1000>,Int<16500>>,Int<1500>>>,TrDelay<2000>>,EFFECT_PREON>,
+  //TransitionEffectL<TrConcat<TrDelay<1100>,AlphaL<Red,Int<0>>,TrSmoothFade<700>,Black,TrDelay<100>,AlphaL<White,Bump<Int<16384>,Int<3000>>>,TrDelay<100>>,EFFECT_PREON>,
+  AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------- Style_PortalGame-------------------------
+*/
+using Style_PortalGame = Layers<
+  Layers<
+    Remap<Scale<CenterDistF<>,Int<0>,Int<65536>>,
+      Remap<InvertF<RampF>,
+        Mix<SmoothStep<Int<19652>,Int<13123>>,
+          StaticFire<RgbArg<BASE_COLOR_ARG,Rgb<0,44,249>>,Mix<Int<10280>,Black,RgbArg<BASE_COLOR_ARG,Rgb<0,44,249>>>,0,2,0,3000,3>,
+          StaticFire<RgbArg<ALT_COLOR_ARG,Rgb<255,68,0>>,Mix<Int<10280>,Black,RgbArg<ALT_COLOR_ARG,Rgb<255,68,0>>>,0,2,0,3000,3>
+        >
+      >
+    >,AlphaL<Black,LinearSectionF<Int<16384>,Int<8171>>>
+  >,
+  Blast_Flash_White,
+  Clash_Flash_White,
+  Lightning_White,
+  InOutTrL<TrCenterWipeInX<IgnitionTime<500>,Int<16384>>,TrCenterWipeInX<RetractionTime<500>,Int<16384>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*--------------------------------------------------------------------------------*/
 
@@ -722,23 +822,8 @@ Preset blade[] = {
   // ##           CANON DEFAULT           ##
   // #######################################
 
-  { "Ksith-GRANDMASTER;common", "tracks/track1.wav",
-  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "yoda bootup"},
-
-  { "Ksith-DESTINY;common","tracks/track1.wav",
-  StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "rey tros"},
-
   { "Ksith-ECHOES;common","tracks/track1.wav",
   StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},
-
-  { "Ksith-THEBALANCE;common","tracks/track1.wav",
-  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "the balance"},
-
-  { "Ksith-COUNT;common","tracks/track1.wav",
-  StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "count dooku"},
-
-  { "Ksith-MACE;common","tracks/track1.wav",
-  StylePtr<Style_PurpleHumpFlicker>(), StylePtr<Switch_Magenta>(), "mace windu"},
 
   { "KP-Ezra-Stdv2;common", "tracks/swrebelstheme.wav",
   StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "staple sword std"},
@@ -752,8 +837,23 @@ Preset blade[] = {
   { "Ksith-DARKSABERMANDO;common","tracks/track1.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "mando darksaber"},
 
+  { "Ksith-GRANDMASTER;common", "tracks/track1.wav",
+  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "yoda bootup"},
+
+  { "Ksith-COUNT;common","tracks/track1.wav",
+  StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "count dooku"},
+
+  { "Ksith-MACE;common","tracks/track1.wav",
+  StylePtr<Style_PurpleHumpFlicker>(), StylePtr<Switch_Magenta>(), "mace windu"},
+
+  { "Ksith-THEBALANCE;common","tracks/track1.wav",
+  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "the balance"},
+
   { "KP-SHOCKBATON;common", "tracks/track1.wav",
   StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "shockbaton"},
+
+  { "Ksith-DESTINY;common","tracks/track1.wav",
+  StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "rey tros"},
 
   { "Starfall-HIGHREPUBLIC;common", "tracks/track1.wav",
   StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "high republic"},
@@ -791,7 +891,7 @@ Preset blade[] = {
   { "TLJ;common", "tracks/reyvkylo.wav",
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TLJ"},
   { "TFA;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TFA"},
+  StylePtr<Style_UnstableUnleashed>(), StylePtr<Switch_Red>(), "kylo TFA"},
 
   // Ahsoka Season 1 (Baylan Skoll) (paid)
   // { "KP-SunSkoll;common", "tracks/ahsokatheme.wav",
@@ -1003,83 +1103,17 @@ Preset blade[] = {
   // { "Reddit-Ronin;common", "tracks/track1.wav", //Not a jedi
   // StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "reddit ronin"},
 
-  // Portal fireblade
+  // Portal game
   { "Reddit-Portal;common", "tracks/stillalive.wav",
-  StylePtr<
-    Layers<
-      Layers<Remap<Scale<CenterDistF<>,Int<0>,Int<65536>>,Remap<InvertF<RampF>,Mix<SmoothStep<Int<19652>,Int<13123>>,StaticFire<RgbArg<BASE_COLOR_ARG,Rgb<0,44,249>>,Mix<Int<10280>,Black,RgbArg<BASE_COLOR_ARG,Rgb<0,44,249>>>,0,2,0,3000,3>,StaticFire<RgbArg<ALT_COLOR_ARG,Rgb<255,68,0>>,Mix<Int<10280>,Black,RgbArg<ALT_COLOR_ARG,Rgb<255,68,0>>>,0,2,0,3000,3>>>>,AlphaL<Black,LinearSectionF<Int<16384>,Int<8171>>>>,
-      Blast_Flash_White,
-      Clash_Flash_White,
-      Lightning_White,
-      InOutTrL<TrCenterWipeInX<IgnitionTime<500>,Int<16384>>,TrCenterWipeInX<RetractionTime<500>,Int<16384>>,Black>,
-      AllStyles_BatteryLevel,
-      AllStyles_SaberTrioSoundLevel
-    >
-  >(), StylePtr<Switch_Blue>(), "geekbot9999 portal"},
+  StylePtr<Style_PortalGame>(), StylePtr<Switch_Blue>(), "geekbot9999 portal"},
 
 
   // #######################################
   // ##              MISC                 ##
   // #######################################
 
-  // Slave 1 with seismic charge preon - author NoSloppy https://pastebin.com/u/NoSloppy
-  // Heavy on memory, ive removed things that cause it to bloat (but does reduce quality)
   { "SlaveOneTwoPointOne;common", "tracks/track1.wav",
-  StylePtr<
-    Layers<
-      Mix<SmoothStep<Int<16384>,Int<4000>>,Stripes<10000,500,Rgb<0,30,80>,Rgb<0,60,180>>,Stripes<10000,-500,Rgb<0,30,80>,Rgb<0,60,180>>>,
-      // Clash - 3 stage fading impact spot
-      Clash_Responsive_Nate,
-      // Blast
-      LocalizedClashL<Blinking<White,Black,130,800>,1560,50,EFFECT_BLAST>,
-      LocalizedClashL<Blinking<Red,Black,130,500>,1560,15,EFFECT_BLAST>,
-      // Lockup
-      Lockup_Intense_Yellow,
-      // Non-Responsive Drag
-      Drag_White_Fire,
-      Lightning_White,
-      Stab_Fire,
-      Melt_Intense,
-      // Ignition Powerup
-      TransitionEffectL<TrConcat<TrInstant,BrownNoiseFlicker<DeepSkyBlue,White,100>,TrFade<800>>,EFFECT_IGNITION>,
-      // In/out using Trigger for instantaneous Center-out wipes
-      InOutTrL<TrConcat<TrInstant,Layers<
-      AlphaL<Black,SmoothStep<Scale<Trigger<EFFECT_IGNITION,Int<300>,Int<1000>,Int<500>>,Int<16385>,Int<0>>,Int<-1>>>,
-      AlphaL<Black,SmoothStep<Scale<Trigger<EFFECT_IGNITION,Int<300>,Int<1000>,Int<500>>,Int<16384>,Int<32768>>,Int<0>>>>,TrDelay<1000>>,
-        //TrJoin<TrWipe<700>,TrWipeIn<700>>
-        TrCenterWipeInX<RetractionTime<700>,Int<16384>>
-      >,
-      TransitionEffectL<TrConcat<TrInstant,Cyan,TrDelay<50>>,EFFECT_IGNITION>,
-      // Asteroid impacts after detonation - timed sequence
-      TransitionEffectL<TrConcat<
-      TrDelay<1500>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Red,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<3000>,Int<6000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
-      //TrDelay<400>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Orange,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<6000>,Int<10000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
-      TrDelay<400>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Black,White,100>,Bump<ChangeSlowly<SlowNoise<Int<30000>>,Int<60000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<300>,AlphaL<Red,Int<0>>,
-      //TrDelay<300>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Yellow,Red,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<10000>,Int<28000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<200>,AlphaL<Red,Int<0>>,
-      TrDelay<500>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Orange,White,100>,Bump<ChangeSlowly<SlowNoise<Int<30000>>,Int<60000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<200>,AlphaL<Red,Int<0>>,
-      //TrDelay<100>,GreenYellow,TrDelay<25>,AlphaL<BrownNoiseFlicker<Red,White,100>,Bump<Scale<SlowNoise<Int<30000>>,Int<5000>,Int<13000>>,ChangeSlowly<SlowNoise<Int<30000>>,Int<20000>>>>,TrDelay<100>,AlphaL<Red,Int<0>>,
-      TrDelay<500>,GreenYellow,TrDelay<25>>,EFFECT_IGNITION>,
-      // Seismic Charge preon effect. use with linked preon sound
-      TransitionEffectL<TrConcat<TrDelay<2125>,Cyan,TrFade<100>,Black,TrDelay<10>,Cyan,TrFade<150>>,EFFECT_PREON>,
-      //TransitionEffectL<TrConcat<TrDelay<2125>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<100>, Black,TrDelay<10>,AlphaL<White,Bump<Int<16384>,Int<32768>>>,TrFade<150>>,EFFECT_PREON>,
-      //TransitionEffectL<TrConcat<TrDelay<2100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,TrDelay<100>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<4000>>>,
-      //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<5000>>>,
-      //TrSmoothFade<150>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<10000>>>,
-      //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,
-      //TrSmoothFade<175>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<30000>>>,
-      //TrSmoothFade<125>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<35000>>>,
-      //TrSmoothFade<250>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<30000>>>,
-      //TrSmoothFade<75>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,
-      //TrSmoothFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<8000>>>,
-      //TrSmoothFade<25>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<3000>>>,
-      //TrFade<50>,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Int<16384>,Int<20000>>>,TrDelay<25>>,EFFECT_PREON>,
-      // TransitionEffectL<TrConcat<TrInstant,AlphaL<BrownNoiseFlicker<DeepSkyBlue,White,100>,Bump<Scale<Trigger<EFFECT_PREON,Int<2000>,Int<1000>,Int<500>>,Int<-1000>,Int<16500>>,Int<1500>>>,TrDelay<2000>>,EFFECT_PREON>,
-      TransitionEffectL<TrConcat<TrDelay<1100>,AlphaL<Red,Int<0>>,TrSmoothFade<700>,Black,TrDelay<100>,AlphaL<White,Bump<Int<16384>,Int<3000>>>,TrDelay<100>>,EFFECT_PREON>,
-      //Battery & Sabertrio
-      AllStyles_BatteryLevel,
-      AllStyles_SaberTrioSoundLevel
-    >
-  >(), StylePtr<Switch_Blue>(), "slave1"},
+  StylePtr<Style_SlaveOne>(), StylePtr<Switch_Blue>(), "nosloppy slave1"},
 
 
   // #######################################
