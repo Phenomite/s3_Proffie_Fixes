@@ -8,7 +8,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #define VOLUME 2550
 #define BOOT_VOLUME 250 //Low volume after upload
 #define CLASH_THRESHOLD_G 1.25
-#define FETT263_SWING_ON_SPEED 340
+#define FETT263_SWING_ON_SPEED 300
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
 #define ENABLE_AUDIO
 #define ENABLE_MOTION
@@ -134,13 +134,13 @@ using Emitter_White_Unstable = AlphaL<RandomPerLEDFlickerL<RgbArg<EMITTER_COLOR_
 
 // Ignitions
 using Ignition_WhiteBlue_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<Rgb<72,72,155>>,TrFade<1000>>,EFFECT_IGNITION>;
-using Ignition_WhiteBlue_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlicker<White,Rgb<72,72,155>>,SmoothStep<Int<10000>,Int<-32768>>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_WhiteBlue_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlicker<White,Rgb<72,72,155>>,SmoothStep<Int<12000>,Int<-45000>>>,TrFade<1000>>,EFFECT_IGNITION>;
 using Ignition_Orange_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,TrFade<1000>>,EFFECT_IGNITION>;
-using Ignition_Orange_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,SmoothStep<Int<10000>,Int<-32768>>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_Orange_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Orange>>,SmoothStep<Int<12000>,Int<-45000>>>,TrFade<1000>>,EFFECT_IGNITION>;
 using Ignition_Green_FullFlicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,Green>>,TrFade<1000>>,EFFECT_IGNITION>;
 using Ignition_White_Flicker = TransitionEffectL<TrConcat<TrInstant,AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,TrFade<1000>>,EFFECT_IGNITION>;
-using Ignition_White_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,SmoothStep<Int<10000>,Int<-32768>>>,TrFade<1000>>,EFFECT_IGNITION>;
-using Ignition_Red_Unstable = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<3000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Black>,BrownNoiseFlicker<RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,200>,RandomPerLEDFlicker<Mix<Int<3137>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>>>,TrFade<400>>,EFFECT_IGNITION>;
+using Ignition_White_Flicker_Half = TransitionEffectL<TrConcat<TrInstant,AlphaL<AudioFlickerL<RgbArg<IGNITION_COLOR_ARG,White>>,SmoothStep<Int<12000>,Int<-45000>>>,TrFade<1000>>,EFFECT_IGNITION>;
+using Ignition_Red_Unstable = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<5>>,TrInstant>,Stripes<3000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,RandomPerLEDFlicker<Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Black>,BrownNoiseFlicker<RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,200>,RandomPerLEDFlicker<Mix<Int<3137>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<255,155,155>>>>>,TrFade<300>>,EFFECT_IGNITION>;
 using Ignition_Blue_Stripe = TransitionEffectL<TrConcat<TrJoin<TrDelayX<IgnitionTime<250>>,TrInstant>,Stripes<7000,-3500,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>,Mix<Int<7710>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>,Mix<Int<3855>,Black,RgbArg<IGNITION_COLOR_ARG,Rgb<10,52,255>>>>,TrFade<400>>,EFFECT_IGNITION>;
 using Ignition_Rey_TROS = TransitionEffectL<TrConcat<TrJoin<TrDelay<200>,TrInstant>,AlphaL<Green,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<300>,AlphaL<Blue,SmoothStep<IntArg<EMITTER_SIZE_ARG,2000>,Int<-500>>>,TrFade<400>>,EFFECT_IGNITION>;
 
@@ -162,8 +162,18 @@ using Swing_Stripes_WhiteBlue = AlphaL<Stripes<5000,-5000,HumpFlicker<Rgb<0,0,10
 //Misc transitions
 using Misc_WipeRandom_Blue = TransitionLoopL<TrConcat<TrDelayX<Scale<SlowNoise<Int<1000>>,Int<300>,Int<3000>>>,AlphaL<RgbArg<EMITTER_COLOR_ARG,Cyan>,Int<0>>,TrSparkX<RgbArg<EMITTER_COLOR_ARG,Cyan>,Scale<NoisySoundLevel,Int<200>,Int<600>>,Int<250>,Int<0>>>>;
 using Force_Flicker = TransitionEffectL<TrConcat<TrSmoothFadeX<Percentage<WavLen<EFFECT_FORCE>,20>>,Strobe<Black,Rgb<60,20,0>,30,30>,TrFadeX<Percentage<WavLen<EFFECT_FORCE>,60>>,StaticFire<DarkOrange,Strobe<Black,Cyan,30,30>,0,3,300>,TrFadeX<Percentage<WavLen<EFFECT_FORCE>,20>>>,EFFECT_FORCE>;
+using Force_Menorah = Layers<
+  Mix<LinearSectionF<Int<16384>,Int<2400>>,Remap<CenterDistF<>,Rgb<0,0,100>>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<8>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<3000>,Int<1600>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<7>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<6000>,Int<1600>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<6>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<9000>,Int<1600>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<5>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<12000>,Int<1600>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<4>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<20768>,Int<1600>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<3>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<23768>,Int<1600>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<2>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<26768>,Int<1600>>>,
+  AlphaL<ColorSelect<Scale<IsLessThan<IncrementWithReset<EffectPulseF<EFFECT_FORCE>,EffectPulseF<EFFECT_NEWFONT>,Int<9>>,Int<1>>,Int<1>,Int<0>>,TrFade<400>,Rgb<100,100,150>,RandomFlicker<Mix<Int<12000>,Black,RgbArg<ALT_COLOR_ARG,Orange>>,RgbArg<ALT_COLOR_ARG,Orange>>>,LinearSectionF<Int<29768>,Int<1600>>>>;
 
-// Neo Switch RGB (Sabertrio Power Core)
+  // Neo Switch RGB (Sabertrio Power Core)
 using Switch_Red = Red;
 using Switch_Green = Green;
 using Switch_Blue = Blue;
@@ -223,6 +233,10 @@ using Style_PhenomChristmas = Layers<
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*===============================*/
 
+using Style_Menorah = Layers<
+  Force_Menorah,
+  InOutTrL<TrWipeX<IgnitionTime<300>>,TrWipeX<RetractionTime<300>>,Black>,
+  AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 /*============================*/
 /*==== Style_Rainbow_Fire ====*/
@@ -1043,10 +1057,6 @@ Preset blade[] = {
   // ##          MOUNTAIN SABERS          ##
   // #######################################
 
-  // The Beginner (free)
-  // { "MSTheBeginner;common", "tracks/sw.wav",
-  // StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "ms thebeginner"},
-
   // Double Agent Pong Krell (paid)
   { "MS-PongKrell;common", "tracks/swrebelstheme.wav",
   StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_Green>(), "ms doubleagent"},
@@ -1055,9 +1065,14 @@ Preset blade[] = {
   { "MS-StarTrekWhaleProbe;common", "tracks/STT.wav",
   StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "ms st whale"},
 
+  // The Beginner (free)
+  // { "MSTheBeginner;common", "tracks/sw.wav",
+  // StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "ms thebeginner"},
+
   // Daft Punk Tribute
   // { "MSDaftPunk;common", "tracks/daftpunkaround.wav",
   // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "ms daftpunk"},
+
 
   // #######################################
   // ##               CFX                 ##
@@ -1096,12 +1111,12 @@ Preset blade[] = {
   // { "Reddit-ARCANE;common", "tracks/track1.wav",
   // StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Red>(), "reddit arcane"},
 
+  // { "Reddit-Ronin;common", "tracks/track1.wav", //Not a jedi
+  // StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "reddit ronin"},
+
   // Palpatine
   { "Reddit-SenateMajority;common", "tracks/palpatheme.wav",
   StylePtr<Style_PhenomTragedySenate>(), StylePtr<Switch_Red>(), "reddit senatemajority"},
-
-  // { "Reddit-Ronin;common", "tracks/track1.wav", //Not a jedi
-  // StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "reddit ronin"},
 
   // Portal game
   { "Reddit-Portal;common", "tracks/stillalive.wav",
@@ -1129,8 +1144,8 @@ Preset blade[] = {
   StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
 
   // Jaydalorian Christmas (free)
-  { "JD-Christmas;common", "tracks/christmas.wav",
-  StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
+  // { "JD-Christmas;common", "tracks/christmas.wav",
+  // StylePtr<Style_Menorah>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
 
   // Jaydalorian New years (free)
   { "JD-Newyears;common", "tracks/newyearcantina.wav",
