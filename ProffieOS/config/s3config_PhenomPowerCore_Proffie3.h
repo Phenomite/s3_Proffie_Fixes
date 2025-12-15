@@ -72,6 +72,20 @@ Preset blade[] = {
   // ##           CANON DEFAULT           ##
   // #######################################
 
+  // Testing
+  { "Ksith-HIGHGROUND;common","tracks/track1.wav",
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test1"},
+  { "Ksith-SPECTRE;common","tracks/track1.wav",
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test2"},
+  { "SS-ARTALUS;common","tracks/track1.wav",
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test3"},
+  { "SS-RECONCILE;common","tracks/track1.wav",
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test4"},
+  { "SS-RUIN;common","tracks/track1.wav",
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test5"},
+  // end testing
+
+
   { "Ksith-ECHOES;common","tracks/track1.wav",
   StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},
 
@@ -138,9 +152,9 @@ Preset blade[] = {
   // #######################################
 
   // Kylo - The Force Awakens (Kyberphonic Unstable v3 - paid)
-  { "TLJ;common", "tracks/reyvkylo.wav",
+  { "KP-KyloTLJ;common", "tracks/reyvkylo.wav",
   StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TLJ"},
-  { "TFA;common", "tracks/reyvkylo.wav",
+  { "KP-KyloTFA;common", "tracks/reyvkylo.wav",
   StylePtr<Style_UnstableUnleashed>(), StylePtr<Switch_Red>(), "kylo TFA"},
 
   // Ahsoka Season 1 (Baylan Skoll) (paid)
@@ -149,7 +163,7 @@ Preset blade[] = {
 
   // Son of Corellia (paid)
   { "KP-SonOfCorellia;common", "tracks/tfa.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "sonofcorellia"},
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "son of corellia"},
 
   // Ahsoka Season 1 - Ahsoka white (paid)
   { "KP-TheSorcererV2;common", "tracks/ahsokatheme.wav",
