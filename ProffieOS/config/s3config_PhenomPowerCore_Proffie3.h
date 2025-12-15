@@ -45,7 +45,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #define FETT263_DISABLE_MULTI_BLAST
 #define FETT263_DISABLE_MULTI_BLAST_TOGGLE
 //Save space
-#define DISABLE_DIAGNOSTIC_COMMANDS
+//#define DISABLE_DIAGNOSTIC_COMMANDS
 #define DISABLE_BASIC_PARSER_STYLES
 #define DISABLE_TALKIE
 #endif
@@ -72,19 +72,8 @@ Preset blade[] = {
   // ##           CANON DEFAULT           ##
   // #######################################
 
-  // Testing
   { "Ksith-HIGHGROUND;common","tracks/track1.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test1"},
-  { "Ksith-SPECTRE;common","tracks/track1.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test2"},
-  { "SS-ARTALUS;common","tracks/track1.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test3"},
-  { "SS-RECONCILE;common","tracks/track1.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test4"},
-  { "SS-RUIN;common","tracks/track1.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "test5"},
-  // end testing
-
+  StylePtr<Style_Menorah>(), StylePtr<Switch_Blue>(), "menorah kenobi"},
 
   { "Ksith-ECHOES;common","tracks/track1.wav",
   StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},
@@ -195,7 +184,7 @@ Preset blade[] = {
 
 
   // ################################################
-  // ##   github Ferase JediSurvivor-Soundfonts    ##
+  // ##   github/Ferase/JediSurvivor-Soundfonts    ##
   // ################################################
 
   // Jedi Survivor - Bode
