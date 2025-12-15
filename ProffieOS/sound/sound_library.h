@@ -271,7 +271,9 @@ public:
   void SayGestureMenu() { Play("mgestsub.wav"); }
   void SaySettingsMenu() { Play("msetsub.wav"); }
   void SayStyleSettings() { Play("stylstm.wav"); }
-  void SayCrystalPulse() {Play("mpulsingcrystal.wav"); } // Crystal Pulsing Menu
+  void SayAccentsMenu() {Play("maccentsmenu.wav"); }
+  void SayCrystalPulse() {Play("mpulsingcrystal.wav"); }
+  void SayBarGraph() {Play("mbargraph.wav"); }
 
 #ifdef SAY_COLOR_LIST
   void SayColor(ColorNumber n) {

@@ -3,7 +3,7 @@
 #include "proffieboard_v3_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
-const unsigned int maxLedsPerStrip = 150;
+const unsigned int maxLedsPerStrip = 155;
 const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch time
 #define VOLUME 2550
 #define BOOT_VOLUME 250 //Low volume after upload
@@ -17,6 +17,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 // #define ENABLE_SSD1306
 // #define OLED_FLIP_180
 #define NO_REPEAT_RANDOM
+#define KILL_OLD_PLAYERS
 #define FILTER_CUTOFF_FREQUENCY 100
 #define FILTER_ORDER 8
 #define MOTION_TIMEOUT 60 * 1 * 1000 // 1 min
@@ -47,7 +48,6 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #define DISABLE_DIAGNOSTIC_COMMANDS
 #define DISABLE_BASIC_PARSER_STYLES
 #define DISABLE_TALKIE
-#define KILL_OLD_PLAYERS
 #endif
 
 #ifdef CONFIG_PROP
@@ -406,8 +406,9 @@ Preset blade[] = {
 
 BladeConfig blades[] = {
   { 0,
-    WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
-    WS281XBladePtr<1, blade4Pin, Color8::GRB, PowerPINS<bladePowerPin1> >(),
+    WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(), //Main
+    //SubBlade(0,0, NULL), // Crystal
+    WS281XBladePtr<1, blade2Pin, Color8::GRB, PowerPINS<bladePowerPin4, bladePowerPin5, bladePowerPin1> >(), //Switch
     CONFIGARRAY(blade)
   },
 };
