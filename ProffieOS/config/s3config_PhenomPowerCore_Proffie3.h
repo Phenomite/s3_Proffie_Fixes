@@ -1,6 +1,6 @@
 // ProffieOS7 Config File
 #ifdef CONFIG_TOP
-#include "proffieboard_v2_config.h"
+#include "proffieboard_v3_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
 const unsigned int maxLedsPerStrip = 150;
@@ -21,10 +21,11 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #define FILTER_ORDER 8
 #define MOTION_TIMEOUT 60 * 1 * 1000 // 1 min
 #define IDLE_OFF_TIME 60 * 1 * 1000 // 1 min
-#define BLADE_DETECT_PIN 17
+#define BLADE_DETECT_PIN 6
 #define SAVE_PRESET
 #define COLOR_CHANGE_DIRECT
 #define ENABLE_ALL_EDIT_OPTIONS
+#define ENABLE_SERIAL //BLE
 #define FETT263_EDIT_SETTINGS_MENU
 #define FETT263_ENABLE_SPIN_MODE
 #define FETT263_DISABLE_CHANGE_STYLE
