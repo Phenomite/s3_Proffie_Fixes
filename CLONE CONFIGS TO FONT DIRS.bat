@@ -1,4 +1,3 @@
-REM @echo off
 setlocal EnableDelayedExpansion
 set "configFile=config.ini"
 set "smoothswFile=smoothsw.ini"
@@ -7,8 +6,10 @@ set "depthLevel=1"
 
 :CopyFilesAtDepth
 for /d %%F in ("%destinationDirectory%\*") do (
-    echo "%%F"
-    copy "%configFile%" "%%F\"
-    copy "%smoothswFile%" "%%F\"
+    if /i not "%%~nxF"=="common" if /i not "%%~nxF"=="tracks" (
+        echo "%%F"
+        copy "%configFile%" "%%F\"
+        copy "%smoothswFile%" "%%F\"
+    )
 )
 pause

@@ -8,7 +8,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #define VOLUME 2550
 #define BOOT_VOLUME 250 //Low volume after upload
 #define CLASH_THRESHOLD_G 1.25
-#define FETT263_SWING_ON_SPEED 300
+#define FETT263_SWING_ON_SPEED 320
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
 #define ENABLE_AUDIO
 #define ENABLE_MOTION
@@ -59,6 +59,7 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 #ifdef CONFIG_PRESETS
 #include "all_styles.h"
 
+
 /*--------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------*/
 /*---------------------------------ENABLED FONTS----------------------------------*/
@@ -72,8 +73,8 @@ Preset blade[] = {
   // ##           CANON DEFAULT           ##
   // #######################################
 
-  { "Ksith-HIGHGROUND;common","tracks/track1.wav",
-  StylePtr<Style_Menorah>(), StylePtr<Switch_Blue>(), "menorah kenobi"},
+  // { "Ksith-HIGHGROUND;common","tracks/track1.wav",
+  // StylePtr<Style_Menorah>(), StylePtr<Switch_Blue>(), "menorah kenobi"},
 
   { "Ksith-ECHOES;common","tracks/track1.wav",
   StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},

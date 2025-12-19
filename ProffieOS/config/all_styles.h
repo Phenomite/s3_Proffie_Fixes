@@ -172,12 +172,14 @@ using Style_PhenomChristmas = Layers<
   InOutTrL<TrWipeSparkTipX<RgbArg<IGNITION_COLOR_ARG,Rgb<255,255,255>>,IgnitionTime<300>>,TrWipeX<RetractionTime<2750>>,Black>,
   TransitionEffectL<TrConcat<TrWaveX<RotateColorsX<Variation,Blue>,Int<200>,Int<300>,Int<200>,Int<0>>,Mix<SmoothStep<Int<27500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,DodgerBlue,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<175>,Int<300>,Int<175>,Int<0>>,Mix<SmoothStep<Int<22000>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,DodgerBlue,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<150>,Int<300>,Int<150>,Int<0>>,Mix<SmoothStep<Int<16500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,Red,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<150>,Int<300>,Int<150>,Int<0>>,Mix<SmoothStep<Int<11000>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<DeepSkyBlue,Blue,200>>>,TrWaveX<RotateColorsX<Variation,Blue>,Int<100>,Int<300>,Int<100>,Int<0>>,Mix<SmoothStep<Int<5500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,DodgerBlue,200>>>,TrDelay<100>,Mix<SmoothStep<Int<5500>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,Red,200>>>,TrWipe<100>,Mix<SmoothStep<Int<0>,Int<2000>>,Black,RotateColorsX<Variation,HumpFlicker<Blue,Rgb<60,15,0>,200>>>,TrFade<100>,White,TrInstant>,EFFECT_PREON>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
+
+
+// using Style_Menorah = Layers<
+//   Force_Menorah,
+//   InOutTrL<TrWipeX<IgnitionTime<300>>,TrWipeX<RetractionTime<300>>,Black>,
+//   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*===============================*/
 
-using Style_Menorah = Layers<
-  Force_Menorah,
-  InOutTrL<TrWipeX<IgnitionTime<300>>,TrWipeX<RetractionTime<300>>,Black>,
-  AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 /*============================*/
 /*==== Style_Rainbow_Fire ====*/
@@ -761,4 +763,3 @@ using Style_DarkBloodOrangeHumpFlicker = Layers<
   Stab_White,
   InOutTrL<TrWipeSparkTipX<Rgb<255,28,0>,IgnitionTime<325>,Int<500>>,TrWipeInSparkTipX<Rgb<255,28,0>,RetractionTime<650>,Int<1000>>,Black>,
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
-
