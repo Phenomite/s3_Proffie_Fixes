@@ -3,8 +3,8 @@
 #include "proffieboard_v2_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
-const unsigned int maxLedsPerStrip = 155;
-const unsigned int currentLedsInStrip = 114;
+const unsigned int maxLedsPerStrip = 144;
+const unsigned int currentLedsInStrip = 34;
 #define VOLUME 1750
 #define BOOT_VOLUME 250
 #define CLASH_THRESHOLD_G 1.25
@@ -370,8 +370,8 @@ Preset blade[] = {
   // #######################################
 
   // Meatynubs Christmas V2 10/16/22
-  { "Meaty-Christmas;common", "tracks/christmas_sesame1.wav",
-  StylePtr<Style_PhenomChristmas>(), StylePtr<WHITE>(), "meaty christ"},
+  // { "Meaty-Christmas;common", "tracks/christmas_sesame1.wav",
+  // StylePtr<Style_PhenomChristmas>(), StylePtr<WHITE>(), "meaty christ"},
 
   // MOUNTAIN SABERS Ball Drop - New Years (paid)
   { "MS-BallDrop;common", "tracks/newyearcantina.wav",
@@ -389,7 +389,7 @@ Preset blade[] = {
 
 BladeConfig blades[] = {
   { 0,
-    WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
+    WS281XBladePtr<maxLedsPerStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
     SimpleBladePtr<CreeXPE2WhiteTemplate<550>, NoLED, NoLED, NoLED, bladePowerPin1, -1, -1, -1>(),
     CONFIGARRAY(blade)
   },

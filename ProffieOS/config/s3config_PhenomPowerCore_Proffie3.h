@@ -73,8 +73,8 @@ Preset blade[] = {
   // ##           CANON DEFAULT           ##
   // #######################################
 
-  // { "Ksith-HIGHGROUND;common","tracks/track1.wav",
-  // StylePtr<Style_Menorah>(), StylePtr<Switch_Blue>(), "menorah kenobi"},
+  { "Ksith-HIGHGROUND;common","tracks/track1.wav",
+  StylePtr<Style_Menorah>(), StylePtr<Switch_Blue>(), "menorah kenobi"},
 
   { "Ksith-ECHOES;common","tracks/track1.wav",
   StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},

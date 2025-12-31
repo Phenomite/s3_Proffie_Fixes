@@ -174,10 +174,10 @@ using Style_PhenomChristmas = Layers<
   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 
 
-// using Style_Menorah = Layers<
-//   Force_Menorah,
-//   InOutTrL<TrWipeX<IgnitionTime<300>>,TrWipeX<RetractionTime<300>>,Black>,
-//   AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
+using Style_Menorah = Layers<
+  Force_Menorah,
+  InOutTrL<TrWipeX<IgnitionTime<300>>,TrWipeX<RetractionTime<300>>,Black>,
+  AllStyles_BatteryLevel, AllStyles_SaberTrioSoundLevel>;
 /*===============================*/
 
 

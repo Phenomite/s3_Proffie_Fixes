@@ -25,3 +25,7 @@ Open ProffieOS folder in Arduino, plug in Proffie board, select the COM port and
 ### Scripts
 
 * CLONE.bat - used to copy smoothsw and config INI's into every subfolder of "SD CARD". If you add new fonts you can run the bat to sync the configs to those folders before copying to the SD card.
+
+### Error codes
+
+<https://www.youtube.com/watch?v=bVPDhBp1l9c>
