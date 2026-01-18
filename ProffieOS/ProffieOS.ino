@@ -17,13 +17,14 @@
 |  Add the slashes to any that you are not using.                   |
 \*-----------------------------------------------------------------*/
 
-////////////////////////////////////////////////////
-// SABERTRIOS - uncomment which board for upload! //
-////////////////////////////////////////////////////
+/*------------------------------------------------*\
+|  SABERTRIOS - uncomment which board for upload!  |
+\*------------------------------------------------*/
 
-#define CONFIG_FILE "config/s3config_Legacy.h" // phenom Legacy (the hardwired ones)
-//#define CONFIG_FILE "config/s3config_PhenomPowerCore.h" // Phenom P2Powercore
-//#define CONFIG_FILE "config/s3config_PhenomPowerCore_Proffie3.h" // Phenom P3Powercore
+//#define CONFIG_FILE "config/s3config_PhenomLegacy_Proffie2.h" // P2 Legacy (hardwired ones)
+#define CONFIG_FILE "config/s3config_PhenomPowerCore_Proffie2.h" // P2 Powercore
+//#define CONFIG_FILE "config/s3config_PhenomPowerCore_Proffie3.h" // P3 Powercore
+
 
 //#define CONFIG_FILE "config/s3config_Default_Solarien_Proffie2.h" // P2Powercore default Solarian config
 //#define CONFIG_FILE "config/s3config_Default_Solarien_Proffie3.h" // P3Powercore default Solarian config

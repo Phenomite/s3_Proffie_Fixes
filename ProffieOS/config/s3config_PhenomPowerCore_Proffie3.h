@@ -3,10 +3,10 @@
 #include "proffieboard_v3_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
-const unsigned int maxLedsPerStrip = 155;
+const unsigned int maxLedsPerStrip = 150;
 const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch time
 #define VOLUME 2550
-#define BOOT_VOLUME 250 //Low volume after upload
+#define BOOT_VOLUME 300 //Low volume after upload
 #define CLASH_THRESHOLD_G 1.25
 #define FETT263_SWING_ON_SPEED 320
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
@@ -17,22 +17,21 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 // #define ENABLE_SSD1306
 // #define OLED_FLIP_180
 #define NO_REPEAT_RANDOM
-#define KILL_OLD_PLAYERS
 #define FILTER_CUTOFF_FREQUENCY 100
 #define FILTER_ORDER 8
 #define MOTION_TIMEOUT 60 * 1 * 1000 // 1 min
 #define IDLE_OFF_TIME 60 * 1 * 1000 // 1 min
 #define BLADE_DETECT_PIN 6
-#define SAVE_PRESET
+#define SAVE_STATE
 #define COLOR_CHANGE_DIRECT
 #define ENABLE_ALL_EDIT_OPTIONS
-#define ENABLE_SERIAL //BLE
+//#define ENABLE_SERIAL //BLE
 #define FETT263_EDIT_SETTINGS_MENU
 #define FETT263_ENABLE_SPIN_MODE
 #define FETT263_DISABLE_CHANGE_STYLE
 #define FETT263_DISABLE_COPY_PRESET
 #define FETT263_DISABLE_CHANGE_FONT
-#define FETT263_LOCKUP_DELAY 200
+#define FETT263_LOCKUP_DELAY 100
 #define FETT263_BM_CLASH_DETECT 8
 #define FETT263_FORCE_PUSH
 //#define FETT263_TWIST_ON
@@ -47,7 +46,8 @@ const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch ti
 //Save space
 //#define DISABLE_DIAGNOSTIC_COMMANDS
 #define DISABLE_BASIC_PARSER_STYLES
-#define DISABLE_TALKIE
+//#define DISABLE_TALKIE
+#define KILL_OLD_PLAYERS
 #endif
 
 #ifdef CONFIG_PROP
@@ -73,8 +73,8 @@ Preset blade[] = {
   // ##           CANON DEFAULT           ##
   // #######################################
 
-  { "Ksith-HIGHGROUND;common","tracks/track1.wav",
-  StylePtr<Style_Menorah>(), StylePtr<Switch_Blue>(), "menorah kenobi"},
+  // { "Ksith-HIGHGROUND;common","tracks/track1.wav",
+  // StylePtr<Style_Menorah>(), StylePtr<Switch_Blue>(), "menorah kenobi"},
 
   { "Ksith-ECHOES;common","tracks/track1.wav",
   StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},
@@ -376,27 +376,27 @@ Preset blade[] = {
   // #######################################
 
   // Meatynubs Christmas V2 10/16/22
-  { "Meaty-Christmas;common", "tracks/christmas_sesame1.wav",
-  StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "meaty christ"},
+  // { "Meaty-Christmas;common", "tracks/christmas_sesame1.wav",
+  // StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "meaty christ"},
 
   // MOUNTAIN SABERS Ball Drop - New Years (paid)
-  { "MS-BallDrop;common", "tracks/newyearcantina.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
+  // { "MS-BallDrop;common", "tracks/newyearcantina.wav",
+  // StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
 
   // Jaydalorian Christmas (free)
   // { "JD-Christmas;common", "tracks/christmas.wav",
   // StylePtr<Style_Menorah>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
 
   // Jaydalorian New years (free)
-  { "JD-Newyears;common", "tracks/newyearcantina.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "jd newyear"},
+  // { "JD-Newyears;common", "tracks/newyearcantina.wav",
+  // StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "jd newyear"},
 
 
 };
 
 BladeConfig blades[] = {
   { 0,
-    WS281XBladePtr<currentLedsInStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(), //Main
+    WS281XBladePtr<maxLedsPerStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(), //Main
     //SubBlade(0,0, NULL), // Crystal
     WS281XBladePtr<1, blade2Pin, Color8::GRB, PowerPINS<bladePowerPin4, bladePowerPin5, bladePowerPin1> >(), //Switch
     CONFIGARRAY(blade)

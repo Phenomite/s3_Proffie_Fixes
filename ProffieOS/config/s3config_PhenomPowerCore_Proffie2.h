@@ -3,24 +3,26 @@
 #include "proffieboard_v2_config.h"
 #define NUM_BLADES 2
 #define NUM_BUTTONS 2
-const unsigned int maxLedsPerStrip = 144;
-const unsigned int currentLedsInStrip = 34;
-#define VOLUME 1750
-#define BOOT_VOLUME 250
+const unsigned int maxLedsPerStrip = 150;
+const unsigned int currentLedsInStrip = 114; //32 inch blade at arduino patch time
+#define VOLUME 2550
+#define BOOT_VOLUME 300 //Low volume after upload
 #define CLASH_THRESHOLD_G 1.25
-#define FETT263_SWING_ON_SPEED 320
+#define FETT263_SWING_ON_SPEED 300
 #define AUDIO_CLASH_SUPPRESSION_LEVEL 5
 #define ENABLE_AUDIO
 #define ENABLE_MOTION
 #define ENABLE_WS2811
 #define ENABLE_SD
+// #define ENABLE_SSD1306
+// #define OLED_FLIP_180
 #define NO_REPEAT_RANDOM
 #define FILTER_CUTOFF_FREQUENCY 100
 #define FILTER_ORDER 8
-#define MOTION_TIMEOUT 60 * 1 * 1000
-#define IDLE_OFF_TIME 60 * 1 * 1000
+#define MOTION_TIMEOUT 60 * 1 * 1000 // 1 min
+#define IDLE_OFF_TIME 60 * 1 * 1000 // 1 min
 #define BLADE_DETECT_PIN 17
-#define SAVE_PRESET
+#define SAVE_STATE
 #define COLOR_CHANGE_DIRECT
 #define ENABLE_ALL_EDIT_OPTIONS
 #define FETT263_EDIT_SETTINGS_MENU
@@ -56,7 +58,6 @@ const unsigned int currentLedsInStrip = 34;
 #ifdef CONFIG_PRESETS
 #include "all_styles.h"
 
-
 /*--------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------*/
 /*---------------------------------ENABLED FONTS----------------------------------*/
@@ -71,40 +72,40 @@ Preset blade[] = {
   // #######################################
 
   { "Ksith-ECHOES;common","tracks/track1.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<WHITE>(), "anakin ahsoka"},
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "anakin ahsoka"},
 
   { "KP-Ezra-Stdv2;common", "tracks/swrebelstheme.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<WHITE>(), "staple sword std"},
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "staple sword std"},
 
   { "KP-Ezra-Trainingv2;common", "tracks/swrebelstheme.wav",
-  StylePtr<Style_BlueHumpFlicker>(), StylePtr<WHITE>(), "staple sword training"},
+  StylePtr<Style_BlueHumpFlicker>(), StylePtr<Switch_Blue>(), "staple sword training"},
 
   { "KSith-GRANDHUNTER;common", "tracks/combat1.wav",
-  StylePtr<Style_RedAngryAudio>(), StylePtr<WHITE>(), "ks grandhunter"},
+  StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "ks grandhunter"},
 
   { "Ksith-DARKSABERMANDO;common","tracks/track1.wav",
-  StylePtr<Style_DarksaberLive>(), StylePtr<WHITE>(), "mando darksaber"},
+  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "mando darksaber"},
 
   { "Ksith-GRANDMASTER;common", "tracks/track1.wav",
-  StylePtr<Style_GreenHumpFlicker>(), StylePtr<WHITE>(), "yoda bootup"},
+  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "yoda bootup"},
 
   { "Ksith-COUNT;common","tracks/track1.wav",
-  StylePtr<Style_RedHumpFlicker>(), StylePtr<WHITE>(), "count dooku"},
+  StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "count dooku"},
 
   { "Ksith-MACE;common","tracks/track1.wav",
-  StylePtr<Style_PurpleHumpFlicker>(), StylePtr<WHITE>(), "mace windu"},
+  StylePtr<Style_PurpleHumpFlicker>(), StylePtr<Switch_Magenta>(), "mace windu"},
 
   { "Ksith-THEBALANCE;common","tracks/track1.wav",
-  StylePtr<Style_GreenHumpFlicker>(), StylePtr<WHITE>(), "the balance"},
+  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "the balance"},
 
   { "KP-SHOCKBATON;common", "tracks/track1.wav",
-  StylePtr<Style_PhenomElectroStaff>(), StylePtr<WHITE>(), "shockbaton"},
+  StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "shockbaton"},
 
   { "Ksith-DESTINY;common","tracks/track1.wav",
-  StylePtr<Style_YellowHumpFlicker>(), StylePtr<WHITE>(), "rey tros"},
+  StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "rey tros"},
 
   { "Starfall-HIGHREPUBLIC;common", "tracks/track1.wav",
-  StylePtr<Style_YellowHumpFlicker>(), StylePtr<WHITE>(), "high republic"},
+  StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "high republic"},
 
 
   // #######################################
@@ -112,23 +113,23 @@ Preset blade[] = {
   // #######################################
 
   { "Ksith-ROGUE;common","tracks/track1.wav",
-  StylePtr<Style_PhenomSparkleOff>(), StylePtr<WHITE>(), "killer of stars"},
+  StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Orange>(), "killer of stars"},
 
   // Rogue One Vader Ending
   { "KSith-ROGUEVADER;common", "tracks/hallway.wav",
-  StylePtr<Style_RedHumpFlicker>(), StylePtr<WHITE>(), "ks roguevader"},
+  StylePtr<Style_RedHumpFlicker>(), StylePtr<Switch_Red>(), "ks roguevader"},
 
   // Obi-Wan S1 Vader Finale
   { "KSith-WHATREMAINS;common", "tracks/vaderobi_dialogue.wav",
-  StylePtr<Style_RedAngryAudio>(), StylePtr<WHITE>(), "ks obivader"},
+  StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "ks obivader"},
 
   // The Tales S1 - Ahsoka vs Inquisitor
   { "KSith-GHOST;common", "tracks/combat1.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "ks ghost"},
+  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "ks ghost"},
 
   // Ahsoka S1 Shin Hati
   { "KSith-HATI;common", "tracks/woodsfight.wav",
-  StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<WHITE>(), "ks hati"},
+  StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "ks hati"},
 
 
   // #######################################
@@ -136,75 +137,75 @@ Preset blade[] = {
   // #######################################
 
   // Kylo - The Force Awakens (Kyberphonic Unstable v3 - paid)
-  { "KP-KyloTLJ;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "kylo TLJ"},
-  { "KP-KyloTFA;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_UnstableUnleashed>(), StylePtr<WHITE>(), "kylo TFA"},
+  { "TLJ;common", "tracks/reyvkylo.wav",
+  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "kylo TLJ"},
+  { "TFA;common", "tracks/reyvkylo.wav",
+  StylePtr<Style_UnstableUnleashed>(), StylePtr<Switch_Red>(), "kylo TFA"},
 
   // Ahsoka Season 1 (Baylan Skoll) (paid)
   // { "KP-SunSkoll;common", "tracks/ahsokatheme.wav",
-  // StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<WHITE>(), "kpsunskoll"},
+  // StylePtr<Style_DarkBloodOrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "kpsunskoll"},
 
   // Son of Corellia (paid)
   { "KP-SonOfCorellia;common", "tracks/tfa.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<WHITE>(), "son of corellia"},
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "sonofcorellia"},
 
   // Ahsoka Season 1 - Ahsoka white (paid)
   { "KP-TheSorcererV2;common", "tracks/ahsokatheme.wav",
-  StylePtr<Style_DarksaberLive>(), StylePtr<WHITE>(), "kp sorcerer v2"},
+  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "kp sorcerer v2"},
 
   // Dark saber (Mando live action show)
   // { "KP-DarkV3;common", "tracks/mandotheme.wav",
-  // StylePtr<Style_DarksaberLive>(), StylePtr<WHITE>(), "dark saber"},
+  // StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "dark saber"},
 
   // TFA Graflex v2 (paid)
   { "KP-TFAStarkiller;common", "tracks/reyvkylo.wav",
-  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<WHITE>(), "tfa starkill"},
+  StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "tfa starkill"},
 
   // TLJ Praetorian Guards
   // { "KPBilariWhip;common", "tracks/reyvkylo.wav",
-  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<WHITE>(), "tfa bilari"},
+  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "tfa bilari"},
 
   // TLJ Praetorian Guards
   // { "KPVibroArbir;common", "tracks/reyvkylo.wav",
-  // StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "tfa arbir"},
+  // StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "tfa arbir"},
 
   // Adam Project movie MagCyl
   // { "KPAdamProjectMagCyl;common", "tracks/track_16.wav",
-  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<WHITE>(), "magcyl"},
+  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "magcyl"},
 
   // TFM - F1 Racer (paid)
   // { "KP-PodRacer;common", "tracks/track_13.wav",
-  // StylePtr<Style_EnginesBurn>(), StylePtr<WHITE>(), "podracer"},
+  // StylePtr<Style_EnginesBurn>(), StylePtr<Switch_Yellow>(), "podracer"},
 
 
   // ################################################
-  // ##   github/Ferase/JediSurvivor-Soundfonts    ##
+  // ##   github Ferase JediSurvivor-Soundfonts    ##
   // ################################################
 
   // Jedi Survivor - Bode
   // { "SWJS-BodeAkuna;common", "tracks/hallway.wav",
-  // StylePtr<Style_RedAngryAudio>(), StylePtr<WHITE>(), "swjs bodeakuna"},
+  // StylePtr<Style_RedAngryAudio>(), StylePtr<Switch_Red>(), "swjs bodeakuna"},
 
   // Jedi Survivor - Cal Kestis Green
   { "SWJS-CalGreen;common", "tracks/hallway.wav",
-  StylePtr<Style_GreenHumpFlicker>(), StylePtr<WHITE>(), "swjs calgreen"},
+  StylePtr<Style_GreenHumpFlicker>(), StylePtr<Switch_Green>(), "swjs calgreen"},
 
   // Jedi Survivor - Cal Kestis Yellow
   { "SWJS-CalYellow;common", "tracks/hallway.wav",
-  StylePtr<Style_YellowHumpFlicker>(), StylePtr<WHITE>(), "swjs calyellow"},
+  StylePtr<Style_YellowHumpFlicker>(), StylePtr<Switch_Yellow>(), "swjs calyellow"},
 
   // Jedi Survivor - Dagan Gera Light
   { "SWJS-DaganLight;common", "tracks/hallway.wav",
-  StylePtr<Style_OrangeHumpFlicker>(), StylePtr<WHITE>(), "swjs dagan lite"},
+  StylePtr<Style_OrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "swjs dagan lite"},
 
   // Jedi Survivor - Rick the Door Technician
   { "SWJS-Rick;common", "tracks/hallway.wav",
-  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<WHITE>(), "swjs rick"},
+  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "swjs rick"},
 
   // Jedi Survivor - Ninth Sister
   { "SWJS-NinthSister;common", "tracks/hallway.wav",
-  StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "swjs ninth"},
+  StylePtr<Style_UnstableRage>(), StylePtr<Switch_Red>(), "swjs ninth"},
 
 
   // #######################################
@@ -213,23 +214,23 @@ Preset blade[] = {
 
   // Greyscale - Binary Dark (paid)
   { "GS-BinaryDark;common", "tracks/track1.wav",
-  StylePtr<GreyscaleBinaryDark>(), StylePtr<WHITE>(), "gs bd"},
+  StylePtr<GreyscaleBinaryDark>(), StylePtr<Switch_Red>(), "gs bd"},
 
   // Greyscale - Endure (paid)
   { "GS-Endure;common", "tracks/track1.wav",
-  StylePtr<GreyscaleEndureRageCustom>(), StylePtr<WHITE>(), "gs endure"},
+  StylePtr<GreyscaleEndureRageCustom>(), StylePtr<Switch_Red>(), "gs endure"},
 
   // Greyscale - Stitched (free)
   { "GS-Stitched;common", "tracks/track1.wav",
-  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<WHITE>(), "gs stitched"},
+  StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_Red>(), "gs stitched"},
 
   // Greyscale - Crispity (free)
   { "GS-Crispity;common", "tracks/track1.wav",
-  StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<WHITE>(), "gs crispy"},
+  StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_Green>(), "gs crispy"},
 
   // Greyscale - Mercenary (free)
   { "GS-Mercenary;common", "tracks/track1.wav",
-  StylePtr<Style_GreenSwingOrange>(), StylePtr<WHITE>(), "gs mercenary"},
+  StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Orange>(), "gs mercenary"},
 
 
   // ####################################
@@ -238,23 +239,23 @@ Preset blade[] = {
 
   // BlueMamba (Etsy) - DC Deathstroke (authored with Semz Nerd)
   { "BM-Mercenary;common", "tracks/hallway.wav",
-  StylePtr<Style_DarksaberLive>(), StylePtr<WHITE>(), "bm merc"},
+  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "bm merc"},
 
   // Syndicate Custom Relics - Retribution (electroblade)
   // { "SCRRetribution;common", "tracks/combat1.wav",
-  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<WHITE>(), "scr retrib"},
+  // StylePtr<Style_Bilari_ElectroChain>(), StylePtr<Switch_White>(), "scr retrib"},
 
   // Mongo https://www.youtube.com/watch?v=TieX5N51b5I
   { "Mongo-DuneV2;common", "tracks/dune.wav",
-  StylePtr<Style_PhenomElectroStaff>(), StylePtr<WHITE>(), "mongo dune"},
+  StylePtr<Style_PhenomElectroStaff>(), StylePtr<Switch_White>(), "mongo dune"},
 
   // Cosmic Ape - Dreamhunter (paid)
   // { "CADreamhunter;common", "tracks/track1.wav",
-  // StylePtr<Style_GreenSwingOrange>(), StylePtr<WHITE>(), "ca dh"},
+  // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Green>(), "ca dh"},
 
   // Epiphany - Epic (MUSIC BASED)
   { "Epiphany-EpicMusic;common", "tracks/track1.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<WHITE>(), "music epic"},
+  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "music epic"},
 
 
   // #######################################
@@ -263,15 +264,15 @@ Preset blade[] = {
 
   // https://www.youtube.com/shorts/YZBsMuEkjx4
   // { "MeatyC110P;common", "tracks/swrebelstheme.wav",
-  // StylePtr<Style_OrangeHumpFlicker>(), StylePtr<WHITE>(), "meaty c110p"},
+  // StylePtr<Style_OrangeHumpFlicker>(), StylePtr<Switch_Orange>(), "meaty c110p"},
 
   // https://www.youtube.com/shorts/YZBsMuEkjx4
   // { "MeatyDomo;common", "tracks/MrRoboto.wav", //Killroy
-  // StylePtr<Style_GreenSwingOrange>(), StylePtr<WHITE>(), "meaty domo"},
+  // StylePtr<Style_GreenSwingOrange>(), StylePtr<Switch_Blue>(), "meaty domo"},
 
   // https://www.youtube.com/watch?v=c3NMZTPvBTE
   { "Meaty-StarTrek;common", "tracks/sttngtheme.wav",
-  StylePtr<Style_PhenomStarTrek>(), StylePtr<WHITE>(), "meaty trek"},
+  StylePtr<Style_PhenomStarTrek>(), StylePtr<Switch_Blue>(), "meaty trek"},
 
 
   // #######################################
@@ -280,7 +281,7 @@ Preset blade[] = {
 
   // Jaydalorian Banished (paid)
   { "JD-Banished;common", "tracks/track1.wav",
-  StylePtr<Style_BanishedPurpleOverload>(), StylePtr<WHITE>(), "jd banish"},
+  StylePtr<Style_BanishedPurpleOverload>(), StylePtr<Switch_Magenta>(), "jd banish"},
 
   // Jaydalorian Decimate (free)
   // { "JDDecimate;common", "tracks/track1.wav",
@@ -293,19 +294,19 @@ Preset blade[] = {
 
   // Double Agent Pong Krell (paid)
   { "MS-PongKrell;common", "tracks/swrebelstheme.wav",
-  StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<WHITE>(), "ms doubleagent"},
+  StylePtr<Style_GreenBlueAudioFlicker>(), StylePtr<Switch_Green>(), "ms doubleagent"},
 
   // Star Trek Whale probe ep 4 (paid)
   { "MS-StarTrekWhaleProbe;common", "tracks/STT.wav",
-  StylePtr<Style_DarksaberLive>(), StylePtr<WHITE>(), "ms st whale"},
+  StylePtr<Style_DarksaberLive>(), StylePtr<Switch_White>(), "ms st whale"},
 
   // The Beginner (free)
   // { "MSTheBeginner;common", "tracks/sw.wav",
-  // StylePtr<Style_Original_BlueRotoscope>(), StylePtr<WHITE>(), "ms thebeginner"},
+  // StylePtr<Style_Original_BlueRotoscope>(), StylePtr<Switch_Blue>(), "ms thebeginner"},
 
   // Daft Punk Tribute
   // { "MSDaftPunk;common", "tracks/daftpunkaround.wav",
-  // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<WHITE>(), "ms daftpunk"},
+  // StylePtr<Style_PhenomCrispyPinkFlicker>(), StylePtr<Switch_Magenta>(), "ms daftpunk"},
 
 
   // #######################################
@@ -335,7 +336,7 @@ Preset blade[] = {
   //     AllStyles_BatteryLevel,
   //     AllStyles_SaberTrioSoundLevel
   //   >
-  // >(), StylePtr<WHITE>(), "cfx kamino"},
+  // >(), StylePtr<Switch_Blue>(), "cfx kamino"},
 
 
   // #######################################
@@ -343,18 +344,18 @@ Preset blade[] = {
   // #######################################
 
   // { "Reddit-ARCANE;common", "tracks/track1.wav",
-  // StylePtr<Style_PhenomSparkleOff>(), StylePtr<WHITE>(), "reddit arcane"},
+  // StylePtr<Style_PhenomSparkleOff>(), StylePtr<Switch_Red>(), "reddit arcane"},
 
   // { "Reddit-Ronin;common", "tracks/track1.wav", //Not a jedi
   // StylePtr<Style_UnstableRage>(), StylePtr<WHITE>(), "reddit ronin"},
 
   // Palpatine
   { "Reddit-SenateMajority;common", "tracks/palpatheme.wav",
-  StylePtr<Style_PhenomTragedySenate>(), StylePtr<WHITE>(), "reddit senatemajority"},
+  StylePtr<Style_PhenomTragedySenate>(), StylePtr<Switch_Red>(), "reddit senatemajority"},
 
   // Portal game
   { "Reddit-Portal;common", "tracks/stillalive.wav",
-  StylePtr<Style_PortalGame>(), StylePtr<WHITE>(), "geekbot9999 portal"},
+  StylePtr<Style_PortalGame>(), StylePtr<Switch_Blue>(), "geekbot9999 portal"},
 
 
   // #######################################
@@ -362,7 +363,7 @@ Preset blade[] = {
   // #######################################
 
   { "SlaveOneTwoPointOne;common", "tracks/track1.wav",
-  StylePtr<Style_SlaveOne>(), StylePtr<WHITE>(), "nosloppy slave1"},
+  StylePtr<Style_SlaveOne>(), StylePtr<Switch_Blue>(), "nosloppy slave1"},
 
 
   // #######################################
@@ -370,27 +371,28 @@ Preset blade[] = {
   // #######################################
 
   // Meatynubs Christmas V2 10/16/22
-  // { "Meaty-Christmas;common", "tracks/christmas_sesame1.wav",
-  // StylePtr<Style_PhenomChristmas>(), StylePtr<WHITE>(), "meaty christ"},
+  { "Meaty-Christmas;common", "tracks/christmas_sesame1.wav",
+  StylePtr<Style_PhenomChristmas>(), StylePtr<Switch_RGB_Swing>(), "meaty christ"},
 
   // MOUNTAIN SABERS Ball Drop - New Years (paid)
   { "MS-BallDrop;common", "tracks/newyearcantina.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<WHITE>(), "ms newyear"},
+  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "ms newyear"},
 
   // Jaydalorian Christmas (free)
   // { "JD-Christmas;common", "tracks/christmas.wav",
-  // StylePtr<Style_Menorah>(), StylePtr<WHITE>(), "jd christmas"},
+  // StylePtr<Style_Menorah>(), StylePtr<Switch_RGB_Swing>(), "jd christmas"},
 
   // Jaydalorian New years (free)
   { "JD-Newyears;common", "tracks/newyearcantina.wav",
-  StylePtr<Style_Rainbow_Fire>(), StylePtr<WHITE>(), "jd newyear"},
+  StylePtr<Style_Rainbow_Fire>(), StylePtr<Switch_Rainbow>(), "jd newyear"},
+
 
 };
 
 BladeConfig blades[] = {
   { 0,
     WS281XBladePtr<maxLedsPerStrip, bladePin, Color8::GRB, PowerPINS<bladePowerPin2, bladePowerPin3> >(),
-    SimpleBladePtr<CreeXPE2WhiteTemplate<550>, NoLED, NoLED, NoLED, bladePowerPin1, -1, -1, -1>(),
+    WS281XBladePtr<1, blade4Pin, Color8::GRB, PowerPINS<bladePowerPin1> >(),
     CONFIGARRAY(blade)
   },
 };
